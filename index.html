@@ -3,184 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gayarsite.re - Bibliothèque de Contes Modernes</title>
-  <meta name="description" content="Gayarsite.re : une bibliothèque d'univers narratifs et de contes modernes. Découvrez Izidor et ses personnages fascinants.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Gayarsite.re - Bibliothèque de Contes Modernes">
-  <meta property="og:description" content="Des univers narratifs immersifs. Contes, personnages, mini-jeux et histoires.">
+  <title>Gayarsite.re — Histoires et univers narratifs</title>
+  <meta name="description" content="Gayarsite.re rassemble des histoires simples, belles et immersives. Découvrez Izidor, premier univers narratif du site.">
+  <meta property="og:title" content="Gayarsite.re — Histoires et univers narratifs">
+  <meta property="og:description" content="Chaque histoire a son univers, son décor et ses personnages.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gayarsite.re/">
-  
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gayarsite.re - Bibliothèque de Contes Modernes">
-  <meta name="twitter:description" content="Des univers narratifs immersifs. Contes, personnages, mini-jeux et histoires.">
-  
-  <!-- Styles -->
+  <meta name="twitter:title" content="Gayarsite.re — Histoires et univers narratifs">
+  <meta name="twitter:description" content="Des histoires, des personnages, des mini-jeux et des univers à explorer.">
   <link rel="stylesheet" href="assets/commun/css/style.css">
   <link rel="stylesheet" href="assets/commun/css/theme-izidor.css">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23A0522D'>📖</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fffaf5'/%3E%3Cpath d='M28 24h28c9 0 16 7 16 16v36H44c-9 0-16-7-16-16V24z' fill='none' stroke='%238c5431' stroke-width='6'/%3E%3Cpath d='M44 24v52' stroke='%23c99563' stroke-width='6'/%3E%3C/svg%3E">
+  <style>
+    .home-hero-note{font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)}
+    .home-intro{padding:var(--sp-2xl) 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);background:linear-gradient(180deg,rgba(253,247,241,.55),rgba(253,247,241,0))}
+    .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp-xl);align-items:start}
+    .feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-lg)}
+    .feature-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl);box-shadow:var(--shadow-sm)}
+    .feature-card h3{font-family:var(--font-serif);font-size:var(--text-lg);margin-bottom:var(--sp-sm)}
+    .feature-card p{color:var(--color-muted)}
+    .accent-block{background:linear-gradient(135deg,rgba(201,149,99,.12),rgba(140,84,49,.06));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl)}
+    .cta-band{padding:var(--sp-3xl) 0}
+    .cta-box{background:var(--color-primary);color:var(--color-inverse);border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center;box-shadow:var(--shadow-lg)}
+    .cta-box p{max-width:38rem;margin:0 auto var(--sp-lg);color:rgba(255,250,245,.92)}
+    .cta-box .btn{background:#fff;color:var(--color-primary)}
+    @media (max-width:900px){.intro-grid,.feature-list{grid-template-columns:1fr}}
+  </style>
+  <script defer src="assets/commun/js/main.js"></script>
 </head>
 <body class="theme-izidor">
-  
-  <!-- HEADER -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
   <header>
     <div class="header-content">
-      <a href="/" class="logo">📖 Gayarsite</a>
-      
-      <nav>
-        <a href="/" class="active">Accueil</a>
+      <a href="index.html" class="logo">Gayarsite.re</a>
+      <nav aria-label="Navigation principale">
+        <a href="index.html" class="active">Accueil</a>
         <a href="#univers">Univers</a>
-        <a href="izidor/">Izidor</a>
-        <a href="izidor/jeux/">Jeux</a>
+        <a href="izidor/index.html">Izidor</a>
+        <a href="izidor/jeux/index.html">Jeux</a>
       </nav>
-      
       <div class="header-controls">
-        <button class="theme-toggle" aria-label="Basculer mode sombre">🌙</button>
-        <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activer le mode sombre">🌙</button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
       </div>
     </div>
   </header>
 
-  <main>
-    
-    <!-- HERO SECTION -->
+  <main id="contenu">
     <section class="hero">
-      <h1>Bienvenue à Gayarsite</h1>
-      <p>Une bibliothèque de contes modernes, d'univers narratifs immersifs et de mondes à explorer.</p>
-      <p style="font-size: var(--text-base); opacity: 0.8;">Chaque histoire est un univers différent. Chaque univers a son propre décor, ses couleurs, ses personnages et ses secrets.</p>
-    </section>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="home-hero-note">Histoires à découvrir</p>
+          <h1>Une maison d’histoires où chaque conte change le décor.</h1>
+          <p>Gayarsite.re rassemble des univers narratifs simples, beaux et lisibles. Le site garde les mêmes repères, mais chaque histoire ouvre sa propre atmosphère.[cite:86][cite:88]</p>
+          <div class="btn-row">
+            <a href="izidor/index.html" class="btn btn-primary">Entrer dans Izidor</a>
+            <a href="#univers" class="btn btn-secondary">Voir les univers</a>
+          </div>
+        </div>
 
-    <!-- INTRO -->
-    <section style="padding: var(--sp-2xl) var(--sp-lg); background: linear-gradient(135deg, rgba(253, 248, 243, 0.5) 0%, rgba(232, 212, 192, 0.1) 100%); text-align: center;">
-      <div class="container">
-        <h2 style="color: var(--color-primary); margin-bottom: var(--sp-lg);">Qu'est-ce que Gayarsite ?</h2>
-        <p style="max-width: 700px; margin: 0 auto var(--sp-lg); font-size: var(--text-lg); line-height: var(--line-relaxed);">
-          Gayarsite.re est un projet narratif créatif qui explore les univers de contes modernes. 
-          Chaque histoire possède son propre univers visuel, ses personnages uniques, et offre une expérience de lecture immersive.
-          Ici, vous découvrez des histoires, des personnages attachants, des mini-jeux et des contenus embarqués.
-        </p>
+        <aside class="hero-panel">
+          <h2 class="section-title">Premier univers</h2>
+          <p>Izidor lance le site avec une ambiance chaleureuse, poétique et familiale, portée par ses personnages et de futurs enrichissements comme les mini-jeux et les médias embarqués.[cite:86]</p>
+        </aside>
       </div>
     </section>
 
-    <!-- SECTION UNIVERS -->
-    <section id="univers" class="universes-section">
-      <h2>Les Univers</h2>
-      
-      <div class="universes-grid">
-        
-        <!-- IZIDOR CARD -->
-        <article class="universe-card">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect fill='%23D4A574' width='400' height='250'/%3E%3Ccircle cx='200' cy='125' r='60' fill='%23A0522D' opacity='0.8'/%3E%3Cpath d='M 100 200 Q 200 150 300 200' stroke='%23A0522D' stroke-width='3' fill='none' opacity='0.6'/%3E%3C/svg%3E" alt="Illustration de l'univers Izidor" class="universe-card-image">
-          <div class="universe-card-content">
-            <h3 class="universe-card-title">Izidor</h3>
-            <p class="universe-card-desc">
-              Un conte chaleureux et poétique peuplé de personnages fascinants. 
-              Découvrez Izidor, Rosine et Ti Malo dans ce premier univers narratif.
-            </p>
-            <a href="izidor/" class="btn btn-primary">Explorer l'univers</a>
+    <section class="home-intro">
+      <div class="container intro-grid">
+        <div>
+          <h2 class="section-title">Qu’est-ce que Gayarsite&nbsp;?</h2>
+          <p class="section-intro">Le projet est pensé comme une bibliothèque d’histoires. Chaque conte a sa landing page, son ambiance et ses personnages, sans perdre la simplicité d’un socle commun.[cite:86][cite:88]</p>
+          <div class="accent-block">
+            <p>Le but est de rester léger à gérer, beau à lire et assez souple pour accueillir plus tard la version kréol, des animations, des shorts ou d’autres formes autour des personnages.[cite:86]</p>
           </div>
-        </article>
-
-        <!-- TEASER PROCHAINE HISTOIRE -->
-        <article class="teaser-history">
-          <h3>Bientôt...</h3>
-          <p>De nouveaux univers narratifs arrivent. Suivez-nous pour découvrir les prochaines histoires ! 🎭</p>
-        </article>
-        
-      </div>
-    </section>
-
-    <!-- CARACTÉRISTIQUES -->
-    <section style="padding: var(--sp-2xl) var(--sp-lg);">
-      <div class="container">
-        <h2 style="text-align: center; color: var(--color-primary); margin-bottom: var(--sp-xl);">Ce que vous découvrirez</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--sp-lg); margin-bottom: var(--sp-xl);">
-          
-          <div style="padding: var(--sp-lg); background: var(--color-light); border-radius: var(--radius-lg); text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: var(--sp-md);">📚</div>
-            <h3 style="color: var(--color-primary); margin-bottom: var(--sp-md);">Des Histoires</h3>
-            <p>Des contes modernes à lire, savoureux et immersifs, avec des univers visuels distincts.</p>
-          </div>
-          
-          <div style="padding: var(--sp-lg); background: var(--color-light); border-radius: var(--radius-lg); text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: var(--sp-md);">🎭</div>
-            <h3 style="color: var(--color-primary); margin-bottom: var(--sp-md);">Des Personnages</h3>
-            <p>Des héros attachants et mémorables, chacun avec sa propre histoire et sa personnalité unique.</p>
-          </div>
-          
-          <div style="padding: var(--sp-lg); background: var(--color-light); border-radius: var(--radius-lg); text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: var(--sp-md);">🎮</div>
-            <h3 style="color: var(--color-primary); margin-bottom: var(--sp-md);">Des Mini-Jeux</h3>
-            <p>Jouez, explorez et interagissez avec les univers narratifs à travers des mini-jeux légers et amusants.</p>
-          </div>
-          
-          <div style="padding: var(--sp-lg); background: var(--color-light); border-radius: var(--radius-lg); text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: var(--sp-md);">🎬</div>
-            <h3 style="color: var(--color-primary); margin-bottom: var(--sp-md);">Des Contenus</h3>
-            <p>Vidéos, illustrations et médias embarqués pour une expérience immersive complète.</p>
-          </div>
-          
+        </div>
+        <div class="card">
+          <h3>La promesse du site</h3>
+          <p>Une lecture confortable, des univers bien identifiés, une navigation stable et un ton accessible pour les jeunes comme pour les moins jeunes.[cite:88][cite:86]</p>
         </div>
       </div>
     </section>
 
-    <!-- APPEL À L'ACTION -->
-    <section style="padding: var(--sp-3xl) var(--sp-lg); background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); color: white; text-align: center;">
+    <section id="univers" class="section">
       <div class="container">
-        <h2 style="color: white; margin-bottom: var(--sp-lg);">Prêt à explorer ?</h2>
-        <p style="font-size: var(--text-lg); margin-bottom: var(--sp-xl); color: rgba(255, 255, 255, 0.95); max-width: 600px; margin-left: auto; margin-right: auto;">
-          Commencez votre voyage dans l'univers d'Izidor. Une histoire captivante vous attend.
-        </p>
-        <a href="izidor/" class="btn" style="background-color: white; color: var(--color-primary); font-weight: 600;">Découvrir Izidor</a>
+        <h2 class="section-title">Les univers</h2>
+        <p class="section-intro">Le décor change selon l’histoire, mais on reste toujours chez Gayarsite grâce à la même structure et aux mêmes repères de navigation.[cite:86]</p>
+        <div class="grid cards-2">
+          <article class="card universe-card">
+            <div class="universe-visual" aria-hidden="true"></div>
+            <div class="universe-content">
+              <h3>Izidor</h3>
+              <p>Un conte chaleureux et poétique peuplé de personnages fascinants. C’est le premier monde à explorer sur Gayarsite.[file:72]</p>
+              <div class="btn-row">
+                <a href="izidor/index.html" class="btn btn-primary">Explorer l’univers</a>
+                <a href="izidor/fr/index.html" class="btn btn-secondary">Lire en français</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Bientôt</h3>
+            <p>D’autres univers narratifs viendront enrichir la collection, avec leur propre décor et leur propre ton.[cite:86]</p>
+          </article>
+        </div>
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title center">Ce que l’on trouve ici</h2>
+        <div class="feature-list">
+          <article class="feature-card">
+            <h3>Des histoires</h3>
+            <p>Des récits simples à lire, avec une vraie identité visuelle et une lecture confortable.[cite:88]</p>
+          </article>
+          <article class="feature-card">
+            <h3>Des personnages</h3>
+            <p>Izidor, Rosine et Ti Malo posent les premières bases de l’univers narratif.[cite:86]</p>
+          </article>
+          <article class="feature-card">
+            <h3>Des mini-jeux</h3>
+            <p>De petits jeux HTML légers peuvent prolonger l’histoire sans alourdir le site.[cite:131][cite:86]</p>
+          </article>
+          <article class="feature-card">
+            <h3>Des médias</h3>
+            <p>Le projet prévoit aussi des espaces pour vidéos, illustrations et contenus embarqués.[cite:86]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="section-title">Commencer avec Izidor</h2>
+          <p>Entre dans le premier univers de Gayarsite et découvre une histoire, ses personnages et ses premiers jeux.[cite:86]</p>
+          <a href="izidor/index.html" class="btn">Découvrir Izidor</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-grid">
-        
-        <div class="footer-section">
-          <h3>Gayarsite.re</h3>
-          <p style="font-size: var(--text-sm); opacity: 0.8;">Une bibliothèque de contes modernes et d'univers narratifs immersifs.</p>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Navigation</h3>
-          <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="#univers">Les univers</a></li>
-            <li><a href="izidor/">Izidor</a></li>
-            <li><a href="izidor/jeux/">Mini-jeux</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Ressources</h3>
-          <ul>
-            <li><a href="izidor/fr/">Lire l'histoire</a></li>
-            <li><a href="https://amazon.fr/" target="_blank" rel="noopener noreferrer">Amazon Kindle</a></li>
-            <li><a href="mailto:contact@gayarsite.re">Nous contacter</a></li>
-          </ul>
-        </div>
-        
+    <div class="container footer-grid">
+      <div>
+        <h3 class="section-title">Gayarsite.re</h3>
+        <p>Une bibliothèque d’univers narratifs pensée pour rester simple, belle et évolutive.[cite:88][cite:86]</p>
       </div>
-      
-      <div class="footer-bottom">
-        <p>© 2026 Gayarsite.re — Site narratif en évolution 🌿</p>
+      <div>
+        <h3>Navigation</h3>
+        <p><a href="index.html">Accueil</a></p>
+        <p><a href="#univers">Les univers</a></p>
+        <p><a href="izidor/index.html">Izidor</a></p>
+        <p><a href="izidor/jeux/index.html">Mini-jeux</a></p>
+      </div>
+      <div>
+        <h3>Ressources</h3>
+        <p><a href="izidor/fr/index.html">Lire l’histoire</a></p>
+        <p><a href="https://amazon.fr/" target="_blank" rel="noopener noreferrer">Amazon Kindle</a></p>
+        <p><a href="mailto:contact@gayarsite.re">Nous contacter</a></p>
       </div>
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script src="assets/commun/js/main.js"></script>
-
 </body>
 </html>
