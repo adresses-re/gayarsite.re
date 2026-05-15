@@ -1,0 +1,313 @@
+/* ============================================
+   THEME IZIDOR
+   Univers visuel spécifique à Izidor
+   ============================================ */
+
+.theme-izidor {
+  /* Couleurs primaires - Univers chaleureux et créole */
+  --color-primary: #A0522D;          /* Marron chaud naturel */
+  --color-accent: #D4A574;           /* Or naturel/terre */
+  --color-secondary: #E8D4C0;        /* Beige clair */
+  --color-light: #FDF8F3;            /* Crème presque blanc */
+  --color-dark: #2C2416;             /* Marron très foncé */
+  
+  /* Texte et fond */
+  --color-text: #2C2416;
+  --color-bg: #FFFAF5;
+  --color-border: #D4A574;
+  --color-dark-bg: #3D3328;
+  
+  /* Gradient hero */
+  --hero-bg: radial-gradient(circle at 50% 50%, rgba(160, 82, 45, 0.15) 0%, transparent 100%);
+}
+
+/* ============ MODE SOMBRE IZIDOR ============ */
+@media (prefers-color-scheme: dark) {
+  .theme-izidor {
+    --color-text: #E8D4C0;
+    --color-bg: #2C2416;
+    --color-light: #3D3328;
+    --color-dark-bg: #1a1512;
+    --color-border: #A0522D;
+  }
+}
+
+/* ============ HEADER IZIDOR ============ */
+.theme-izidor header {
+  background: linear-gradient(to bottom, 
+    rgba(255, 250, 245, 0.98) 0%, 
+    rgba(255, 250, 245, 0.95) 100%);
+}
+
+/* ============ FOOTER IZIDOR ============ */
+.theme-izidor footer {
+  background-color: var(--color-dark-bg);
+  color: var(--color-secondary);
+}
+
+.theme-izidor .footer-section a {
+  color: var(--color-secondary);
+}
+
+.theme-izidor .footer-section a:hover {
+  color: var(--color-accent);
+}
+
+/* ============ HERO IZIDOR ============ */
+.theme-izidor section.hero {
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(253, 248, 243, 1) 0%, 
+    rgba(232, 212, 192, 0.2) 100%);
+}
+
+.theme-izidor section.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(160, 82, 45, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============ CARTES IZIDOR ============ */
+.theme-izidor .card {
+  background: linear-gradient(135deg, 
+    var(--color-light) 0%, 
+    rgba(232, 212, 192, 0.3) 100%);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.theme-izidor .card:hover {
+  border-color: var(--color-accent);
+  background: linear-gradient(135deg, 
+    var(--color-light) 0%, 
+    rgba(212, 165, 116, 0.2) 100%);
+}
+
+.theme-izidor .card-title {
+  color: var(--color-primary);
+}
+
+/* ============ PERSONNAGES IZIDOR ============ */
+.theme-izidor .character-card {
+  background: linear-gradient(135deg, 
+    var(--color-light) 0%, 
+    rgba(232, 212, 192, 0.3) 100%);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  border-left: 4px solid var(--color-primary);
+}
+
+.theme-izidor .character-image {
+  border: 3px solid var(--color-accent);
+  box-shadow: 0 4px 12px rgba(160, 82, 45, 0.2);
+}
+
+.theme-izidor .character-content h3 {
+  color: var(--color-primary);
+}
+
+/* ============ MÉDIA IZIDOR ============ */
+.theme-izidor .media-section {
+  background: linear-gradient(135deg, 
+    var(--color-light) 0%, 
+    rgba(232, 212, 192, 0.2) 100%);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.theme-izidor .media-section h3 {
+  color: var(--color-primary);
+}
+
+/* ============ BOUTONS IZIDOR ============ */
+.theme-izidor .btn-primary {
+  background: linear-gradient(135deg, 
+    var(--color-primary) 0%, 
+    var(--color-accent) 100%);
+  box-shadow: 0 4px 12px rgba(160, 82, 45, 0.2);
+}
+
+.theme-izidor .btn-primary:hover {
+  background: linear-gradient(135deg, 
+    var(--color-accent) 0%, 
+    var(--color-primary) 100%);
+  box-shadow: 0 6px 16px rgba(160, 82, 45, 0.3);
+}
+
+.theme-izidor .btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.theme-izidor .btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.theme-izidor .btn-tertiary {
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.theme-izidor .btn-tertiary:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ============ CTA KINDLE IZIDOR ============ */
+.theme-izidor .kindle-block {
+  background: linear-gradient(135deg, 
+    var(--color-primary) 0%, 
+    var(--color-accent) 100%);
+  box-shadow: 0 8px 24px rgba(160, 82, 45, 0.3);
+}
+
+/* ============ "BIENTÔT" IZIDOR ============ */
+.theme-izidor .coming-soon {
+  background: linear-gradient(135deg, 
+    rgba(232, 212, 192, 0.3) 0%, 
+    rgba(212, 165, 116, 0.1) 100%);
+  border: 2px dashed var(--color-accent);
+}
+
+/* ============ TEXTURES ET AMBIANCE ============ */
+.theme-izidor {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.02) 0%, transparent 50%);
+}
+
+/* ============ COMPOSANTS SPÉCIFIQUES IZIDOR ============ */
+
+/* Univers block */
+.universe-card {
+  position: relative;
+  background: var(--color-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.universe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.universe-card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.universe-card:hover .universe-card-image {
+  transform: scale(1.05);
+}
+
+.universe-card-content {
+  padding: var(--sp-lg);
+}
+
+.universe-card-title {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--sp-md);
+}
+
+.universe-card-desc {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  margin-bottom: var(--sp-lg);
+  line-height: var(--line-relaxed);
+}
+
+/* ============ SECTION UNIVERS ============ */
+.universes-section {
+  padding: var(--sp-3xl) var(--sp-lg);
+  background: linear-gradient(135deg, 
+    rgba(253, 248, 243, 0.5) 0%, 
+    rgba(232, 212, 192, 0.1) 100%);
+}
+
+.universes-section h2 {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: var(--sp-2xl);
+}
+
+.universes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--sp-xl);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ============ SECTIONS NARRATIVES ============ */
+.narrative-section {
+  padding: var(--sp-2xl) 0;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.narrative-section:last-child {
+  border-bottom: none;
+}
+
+.narrative-section h2 {
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: var(--sp-md);
+  margin-bottom: var(--sp-lg);
+}
+
+/* ============ TEASER FUTURES HISTOIRES ============ */
+.teaser-history {
+  padding: var(--sp-lg);
+  background: linear-gradient(135deg, 
+    rgba(212, 165, 116, 0.1) 0%, 
+    rgba(160, 82, 45, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-accent);
+  margin: var(--sp-lg) 0;
+  text-align: center;
+}
+
+.teaser-history h3 {
+  color: var(--color-primary);
+}
+
+.teaser-history p {
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+/* ============ MINI-JEUX SECTION ============ */
+.games-section {
+  padding: var(--sp-2xl) var(--sp-lg);
+  background: linear-gradient(135deg, 
+    rgba(232, 212, 192, 0.2) 0%, 
+    rgba(212, 165, 116, 0.1) 100%);
+}
+
+.games-section h3 {
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--sp-xl);
+}
+
+/* ============ RESPONSIVE IZIDOR ============ */
+@media (max-width: 768px) {
+  .universes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .theme-izidor section.hero::after {
+    width: 150px;
+    height: 150px;
+  }
+}
