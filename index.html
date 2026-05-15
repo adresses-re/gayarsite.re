@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Gayarsite.re — Histoires et univers narratifs</title>
   <meta name="description" content="Gayarsite.re rassemble des histoires simples, belles et immersives. Découvrez Izidor, premier univers narratif du site.">
   <meta property="og:title" content="Gayarsite.re — Histoires et univers narratifs">
@@ -12,25 +12,362 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Gayarsite.re — Histoires et univers narratifs">
   <meta name="twitter:description" content="Des histoires, des personnages, des mini-jeux et des univers à explorer.">
-  <link rel="stylesheet" href="assets/commun/css/style.css">
-  <link rel="stylesheet" href="assets/commun/css/theme-izidor.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fffaf5'/%3E%3Cpath d='M28 24h28c9 0 16 7 16 16v36H44c-9 0-16-7-16-16V24z' fill='none' stroke='%238c5431' stroke-width='6'/%3E%3Cpath d='M44 24v52' stroke='%23c99563' stroke-width='6'/%3E%3C/svg%3E">
+  
+  <!-- Styles intégrés pour garantir le responsive et l'alignement (équivalent aux fichiers CSS externes) -->
   <style>
-    .home-hero-note{font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)}
-    .home-intro{padding:var(--sp-2xl) 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);background:linear-gradient(180deg,rgba(253,247,241,.55),rgba(253,247,241,0))}
-    .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp-xl);align-items:start}
-    .feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-lg)}
-    .feature-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl);box-shadow:var(--shadow-sm)}
-    .feature-card h3{font-family:var(--font-serif);font-size:var(--text-lg);margin-bottom:var(--sp-sm)}
-    .feature-card p{color:var(--color-muted)}
-    .accent-block{background:linear-gradient(135deg,rgba(201,149,99,.12),rgba(140,84,49,.06));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl)}
-    .cta-band{padding:var(--sp-3xl) 0}
-    .cta-box{background:var(--color-primary);color:var(--color-inverse);border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center;box-shadow:var(--shadow-lg)}
-    .cta-box p{max-width:38rem;margin:0 auto var(--sp-lg);color:rgba(255,250,245,.92)}
-    .cta-box .btn{background:#fff;color:var(--color-primary)}
-    @media (max-width:900px){.intro-grid,.feature-list{grid-template-columns:1fr}}
+    /* ----- RESET & BASE (équivalent style.css) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Color variables - thème clair par défaut (Izidor) */
+      --color-background: #fffaf5;
+      --color-surface: #ffffff;
+      --color-text: #2c221c;
+      --color-muted: #5e4b3b;
+      --color-primary: #8c5431;
+      --color-primary-light: #b87a4e;
+      --color-border: #e9dfd7;
+      --color-inverse: #fffaf5;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+      
+      /* Typography */
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      --font-serif: 'Georgia', 'Times New Roman', Times, serif;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-md: 1.125rem;
+      --text-lg: 1.35rem;
+      --text-xl: 1.75rem;
+      --text-2xl: 2.25rem;
+      --text-3xl: 3rem;
+      
+      /* Spacing */
+      --sp-xs: 0.5rem;
+      --sp-sm: 0.75rem;
+      --sp-md: 1rem;
+      --sp-lg: 1.5rem;
+      --sp-xl: 2rem;
+      --sp-2xl: 3rem;
+      --sp-3xl: 5rem;
+      
+      /* Radius */
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+    }
+
+    body {
+      background-color: var(--color-background);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      font-size: var(--text-base);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--sp-lg);
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--sp-lg);
+      padding: var(--sp-md) var(--sp-lg);
+      max-width: 1280px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--color-primary);
+      letter-spacing: -0.3px;
+    }
+    nav {
+      display: flex;
+      gap: var(--sp-md);
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 500;
+      padding: 0.25rem 0;
+    }
+    nav a.active, nav a:hover {
+      color: var(--color-primary);
+      border-bottom: 2px solid var(--color-primary-light);
+    }
+    .header-controls {
+      display: flex;
+      gap: var(--sp-sm);
+    }
+    .icon-btn, .menu-toggle {
+      background: none;
+      border: 1px solid var(--color-border);
+      border-radius: 2rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .menu-toggle { display: none; }
+    
+    /* Hero section */
+    .hero {
+      padding: var(--sp-2xl) 0 var(--sp-2xl);
+    }
+    .hero-inner {
+      display: flex;
+      gap: var(--sp-xl);
+      align-items: center;
+    }
+    .hero-copy {
+      flex: 1.2;
+    }
+    .hero-panel {
+      flex: 0.9;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-xl);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .home-hero-note {
+      font-size: var(--text-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--sp-md);
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      line-height: 1.2;
+      margin-bottom: var(--sp-md);
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-md);
+      margin-top: var(--sp-lg);
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+      border: 1px solid var(--color-primary);
+    }
+    .btn-primary:hover {
+      background: var(--color-primary-light);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      margin-bottom: var(--sp-md);
+      font-weight: 600;
+    }
+    .section-intro {
+      font-size: var(--text-md);
+      color: var(--color-muted);
+      margin-bottom: var(--sp-lg);
+    }
+    /* intro grid */
+    .home-intro {
+      padding: var(--sp-2xl) 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      background: linear-gradient(180deg, rgba(253, 247, 241, 0.55), rgba(253, 247, 241, 0));
+    }
+    .intro-grid {
+      display: flex;
+      gap: var(--sp-xl);
+      align-items: flex-start;
+    }
+    .intro-grid > div:first-child {
+      flex: 1.1;
+    }
+    .intro-grid > div:last-child {
+      flex: 0.9;
+    }
+    .accent-block, .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-xl);
+      box-shadow: var(--shadow-sm);
+    }
+    .accent-block {
+      background: linear-gradient(135deg, rgba(201,149,99,0.12), rgba(140,84,49,0.06));
+      margin-top: var(--sp-lg);
+    }
+    /* grids */
+    .grid.cards-2 {
+      display: flex;
+      gap: var(--sp-xl);
+      margin-top: var(--sp-lg);
+    }
+    .grid.cards-2 > article {
+      flex: 1;
+    }
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-lg);
+      margin-top: var(--sp-lg);
+    }
+    .feature-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-xl);
+      box-shadow: var(--shadow-sm);
+    }
+    .feature-card h3 {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      margin-bottom: var(--sp-sm);
+    }
+    .universe-card .universe-visual {
+      height: 120px;
+      background: linear-gradient(130deg, #e3cfbb, #cbaa87);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--sp-md);
+    }
+    .cta-band {
+      padding: var(--sp-2xl) 0;
+    }
+    .cta-box {
+      background: var(--color-primary);
+      color: var(--color-inverse);
+      border-radius: calc(var(--radius-lg) + 0.5rem);
+      padding: var(--sp-2xl);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .cta-box .btn {
+      background: white;
+      color: var(--color-primary);
+      border: none;
+    }
+    .center {
+      text-align: center;
+    }
+    footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: var(--sp-2xl) 0;
+      margin-top: var(--sp-xl);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-xl);
+    }
+    footer a {
+      color: var(--color-muted);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--color-primary);
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner, .intro-grid, .grid.cards-2 {
+        flex-direction: column;
+      }
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--sp-md) 0;
+      }
+      nav.open {
+        display: flex;
+      }
+      .header-content {
+        position: relative;
+      }
+      h1 {
+        font-size: var(--text-2xl);
+      }
+      .hero-panel {
+        margin-top: var(--sp-md);
+      }
+    }
+    
+    /* Dark mode simulation */
+    body.dark {
+      --color-background: #1f1b18;
+      --color-surface: #2b2622;
+      --color-text: #f2e7de;
+      --color-muted: #cdbcae;
+      --color-primary: #e4b68a;
+      --color-border: #423b35;
+      --color-inverse: #2b2622;
+    }
   </style>
-  <script defer src="assets/commun/js/main.js"></script>
+  <!-- Simulation des fichiers CSS externes -->
+  <link rel="stylesheet" href="assets/commun/css/style.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/commun/css/theme-izidor.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="assets/commun/css/style.css">
+    <link rel="stylesheet" href="assets/commun/css/theme-izidor.css">
+  </noscript>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fffaf5'/%3E%3Cpath d='M28 24h28c9 0 16 7 16 16v36H44c-9 0-16-7-16-16V24z' fill='none' stroke='%238c5431' stroke-width='6'/%3E%3Cpath d='M44 24v52' stroke='%23c99563' stroke-width='6'/%3E%3C/svg%3E">
 </head>
 <body class="theme-izidor">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -38,26 +375,27 @@
   <header>
     <div class="header-content">
       <a href="index.html" class="logo">Gayarsite.re</a>
-      <nav aria-label="Navigation principale">
+      <nav aria-label="Navigation principale" id="main-nav">
         <a href="index.html" class="active">Accueil</a>
         <a href="#univers">Univers</a>
         <a href="izidor/index.html">Izidor</a>
         <a href="izidor/jeux/index.html">Jeux</a>
       </nav>
       <div class="header-controls">
-        <button class="icon-btn theme-toggle" type="button" aria-label="Activer le mode sombre">🌙</button>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activer le mode sombre" id="darkmodeToggle">🌙</button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Ouvrir le menu" id="mobileMenuBtn">☰</button>
       </div>
     </div>
   </header>
 
   <main id="contenu">
+    <!-- Hero section alignée et responsive -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="home-hero-note">Histoires à découvrir</p>
           <h1>Une maison d’histoires où chaque conte change le décor.</h1>
-          <p>Gayarsite.re rassemble des univers narratifs simples, beaux et lisibles. Le site garde les mêmes repères, mais chaque histoire ouvre sa propre atmosphère.[cite:86][cite:88]</p>
+          <p>Gayarsite.re rassemble des univers narratifs simples, beaux et lisibles. Le site garde les mêmes repères, mais chaque histoire ouvre sa propre atmosphère.</p>
           <div class="btn-row">
             <a href="izidor/index.html" class="btn btn-primary">Entrer dans Izidor</a>
             <a href="#univers" class="btn btn-secondary">Voir les univers</a>
@@ -66,37 +404,39 @@
 
         <aside class="hero-panel">
           <h2 class="section-title">Premier univers</h2>
-          <p>Izidor lance le site avec une ambiance chaleureuse, poétique et familiale, portée par ses personnages et de futurs enrichissements comme les mini-jeux et les médias embarqués.[cite:86]</p>
+          <p>Izidor lance le site avec une ambiance chaleureuse, poétique et familiale, portée par ses personnages et de futurs enrichissements comme les mini-jeux et les médias embarqués.</p>
         </aside>
       </div>
     </section>
 
+    <!-- Intro alignée flex + responsive -->
     <section class="home-intro">
       <div class="container intro-grid">
         <div>
           <h2 class="section-title">Qu’est-ce que Gayarsite&nbsp;?</h2>
-          <p class="section-intro">Le projet est pensé comme une bibliothèque d’histoires. Chaque conte a sa landing page, son ambiance et ses personnages, sans perdre la simplicité d’un socle commun.[cite:86][cite:88]</p>
+          <p class="section-intro">Le projet est pensé comme une bibliothèque d’histoires. Chaque conte a sa landing page, son ambiance et ses personnages, sans perdre la simplicité d’un socle commun.</p>
           <div class="accent-block">
-            <p>Le but est de rester léger à gérer, beau à lire et assez souple pour accueillir plus tard la version kréol, des animations, des shorts ou d’autres formes autour des personnages.[cite:86]</p>
+            <p>Le but est de rester léger à gérer, beau à lire et assez souple pour accueillir plus tard la version kréol, des animations, des shorts ou d’autres formes autour des personnages.</p>
           </div>
         </div>
         <div class="card">
           <h3>La promesse du site</h3>
-          <p>Une lecture confortable, des univers bien identifiés, une navigation stable et un ton accessible pour les jeunes comme pour les moins jeunes.[cite:88][cite:86]</p>
+          <p>Une lecture confortable, des univers bien identifiés, une navigation stable et un ton accessible pour les jeunes comme pour les moins jeunes.</p>
         </div>
       </div>
     </section>
 
+    <!-- Section univers (cards alignées) -->
     <section id="univers" class="section">
       <div class="container">
         <h2 class="section-title">Les univers</h2>
-        <p class="section-intro">Le décor change selon l’histoire, mais on reste toujours chez Gayarsite grâce à la même structure et aux mêmes repères de navigation.[cite:86]</p>
+        <p class="section-intro">Le décor change selon l’histoire, mais on reste toujours chez Gayarsite grâce à la même structure et aux mêmes repères de navigation.</p>
         <div class="grid cards-2">
           <article class="card universe-card">
             <div class="universe-visual" aria-hidden="true"></div>
             <div class="universe-content">
               <h3>Izidor</h3>
-              <p>Un conte chaleureux et poétique peuplé de personnages fascinants. C’est le premier monde à explorer sur Gayarsite.[file:72]</p>
+              <p>Un conte chaleureux et poétique peuplé de personnages fascinants. C’est le premier monde à explorer sur Gayarsite.</p>
               <div class="btn-row">
                 <a href="izidor/index.html" class="btn btn-primary">Explorer l’univers</a>
                 <a href="izidor/fr/index.html" class="btn btn-secondary">Lire en français</a>
@@ -105,41 +445,44 @@
           </article>
           <article class="card">
             <h3>Bientôt</h3>
-            <p>D’autres univers narratifs viendront enrichir la collection, avec leur propre décor et leur propre ton.[cite:86]</p>
+            <p>D’autres univers narratifs viendront enrichir la collection, avec leur propre décor et leur propre ton.</p>
+            <div style="margin-top: var(--sp-md);"><em>➕ En développement</em></div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- Section features avec grid responsive -->
     <section class="section">
       <div class="container">
         <h2 class="section-title center">Ce que l’on trouve ici</h2>
         <div class="feature-list">
           <article class="feature-card">
-            <h3>Des histoires</h3>
-            <p>Des récits simples à lire, avec une vraie identité visuelle et une lecture confortable.[cite:88]</p>
+            <h3>📖 Des histoires</h3>
+            <p>Des récits simples à lire, avec une vraie identité visuelle et une lecture confortable.</p>
           </article>
           <article class="feature-card">
-            <h3>Des personnages</h3>
-            <p>Izidor, Rosine et Ti Malo posent les premières bases de l’univers narratif.[cite:86]</p>
+            <h3>🧑‍🌾 Des personnages</h3>
+            <p>Izidor, Rosine et Ti Malo posent les premières bases de l’univers narratif.</p>
           </article>
           <article class="feature-card">
-            <h3>Des mini-jeux</h3>
-            <p>De petits jeux HTML légers peuvent prolonger l’histoire sans alourdir le site.[cite:131][cite:86]</p>
+            <h3>🎮 Des mini-jeux</h3>
+            <p>De petits jeux HTML légers peuvent prolonger l’histoire sans alourdir le site.</p>
           </article>
           <article class="feature-card">
-            <h3>Des médias</h3>
-            <p>Le projet prévoit aussi des espaces pour vidéos, illustrations et contenus embarqués.[cite:86]</p>
+            <h3>🎬 Des médias</h3>
+            <p>Le projet prévoit aussi des espaces pour vidéos, illustrations et contenus embarqués.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- Call to action -->
     <section class="cta-band">
       <div class="container">
         <div class="cta-box">
-          <h2 class="section-title">Commencer avec Izidor</h2>
-          <p>Entre dans le premier univers de Gayarsite et découvre une histoire, ses personnages et ses premiers jeux.[cite:86]</p>
+          <h2 class="section-title" style="color: inherit;">Commencer avec Izidor</h2>
+          <p>Entre dans le premier univers de Gayarsite et découvre une histoire, ses personnages et ses premiers jeux.</p>
           <a href="izidor/index.html" class="btn">Découvrir Izidor</a>
         </div>
       </div>
@@ -149,8 +492,8 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <h3 class="section-title">Gayarsite.re</h3>
-        <p>Une bibliothèque d’univers narratifs pensée pour rester simple, belle et évolutive.[cite:88][cite:86]</p>
+        <h3 class="section-title" style="margin-bottom: var(--sp-sm);">Gayarsite.re</h3>
+        <p>Une bibliothèque d’univers narratifs pensée pour rester simple, belle et évolutive.</p>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -167,5 +510,37 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Responsive menu + Dark mode pour démonstration
+    (function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const nav = document.getElementById('main-nav');
+      if(menuBtn && nav) {
+        menuBtn.addEventListener('click', () => {
+          const expanded = nav.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', expanded);
+          menuBtn.textContent = expanded ? '✕' : '☰';
+        });
+      }
+      
+      // Theme toggle (dark/light)
+      const toggleBtn = document.querySelector('.theme-toggle');
+      if(toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          document.body.classList.toggle('dark');
+          const isDark = document.body.classList.contains('dark');
+          toggleBtn.textContent = isDark ? '☀️' : '🌙';
+          localStorage.setItem('gayarTheme', isDark ? 'dark' : 'light');
+        });
+        const savedTheme = localStorage.getItem('gayarTheme');
+        if(savedTheme === 'dark') {
+          document.body.classList.add('dark');
+          toggleBtn.textContent = '☀️';
+        }
+      }
+    })();
+  </script>
+  <script defer src="assets/commun/js/main.js"></script>
 </body>
 </html>
