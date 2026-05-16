@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gayarsite.re — Contes et histoires pour enfants de La Réunion</title>
-  <meta name="description" content="Découvrez des contes imaginaires et des histoires traditionnelles de l'île de La Réunion pour les enfants de moins de 10 ans. Ebooks Kindle, jeux et illustrations.">
-  <meta name="keywords" content="contes réunionnais, histoires enfants, izidor, livres jeunesse, kindle, créole réunion">
+  <title>Gayarsite.re — Contes et aventures de La Réunion</title>
+  <meta name="description" content="Découvrez Izidor et le trésor, un conte réunionnais malicieux, et d'autres histoires pour les 6-10 ans. Ebooks Kindle, jeux et illustrations.">
+  <meta name="keywords" content="contes réunionnais, izidor et le trésor, histoires 6-10 ans, livres jeunesse, kindle, créole réunion">
   <meta name="author" content="Gayarsite.re">
-  <meta property="og:title" content="Gayarsite.re — Contes pour enfants de La Réunion">
-  <meta property="og:description" content="Des histoires douces et imagées pour les petits, entre tradition réunionnaise et nouveaux contes.">
+  <meta property="og:title" content="Gayarsite.re — Contes et aventures de La Réunion">
+  <meta property="og:description" content="Des histoires malicieuses et palpitantes dans la tradition orale créole. Pour les 6-10 ans.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gayarsite.re/">
   <meta property="og:image" content="/assets/commun/images/izidor-cover.webp">
@@ -23,82 +23,81 @@
     }
 
     :root {
-      --color-bg: #FFF9F0;
+      --color-bg: #F5F0E8;
       --color-surface: #FFFFFF;
-      --color-primary: #F9A26C;
-      --color-primary-dark: #E8843A;
-      --color-secondary: #6DC4A4;
-      --color-accent: #FFD966;
-      --color-text: #4A3728;
-      --color-text-light: #7A6B5D;
-      --color-border: #FFE0B5;
-      --color-card-bg: #FFFFFF;
-      --shadow-card: 0 8px 20px rgba(0,0,0,0.08);
-      --shadow-hover: 0 12px 28px rgba(0,0,0,0.12);
-      --radius-card: 24px;
-      --radius-btn: 40px;
-      --transition: all 0.3s ease;
+      --color-primary: #D45729;
+      --color-primary-dark: #B8431A;
+      --color-secondary: #2E7A6E;
+      --color-accent: #F4B942;
+      --color-text: #2C2418;
+      --color-text-light: #6B5A4A;
+      --color-border: #E2D5C0;
+      --shadow-card: 0 6px 14px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 24px rgba(0,0,0,0.12);
+      --radius-card: 20px;
+      --radius-btn: 30px;
+      --transition: all 0.25s ease;
     }
 
     body {
-      font-family: 'Segoe UI', 'Comic Neue', 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Poppins', sans-serif;
+      font-family: 'Inter', -apple-system, 'Segoe UI', 'Roboto', system-ui, sans-serif;
       background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.5;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
     }
 
-    /* ========== TYPOGRAPHIE ENFANTINE ========== */
+    /* ========== TYPOGRAPHIE (moderne, lisible) ========== */
     h1, h2, h3, .logo {
-      font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', cursive;
+      font-family: 'Poppins', 'Inter', system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.3px;
     }
 
     h1 {
-      font-size: 2.8rem;
-      background: linear-gradient(135deg, #F9A26C, #E8843A);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 16px;
+      font-size: 3rem;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
 
     h2 {
       font-size: 2rem;
       margin-bottom: 32px;
-      color: var(--color-primary-dark);
+      color: var(--color-secondary);
       text-align: center;
-      position: relative;
+      font-weight: 600;
     }
 
-    h2:after {
-      content: "✨";
-      position: absolute;
-      margin-left: 12px;
-      font-size: 1.8rem;
+    h2 span {
+      background: var(--color-accent);
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      display: inline-block;
+      margin-left: 10px;
     }
 
     h3 {
       font-size: 1.4rem;
       margin-bottom: 8px;
       color: var(--color-primary-dark);
+      font-weight: 600;
     }
 
-    /* ========== HEADER SIMPLE ========== */
+    /* ========== HEADER MODERNE ========== */
     header {
-      background: rgba(255, 249, 240, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(245, 240, 232, 0.96);
+      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 3px solid var(--color-accent);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-bottom: 2px solid var(--color-border);
     }
 
     .header-content {
@@ -106,53 +105,53 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
-      padding: 16px 24px;
+      gap: 20px;
+      padding: 16px 32px;
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: var(--color-primary-dark);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
       text-decoration: none;
       transition: var(--transition);
     }
 
     .logo:hover {
       transform: scale(1.02);
-      color: var(--color-primary);
+      color: var(--color-primary-dark);
     }
 
     .logo-img {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #F9A26C, #FFD966);
-      border-radius: 20px;
+      width: 44px;
+      height: 44px;
+      background: var(--color-primary);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 1.6rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    /* Menu simple */
     nav {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     nav a {
       text-decoration: none;
       color: var(--color-text);
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 8px 12px;
-      border-radius: var(--radius-btn);
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 8px 14px;
+      border-radius: 40px;
       transition: var(--transition);
     }
 
@@ -165,39 +164,67 @@
       display: none;
       background: none;
       border: 2px solid var(--color-primary);
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       padding: 6px 14px;
       border-radius: 30px;
       cursor: pointer;
     }
 
-    /* ========== SECTION HÉRO ========== */
+    /* ========== HERO ========== */
     .hero {
-      background: linear-gradient(120deg, #FFF0E0 0%, #FFE8D4 100%);
-      padding: 60px 0;
-      border-bottom: 4px solid var(--color-accent);
+      background: linear-gradient(135deg, #FFF5E8 0%, #F5E6D8 100%);
+      padding: 70px 0;
+      border-bottom: 1px solid var(--color-border);
     }
 
     .hero-content {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .hero p {
+    .hero-text h1 {
+      font-size: 2.8rem;
+    }
+
+    .hero-text p {
       font-size: 1.2rem;
       color: var(--color-text-light);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
-    /* Boutons amusants */
+    .hero-image {
+      background: linear-gradient(145deg, #FFE0B5, #FFD2A0);
+      border-radius: 32px;
+      padding: 24px;
+      text-align: center;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-emoji {
+      font-size: 5rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-image small {
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    /* Boutons */
     .btn {
       display: inline-block;
       padding: 12px 28px;
       border-radius: var(--radius-btn);
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-weight: 600;
+      font-size: 1rem;
       transition: var(--transition);
       cursor: pointer;
       border: none;
@@ -207,17 +234,17 @@
     .btn-primary {
       background: var(--color-primary);
       color: white;
-      box-shadow: 0 4px 0 #B85A1A;
+      box-shadow: 0 4px 0 #9A3A18;
     }
 
     .btn-primary:hover {
       background: var(--color-primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 0 #B85A1A;
+      box-shadow: 0 6px 0 #9A3A18;
     }
 
     .btn-secondary {
-      background: white;
+      background: transparent;
       color: var(--color-primary);
       border: 2px solid var(--color-primary);
     }
@@ -225,28 +252,22 @@
     .btn-secondary:hover {
       background: var(--color-primary);
       color: white;
-      transform: translateY(-2px);
     }
 
-    .btn-small {
-      padding: 8px 16px;
-      font-size: 0.9rem;
-    }
-
-    /* ========== GRILLE DES CARTES HISTOIRES ========== */
+    /* ========== GRILLE HISTOIRES ========== */
     .section {
-      padding: 60px 0;
+      padding: 64px 0;
     }
 
     .stories-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 32px;
-      margin-top: 24px;
+      margin-top: 20px;
     }
 
     .story-card {
-      background: var(--color-card-bg);
+      background: var(--color-surface);
       border-radius: var(--radius-card);
       overflow: hidden;
       box-shadow: var(--shadow-card);
@@ -254,23 +275,23 @@
       text-decoration: none;
       color: inherit;
       display: block;
-      border: 2px solid transparent;
+      border: 1px solid var(--color-border);
     }
 
     .story-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-hover);
       border-color: var(--color-accent);
     }
 
     .card-cover {
       position: relative;
-      background: linear-gradient(135deg, #FFDAB9, #FFE4CA);
-      height: 220px;
+      background: linear-gradient(135deg, #FFF0E0, #FFE4CC);
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 5rem;
+      font-size: 4rem;
     }
 
     .card-badge {
@@ -278,11 +299,11 @@
       top: 16px;
       right: 16px;
       background: var(--color-accent);
-      color: #8B5E3C;
-      padding: 6px 12px;
+      color: #7B4A1E;
+      padding: 5px 12px;
       border-radius: 30px;
       font-size: 0.75rem;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     .card-content {
@@ -293,11 +314,12 @@
       color: var(--color-text-light);
       margin-bottom: 16px;
       font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     .card-links {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       margin-top: 16px;
       flex-wrap: wrap;
     }
@@ -310,56 +332,62 @@
       color: var(--color-primary);
       text-decoration: none;
       font-weight: 500;
+      background: #FFF3E8;
+      padding: 6px 12px;
+      border-radius: 30px;
+      transition: var(--transition);
     }
 
     .icon-link:hover {
-      color: var(--color-primary-dark);
+      background: var(--color-primary);
+      color: white;
     }
 
-    /* ========== BADGES INTERACTIFS ========== */
     .coming-soon {
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .coming-soon .card-cover {
-      filter: grayscale(0.2);
+      filter: grayscale(0.15);
     }
 
-    /* ========== SECTION VENTE KINDLE ========== */
+    /* ========== SECTION KINDLE ========== */
     .kindle-section {
-      background: linear-gradient(135deg, #2D5F5A, #1E3E3A);
+      background: linear-gradient(135deg, #2E7A6E, #1F5A50);
       color: white;
-      border-radius: 48px;
-      margin: 40px 0;
-      padding: 48px 32px;
+      border-radius: 40px;
+      padding: 48px 40px;
       text-align: center;
     }
 
     .kindle-section h3 {
       color: var(--color-accent);
       font-size: 1.8rem;
-    }
-
-    .kindle-section p {
-      margin-bottom: 24px;
-      font-size: 1.1rem;
+      margin-bottom: 12px;
     }
 
     .btn-kindle {
       background: #FFB347;
-      color: #2D5F5A;
+      color: #1F5A50;
       box-shadow: 0 4px 0 #C16F1A;
     }
 
-    .btn-kindle:hover {
-      background: #FFA01E;
+    .btn-outline-light {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      background: white;
+      color: #1F5A50;
     }
 
     /* ========== FOOTER ========== */
     footer {
-      background: #4A3728;
-      color: #FFE8D4;
-      padding: 40px 0 20px;
+      background: #2C2418;
+      color: #E8DDD0;
+      padding: 48px 0 24px;
       margin-top: 60px;
     }
 
@@ -376,21 +404,32 @@
     }
 
     .footer-links a {
-      color: #FFDAB9;
+      color: #E8DDD0;
       text-decoration: none;
+      font-weight: 500;
     }
 
     .footer-links a:hover {
       color: var(--color-accent);
     }
 
-    .copyright {
-      font-size: 0.85rem;
-      opacity: 0.7;
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
     }
 
-    /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+      
       .menu-toggle {
         display: block;
       }
@@ -407,45 +446,48 @@
         display: flex;
       }
       
-      h1 {
-        font-size: 2rem;
-      }
-      
       h2 {
         font-size: 1.6rem;
       }
       
       .stories-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
       }
       
       .kindle-section {
         padding: 32px 20px;
-        border-radius: 32px;
       }
     }
 
     @media (max-width: 480px) {
-      .container {
-        padding: 0 16px;
-      }
-      
       .card-links {
         flex-direction: column;
-        gap: 8px;
+      }
+      
+      .hero-emoji {
+        font-size: 3.5rem;
       }
     }
 
-    /* Animations */
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+    /* Animation légère */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
-    .story-card:hover .card-cover {
-      animation: bounce 0.5s ease;
+    .story-card {
+      animation: fadeUp 0.4s ease backwards;
     }
+    
+    .story-card:nth-child(1) { animation-delay: 0.05s; }
+    .story-card:nth-child(2) { animation-delay: 0.1s; }
+    .story-card:nth-child(3) { animation-delay: 0.15s; }
   </style>
 </head>
 <body>
@@ -453,136 +495,142 @@
   <a class="skip-link" href="#contenu" style="position: absolute; left: -9999px;">Aller au contenu</a>
 
   <header>
-    <div class="container header-content">
+    <div class="header-content">
       <a href="index.html" class="logo">
-        <div class="logo-img">📚</div>
+        <div class="logo-img">📖</div>
         <span>Gayarsite.re</span>
       </a>
       
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
       
       <nav id="mainNav">
-        <a href="index.html" class="active">🏠 Accueil</a>
-        <a href="#histoires">📖 Histoires</a>
-        <a href="izidor/jeux/index.html">🎮 Jeux</a>
-        <a href="#kindle">📱 Ebooks</a>
+        <a href="index.html" class="active">Accueil</a>
+        <a href="#histoires">Histoires</a>
+        <a href="izidor/jeux/index.html">Jeux</a>
+        <a href="#kindle">Ebooks</a>
       </nav>
     </div>
   </header>
 
   <main id="contenu">
     
-    <!-- Section Héro simple et joyeuse -->
+    <!-- HERO - Dynamique, pas trop bébé -->
     <section class="hero">
       <div class="container hero-content">
-        <h1>✨ Bienvenue dans le monde des histoires ✨</h1>
-        <p>Des contes doux, des aventures magiques et des personnages attachants pour les petits (et les grands aussi !)</p>
-        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <a href="#histoires" class="btn btn-primary">📖 Découvrir les histoires</a>
-          <a href="izidor/jeux/index.html" class="btn btn-secondary">🎮 Jeux et activités</a>
+        <div class="hero-text">
+          <h1>Aventures et malices <br>de La Réunion</h1>
+          <p>Des histoires où l'astuce et le courage triomphent. Dans la tradition orale créole, pour les 6-10 ans.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="#histoires" class="btn btn-primary">📖 Explorer les contes</a>
+            <a href="izidor/jeux/index.html" class="btn btn-secondary">🎮 Jeux & défis</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-emoji">🐢✨</div>
+          <p style="font-weight: 500;">« La ruse est plus forte que la force »</p>
+          <small>— Conte réunionnais</small>
         </div>
       </div>
     </section>
 
-    <!-- Section : Toutes les histoires (cartes) -->
+    <!-- SECTION : TOUTES LES HISTOIRES -->
     <section id="histoires" class="section">
       <div class="container">
-        <h2>📚 Nos histoires à découvrir</h2>
+        <h2>📚 Nos histoires <span>Nouveautés</span></h2>
         <div class="stories-grid">
           
-          <!-- CARTE 1 : IZIDOR (histoire disponible) -->
+          <!-- IZIDOR ET LE TRÉSOR (conte réunionnais malicieux) -->
           <div class="story-card">
             <div class="card-cover">
-              <span>🐻</span>
-              <span class="card-badge">📖 Nouveau !</span>
+              <span>🐢🗝️</span>
+              <span class="card-badge">⭐ Malicieux</span>
             </div>
             <div class="card-content">
-              <h3>Izidor et la forêt enchantée</h3>
-              <p>Un petit ourson curieux part explorer la forêt magique de La Réunion. Une histoire d'amitié, de partage et de découverte de la nature.</p>
+              <h3>Izidor et le trésor</h3>
+              <p>Un personnage rusé, proche du quotidien, triomphe grâce à son astuce. Un conte réunionnais dans la pure tradition orale créole.</p>
               <div class="card-links">
-                <a href="izidor/index.html" class="icon-link">📖 Lire un extrait</a>
-                <a href="izidor/jeux/index.html" class="icon-link">🎮 Mini-jeux</a>
-                <a href="#" class="icon-link" onclick="alert('📘 Version Kindle bientôt disponible sur Amazon !')">📱 Kindle</a>
+                <a href="izidor/index.html" class="icon-link">📖 Lire l'histoire</a>
+                <a href="izidor/jeux/index.html" class="icon-link">🎮 Jeux</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Version Kindle disponible sur Amazon')">📱 Kindle</a>
               </div>
             </div>
           </div>
 
-          <!-- CARTE 2 : TROUVEUR DE SOUVENIRS (histoire disponible) -->
+          <!-- LE CHERCHEUR DE SOUVENIRS -->
           <div class="story-card">
             <div class="card-cover">
-              <span>🐚</span>
-              <span class="card-badge">⭐ Coup de cœur</span>
+              <span>🌊🐚</span>
+              <span class="card-badge">✨ Aventure</span>
             </div>
             <div class="card-content">
               <h3>Le chercheur de souvenirs</h3>
-              <p>Ti-Jean part sur les plages de l'île à la recherche des plus beaux souvenirs perdus. Une aventure poétique inspirée des contes réunionnais.</p>
+              <p>Ti-Jean arpente les plages et les montagnes pour retrouver les histoires perdues de l'île. Une quête pleine de rebondissements.</p>
               <div class="card-links">
                 <a href="chercheur-souvenirs/index.html" class="icon-link">📖 Lire un extrait</a>
-                <a href="#" class="icon-link" onclick="alert('🎨 Page interactive bientôt disponible avec coloriages !')">🎨 Activités</a>
-                <a href="#" class="icon-link" onclick="alert('📘 Kindle disponible sur Amazon.fr')">📱 Kindle</a>
+                <a href="#" class="icon-link" onclick="alert('🎨 Illustrations interactives bientôt')">🎨 Galerie</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Kindle disponible')">📱 Kindle</a>
               </div>
             </div>
           </div>
 
-          <!-- CARTE 3 : KALOU (bientôt) -->
+          <!-- ROSINE ET TI MALO -->
+          <div class="story-card">
+            <div class="card-cover">
+              <span>🌿🚲</span>
+              <span class="card-badge">⭐ Amitié</span>
+            </div>
+            <div class="card-content">
+              <h3>Rosine et Ti Malo</h3>
+              <p>Deux enfants de Saint-Denis mènent l'enquête dans les champs de canne. Un conte moderne sur l'entraide et la solidarité.</p>
+              <div class="card-links">
+                <a href="rosine-timalo/index.html" class="icon-link">📖 Lire l'histoire</a>
+                <a href="#" class="icon-link" onclick="alert('🎮 Memory game bientôt')">🎮 Jeu memory</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Kindle dispo')">📱 Kindle</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- KALOU LE CABRI (bientôt) -->
           <div class="story-card coming-soon">
             <div class="card-cover">
-              <span>🐗</span>
-              <span class="card-badge">🔜 Bientôt</span>
+              <span>🐐🌋</span>
+              <span class="card-badge">🔜 À venir</span>
             </div>
             <div class="card-content">
               <h3>Kalou le cabri malin</h3>
-              <p>Un petit cabri de la montagne défie les ruses du vent et des nuages. Un conte facétieux de l'île de La Réunion.</p>
+              <p>Un petit cabri défie les caprices du volcan et du vent. Un conte facétieux inspiré des montagnes réunionnaises.</p>
               <div class="card-links">
-                <span class="icon-link" style="opacity:0.5;">📖 Extrait à venir</span>
-                <span class="icon-link" style="opacity:0.5;">🎮 Jeux en création</span>
+                <span class="icon-link" style="opacity:0.5;">📖 Prochainement</span>
               </div>
             </div>
           </div>
 
-          <!-- CARTE 4 : GRANN KOKO (bientôt) -->
+          <!-- GRANN KOKO ET LE DODO -->
           <div class="story-card coming-soon">
             <div class="card-cover">
-              <span>🌿</span>
+              <span>🦤🌴</span>
               <span class="card-badge">🔜 Bientôt</span>
             </div>
             <div class="card-content">
               <h3>Grann Koko et le dodo</h3>
-              <p>Une grand-mère pleine de sagesse raconte l'histoire secrète du dernier dodo. Mélange de tradition orale et de merveilleux.</p>
+              <p>Une grand-mère pleine de sagesse raconte le secret du dernier dodo. Entre mémoire et merveilleux.</p>
               <div class="card-links">
-                <span class="icon-link" style="opacity:0.5;">📚 Prochainement</span>
+                <span class="icon-link" style="opacity:0.5;">📚 En écriture</span>
               </div>
             </div>
           </div>
 
-          <!-- CARTE 5 : ROSINE ET TI MALO (histoire courte disponible) -->
-          <div class="story-card">
-            <div class="card-cover">
-              <span>🌸</span>
-              <span class="card-badge">📖 Nouveau</span>
-            </div>
-            <div class="card-content">
-              <h3>Rosine et Ti Malo</h3>
-              <p>Deux enfants de Saint-Denis partent à l'aventure dans les champs de canne à sucre. Un conte moderne sur l'amitié et la solidarité.</p>
-              <div class="card-links">
-                <a href="rosine-timalo/index.html" class="icon-link">📖 Lire un extrait</a>
-                <a href="#" class="icon-link" onclick="alert('🎮 Jeu de memory bientôt disponible !')">🎮 Jeu memory</a>
-                <a href="#" class="icon-link" onclick="alert('📘 Kindle prêt sur Amazon')">📱 Kindle</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARTE 6 : ZANIMAL (bientôt) -->
+          <!-- ZANIMO LA RIVIÈRE -->
           <div class="story-card coming-soon">
             <div class="card-cover">
-              <span>🦎</span>
+              <span>🦎💧</span>
               <span class="card-badge">✨ En création</span>
             </div>
             <div class="card-content">
               <h3>Zanimo la rivière</h3>
-              <p>Les aventures des petits animaux de la rivière des Roches. Un conte pour apprendre à protéger la nature réunionnaise.</p>
+              <p>Les animaux de la rivière des Roches unissent leurs forces pour protéger leur habitat. Un conte écologique.</p>
               <div class="card-links">
-                <span class="icon-link" style="opacity:0.5;">📖 En cours d'écriture</span>
+                <span class="icon-link" style="opacity:0.5;">📖 Extrait à venir</span>
               </div>
             </div>
           </div>
@@ -590,27 +638,27 @@
       </div>
     </section>
 
-    <!-- Section : vente Kindle / impression -->
+    <!-- SECTION KINDLE & VENTE -->
     <section id="kindle" class="section">
       <div class="container">
         <div class="kindle-section">
-          <h3>📱 Acheter nos histoires</h3>
-          <p>Retrouvez tous nos contes sur <strong>Amazon Kindle</strong> ou en version brochée pour offrir à vos enfants.</p>
-          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://amazon.fr/" target="_blank" class="btn btn-kindle">📘 Kindle Store</a>
-            <a href="#" class="btn btn-secondary" style="background: rgba(255,255,255,0.2); border-color:white; color:white;" onclick="alert('📚 Impression disponible bientôt (commande sur demande)')">🖨️ Version papier</a>
+          <h3>📘 Acheter nos histoires</h3>
+          <p>Retrouvez <strong>Izidor et le trésor</strong> et tous nos contes sur Amazon Kindle, ou en version brochée.</p>
+          <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 8px;">
+            <a href="https://amazon.fr/" target="_blank" class="btn btn-kindle">📱 Kindle Store</a>
+            <a href="#" class="btn btn-outline-light" onclick="alert('📚 Impression disponible sur demande')">🖨️ Version papier</a>
           </div>
-          <p style="font-size:0.85rem; margin-top:24px;">Des livres pour les moins de 10 ans, parfaits pour la lecture du soir !</p>
+          <p style="font-size:0.85rem; margin-top: 28px;">Des livres pour les 6-10 ans — parfaits pour la lecture autonome ou en famille</p>
         </div>
       </div>
     </section>
 
-    <!-- Section : invitation aux jeux interactifs -->
-    <section style="text-align: center; padding: 40px 0;">
+    <!-- SECTION JEUX INTERACTIFS -->
+    <section style="text-align: center; padding: 40px 0 60px;">
       <div class="container">
-        <h2>🎮 Après l'histoire, le jeu !</h2>
-        <p style="max-width: 600px; margin: 0 auto 24px;">Chaque histoire a ses propres pages de jeux : coloriages, mots mêlés, cache-cache et quiz amusants.</p>
-        <a href="izidor/jeux/index.html" class="btn btn-primary">🎲 Découvrir les mini-jeux</a>
+        <h2>🎮 Prolonge l'aventure</h2>
+        <p style="max-width: 600px; margin: 0 auto 28px; color: var(--color-text-light);">À la fin de chaque histoire, découvre des pages de jeux : énigmes, coloriages, quiz et cache-cache.</p>
+        <a href="izidor/jeux/index.html" class="btn btn-primary">🎲 Accéder aux mini-jeux</a>
       </div>
     </section>
 
@@ -623,34 +671,33 @@
         <a href="#histoires">Histoires</a>
         <a href="izidor/jeux/index.html">Jeux</a>
         <a href="mailto:contact@gayarsite.re">Contact</a>
-        <a href="#" onclick="alert('Suivez-nous sur les réseaux (bientôt) !')">📸 Réseaux</a>
       </div>
-      <p>✨ Gayarsite.re – Contes de La Réunion pour enfants ✨</p>
-      <p class="copyright">© 2026 Tous droits réservés – Histoires libres de droit pour l’imaginaire des petits.</p>
+      <p>📖 Gayarsite.re — Contes et traditions orales de La Réunion</p>
+      <p class="copyright">© 2025 Tous droits réservés — Histoires pour l'imaginaire des 6-10 ans</p>
     </div>
   </footer>
 
   <script>
-    // Menu mobile toggle
+    // Menu mobile
     const toggleBtn = document.getElementById('menuToggle');
     const navMenu = document.getElementById('mainNav');
     
     if (toggleBtn && navMenu) {
       toggleBtn.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+        toggleBtn.setAttribute('aria-expanded', navMenu.classList.contains('active'));
       });
     }
 
-    // Option : fermer le menu si on clique sur un lien (mobile)
+    // Fermer le menu au clic sur un lien (mobile)
     document.querySelectorAll('#mainNav a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 768 && navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
         }
       });
     });
   </script>
 
-  <!-- Note : les images ne sont pas obligatoires ; on utilise des emojis et couleurs douces pour rester très léger -->
 </body>
 </html>
