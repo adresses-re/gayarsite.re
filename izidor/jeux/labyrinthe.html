@@ -1,74 +1,457 @@
-import os, json
-os.makedirs('/root/output', exist_ok=True)
-html = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Labyrinthe — Ti Malo</title>
-  <meta name="description" content="Mini-jeu labyrinthe de Ti Malo à La Réunion.">
-  <link rel="stylesheet" href="../assets/commun/css/style.css">
-  <link rel="stylesheet" href="../assets/commun/css/theme-izidor.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Labyrinthe — Ti Malo dans la ravine | Gayarsite.re</title>
+  <meta name="description" content="Aide Ti Malo à traverser la ravine et à trouver le trésor. Un mini-jeu de labyrinthe inspiré des contes réunionnais.">
+  <meta name="keywords" content="labyrinthe, ti malo, jeu enfants, ravine, réunion, trésor">
+  <link rel="stylesheet" href="../../assets/commun/css/style.css">
   <style>
-    .hero{padding:var(--sp-2xl) 0 0}
-    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp-xl);align-items:center}
-    .hero h1{font-size:clamp(2rem,4vw,3.4rem);margin-bottom:var(--sp-md)}
-    .hero p{color:var(--color-muted);max-width:42rem}
-    .section{padding:var(--sp-2xl) 0}
-    .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:var(--sp-lg);align-items:start}
-    .game-shell{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg);box-shadow:var(--shadow-sm)}
-    .maze-box{aspect-ratio:1/1;max-width:100%;border-radius:var(--radius-lg);background:linear-gradient(135deg,#e9f5e2,#fff3d6);border:1px solid var(--color-border);display:grid;place-items:center;position:relative;overflow:hidden}
-    .maze-box::before{content:"";position:absolute;inset:8%;border:8px solid rgba(95,126,71,.22);border-radius:20px}
-    .maze-box::after{content:"";position:absolute;inset:22% 18%;border:8px solid rgba(160,82,45,.18);border-radius:18px;transform:rotate(6deg)}
-    .maze-center{position:relative;z-index:1;text-align:center;padding:var(--sp-lg)}
-    .maze-icon{font-size:3rem;line-height:1;margin-bottom:.5rem}
-    .maze-center h2{font-size:var(--text-xl);margin-bottom:.4rem}
-    .maze-center p{color:var(--color-muted);margin-bottom:0}
-    .controls{display:grid;gap:var(--sp-md)}
-    .control-card{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
-    .control-card h3{font-size:var(--text-lg);margin-bottom:.5rem}
-    .control-card p{color:var(--color-muted);margin:0}
-    .btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.2rem;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid transparent}
-    .btn-primary{background:var(--color-primary);color:#fff}
-    .btn-secondary{background:transparent;border-color:var(--color-border);color:var(--color-text)}
-    .btn-primary:hover{background:#734324}
-    .btn-secondary:hover{border-color:var(--color-primary);color:var(--color-primary)}
-    .status{margin-top:var(--sp-md);padding:var(--sp-md);border-radius:var(--radius-md);background:rgba(212,165,116,.12);border:1px solid var(--color-border);color:var(--color-text)}
-    .tip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-lg)}
-    .tip{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
-    .tip h3{font-size:var(--text-lg);margin-bottom:.5rem}
-    .tip p{color:var(--color-muted);margin:0}
-    .cta-box{margin:var(--sp-2xl) 0;background:linear-gradient(135deg,var(--color-primary),#7a4526);color:#fff;border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center}
-    .cta-box p{max-width:36rem;margin:0 auto var(--sp-lg);color:rgba(255,255,255,.92)}
-    .cta-box .btn{background:#fff;color:var(--color-primary)}
-    @media (max-width: 900px){.hero-inner,.layout,.tip-grid{grid-template-columns:1fr}.maze-box{aspect-ratio:1/1}}
-    @media (max-width: 640px){.hero{padding:var(--sp-xl) 0 0}.section{padding:var(--sp-xl) 0}.btn-row{flex-direction:column}.btn,.cta-box .btn{width:100%}.maze-center h2{font-size:var(--text-lg)}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F5F0E8;
+      font-family: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+      color: #2C2418;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(245, 240, 232, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #E2D5C0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #D45729;
+      text-decoration: none;
+      font-family: 'Poppins', system-ui, sans-serif;
+    }
+
+    .logo:hover {
+      color: #B8431A;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2C2418;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover, nav a.active {
+      background: #D45729;
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #D45729;
+      font-size: 1.5rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #FFF5E8, #F5E6D8);
+      padding: 48px 0 40px;
+      border-bottom: 1px solid #E2D5C0;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #D45729;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #D45729;
+      font-family: 'Poppins', system-ui, sans-serif;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #6B5A4A;
+      margin-bottom: 24px;
+    }
+
+    /* Boutons */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: #D45729;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #B8431A;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #D45729;
+      color: #D45729;
+    }
+
+    .btn-secondary:hover {
+      background: #D45729;
+      color: white;
+    }
+
+    /* Game shell */
+    .game-shell {
+      background: white;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .maze-container {
+      background: linear-gradient(135deg, #2d5a2a, #1a3a18);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    canvas {
+      background: #f5e6c8;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+      width: 100%;
+      height: auto;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(212, 165, 116, 0.12);
+      border: 1px solid #E2D5C0;
+      text-align: center;
+      font-weight: 500;
+      color: #2C2418;
+    }
+
+    /* Section */
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: #2E7A6E;
+      margin-bottom: 16px;
+      font-family: 'Poppins', system-ui, sans-serif;
+    }
+
+    .section-intro {
+      color: #6B5A4A;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .tip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .tip {
+      background: white;
+      border: 1px solid #E2D5C0;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .tip h3 {
+      font-size: 1.2rem;
+      color: #D45729;
+      margin-bottom: 8px;
+    }
+
+    .tip p {
+      color: #6B5A4A;
+      font-size: 0.9rem;
+    }
+
+    .control-card {
+      background: white;
+      border: 1px solid #E2D5C0;
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .control-card h3 {
+      font-size: 1.2rem;
+      color: #2E7A6E;
+      margin-bottom: 12px;
+    }
+
+    .control-card p {
+      color: #6B5A4A;
+      margin-bottom: 16px;
+    }
+
+    .control-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .ctrl-btn {
+      background: #F5F0E8;
+      border: 2px solid #D45729;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+
+    .ctrl-btn:active {
+      transform: scale(0.95);
+      background: #D45729;
+      color: white;
+    }
+
+    .win-message {
+      background: linear-gradient(135deg, #2E7A6E, #1F5A50);
+      color: white;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* CTA Box */
+    .cta-box {
+      background: linear-gradient(135deg, #D45729, #B8431A);
+      border-radius: 32px;
+      padding: 48px 32px;
+      text-align: center;
+      margin: 40px 0 60px;
+    }
+
+    .cta-box h2 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    .cta-box .btn {
+      background: white;
+      color: #D45729;
+    }
+
+    .cta-box .btn:hover {
+      background: #FFF5E8;
+    }
+
+    /* Footer */
+    footer {
+      background: #2C2418;
+      color: #E8DDD0;
+      padding: 40px 0 24px;
+    }
+
+    .footer-content {
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .footer-links a {
+      color: #E8DDD0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #F4B942;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner, .layout, .tip-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 0;
+      }
+      
+      nav.active {
+        display: flex;
+      }
+      
+      .container {
+        padding: 0 16px;
+      }
+      
+      .section {
+        padding: 40px 0;
+      }
+      
+      .tip-grid {
+        gap: 16px;
+      }
+      
+      .btn-row {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
-<body class="theme-izidor">
+<body>
+
+  <header>
+    <div class="header-content">
+      <a class="logo" href="../../index.html">🌿 Gayarsite.re</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+      <nav id="mainNav">
+        <a href="../../index.html">Accueil</a>
+        <a href="../index.html">Izidor</a>
+        <a class="active" href="index.html">Jeux</a>
+      </nav>
+    </div>
+  </header>
+
   <main id="contenu">
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <span class="eyebrow" style="display:inline-block;font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)">Mini-jeu • Labyrinthe</span>
+          <span class="eyebrow">🎮 Mini-jeu • Labyrinthe</span>
           <h1>Ti Malo dans la ravine</h1>
-          <p>Aide Ti Malo à traverser la ravine pour retrouver le trésor. Le décor reste doux, coloré et inspiré de La Réunion.</p>
+          <p>Aide Ti Malo à traverser la ravine pour retrouver le trésor caché. Utilise les flèches du clavier ou les boutons tactiles pour te déplacer.</p>
           <div class="btn-row">
-            <a href="#jeu" class="btn btn-primary">Commencer</a>
-            <a href="index.html" class="btn btn-secondary">Retour à la page</a>
+            <a href="#jeu" class="btn btn-primary">🎲 Jouer maintenant</a>
+            <a href="index.html" class="btn btn-secondary">← Retour aux jeux</a>
           </div>
         </div>
-        <aside class="game-shell">
-          <div class="maze-box" id="jeu" aria-label="Labyrinthe interactif">
-            <div class="maze-center">
-              <div class="maze-icon">🧩</div>
-              <h2>Labyrinthe à venir</h2>
-              <p>Zone prête pour le futur canvas ou la grille du jeu.</p>
-            </div>
+        <div class="game-shell" id="jeu">
+          <div class="maze-container">
+            <canvas id="mazeCanvas" width="400" height="400" style="width:100%; height:auto; max-width:400px; aspect-ratio:1/1"></canvas>
           </div>
-          <div class="status">But : guider Ti Malo jusqu'au trésor sans se perdre dans les chemins.</div>
-        </aside>
+          <div class="status" id="gameStatus">
+            🧭 Trouve le chemin jusqu'au trésor !
+          </div>
+        </div>
       </div>
     </section>
 
@@ -76,40 +459,342 @@ html = '''<!DOCTYPE html>
       <div class="container layout">
         <div>
           <h2 class="section-title">Comment jouer</h2>
-          <p class="section-intro">Le futur labyrinthe pourra se jouer au clavier ou au toucher. Pour l'instant, cette page sert de cadre propre et responsive pour intégrer le jeu ensuite.</p>
+          <p class="section-intro">Guide Ti Malo (🐢) jusqu'au trésor (📦) sans toucher les murs. Le labyrinthe change à chaque partie !</p>
           <div class="tip-grid">
             <article class="tip">
-              <h3>1. Partir du début</h3>
-              <p>Le chemin commence près de Ti Malo, au bord de la ravine.</p>
+              <h3>1. Déplace-toi</h3>
+              <p>Utilise les <strong>flèches du clavier</strong> ← ↑ ↓ → ou les boutons tactiles.</p>
             </article>
             <article class="tip">
-              <h3>2. Éviter les pièges</h3>
-              <p>Le joueur devra contourner les zones fermées et les détours.</p>
+              <h3>2. Évite les murs</h3>
+              <p>Les murs sont en vert foncé. Ti Malo ne peut pas les traverser.</p>
             </article>
             <article class="tip">
-              <h3>3. Trouver le trésor</h3>
-              <p>Le but est d'arriver au trésor et de terminer l'aventure.</p>
+              <h3>3. Trouve le trésor</h3>
+              <p>Atteins la case 📦 pour gagner la partie !</p>
             </article>
           </div>
         </div>
         <div class="control-card">
-          <h3>Carte du jeu</h3>
-          <p>Cette colonne peut accueillir plus tard les flèches, le score, le temps ou un bouton recommencer.</p>
+          <h3>🎮 Commandes</h3>
+          <p>Déplace Ti Malo avec les boutons ci-dessous :</p>
+          <div class="control-buttons">
+            <button class="ctrl-btn" data-dx="0" data-dy="-1">⬆️</button>
+          </div>
+          <div class="control-buttons">
+            <button class="ctrl-btn" data-dx="-1" data-dy="0">⬅️</button>
+            <button class="ctrl-btn" data-dx="1" data-dy="0">➡️</button>
+          </div>
+          <div class="control-buttons">
+            <button class="ctrl-btn" data-dx="0" data-dy="1">⬇️</button>
+          </div>
+          <button id="resetBtn" style="margin-top: 16px; width: 100%;" class="btn btn-secondary">🔄 Nouveau labyrinthe</button>
         </div>
       </div>
     </section>
 
     <section class="container">
       <div class="cta-box">
-        <h2>Revenir au menu</h2>
-        <p>Depuis cette page, tu peux passer au monde d'Izidor, puis revenir vers les autres jeux de l'histoire.</p>
-        <a class="btn" href="index.html">Retour au menu des jeux</a>
+        <h2>🏆 Prêt pour l'aventure ?</h2>
+        <p>Reviens jouer quand tu veux et découvre tous les jeux de l'univers Izidor.</p>
+        <a class="btn" href="index.html">🎮 Voir tous les jeux</a>
       </div>
     </section>
   </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="../../index.html">Accueil</a>
+        <a href="../index.html">Izidor</a>
+        <a href="index.html">Jeux</a>
+        <a href="mailto:contact@gayarsite.re">Contact</a>
+      </div>
+      <p>📖 Gayarsite.re — Contes et traditions orales de La Réunion</p>
+      <p class="copyright">© 2025 Tous droits réservés — Jeu du labyrinthe Ti Malo</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Dimensions du labyrinthe
+      const SIZE = 11; // 11x11 pour un bon défi
+      let maze = [];
+      let playerPos = { x: 1, y: 1 };
+      let treasurePos = { x: SIZE-2, y: SIZE-2 };
+      let gameActive = true;
+      
+      const canvas = document.getElementById('mazeCanvas');
+      const ctx = canvas.getContext('2d');
+      const statusDiv = document.getElementById('gameStatus');
+      
+      // Taille des cellules en pixels (sera recalculée)
+      let cellW = 400 / SIZE;
+      let cellH = 400 / SIZE;
+      
+      // Directions
+      const dirs = [
+        { dx: 0, dy: -1 }, // haut
+        { dx: 1, dy: 0 },  // droite
+        { dx: 0, dy: 1 },  // bas
+        { dx: -1, dy: 0 }  // gauche
+      ];
+      
+      // Générer un labyrinthe avec l'algorithme de backtracking récursif
+      function generateMaze() {
+        // Initialiser la grille avec des murs (1 = mur, 0 = chemin)
+        const grid = Array(SIZE).fill().map(() => Array(SIZE).fill(1));
+        
+        // Créer des passages (toutes les cases impaires sont des cellules potentielles)
+        for (let y = 1; y < SIZE-1; y += 2) {
+          for (let x = 1; x < SIZE-1; x += 2) {
+            grid[y][x] = 0;
+          }
+        }
+        
+        // Backtracking pour créer des passages
+        const stack = [];
+        const startX = 1, startY = 1;
+        grid[startY][startX] = 0;
+        stack.push({ x: startX, y: startY });
+        
+        while (stack.length > 0) {
+          const current = stack[stack.length - 1];
+          const neighbors = [];
+          
+          // Vérifier les voisins à 2 cases de distance
+          for (const dir of dirs) {
+            const nx = current.x + dir.dx * 2;
+            const ny = current.y + dir.dy * 2;
+            if (nx > 0 && nx < SIZE-1 && ny > 0 && ny < SIZE-1 && grid[ny][nx] === 0) {
+              neighbors.push({ x: nx, y: ny, dir: dir });
+            }
+          }
+          
+          if (neighbors.length > 0) {
+            const next = neighbors[Math.floor(Math.random() * neighbors.length)];
+            // Casser le mur entre current et next
+            const wallX = current.x + next.dir.dx;
+            const wallY = current.y + next.dir.dy;
+            grid[wallY][wallX] = 0;
+            stack.push({ x: next.x, y: next.y });
+          } else {
+            stack.pop();
+          }
+        }
+        
+        // S'assurer que l'entrée et la sortie sont accessibles
+        grid[1][0] = 0; // Entrée à gauche
+        grid[SIZE-2][SIZE-1] = 0; // Sortie à droite
+        
+        return grid;
+      }
+      
+      // Initialiser ou réinitialiser le labyrinthe
+      function initMaze() {
+        maze = generateMaze();
+        // Placer le joueur à l'entrée
+        playerPos = { x: 1, y: 1 };
+        // Placer le trésor à la sortie
+        treasurePos = { x: SIZE-2, y: SIZE-2 };
+        gameActive = true;
+        statusDiv.innerHTML = "🧭 Trouve le chemin jusqu'au trésor !";
+        statusDiv.style.background = "rgba(212, 165, 116, 0.12)";
+        drawMaze();
+      }
+      
+      // Dessiner le labyrinthe
+      function drawMaze() {
+        if (!ctx) return;
+        
+        cellW = canvas.width / SIZE;
+        cellH = canvas.height / SIZE;
+        
+        for (let y = 0; y < SIZE; y++) {
+          for (let x = 0; x < SIZE; x++) {
+            if (maze[y][x] === 1) {
+              // Mur
+              ctx.fillStyle = '#2d5a2a';
+              ctx.fillRect(x * cellW, y * cellH, cellW, cellH);
+              // Texture de feuillage
+              ctx.fillStyle = '#1a3a18';
+              ctx.fillRect(x * cellW + 2, y * cellH + 2, cellW - 4, cellH - 4);
+            } else {
+              // Chemin
+              ctx.fillStyle = '#f5e6c8';
+              ctx.fillRect(x * cellW, y * cellH, cellW, cellH);
+              // Herbe
+              ctx.fillStyle = '#e0d0a8';
+              ctx.fillRect(x * cellW + 1, y * cellH + 1, cellW - 2, cellH - 2);
+            }
+          }
+        }
+        
+        // Dessiner le trésor
+        const tx = treasurePos.x, ty = treasurePos.y;
+        ctx.fillStyle = '#F4B942';
+        ctx.fillRect(tx * cellW + 4, ty * cellH + 4, cellW - 8, cellH - 8);
+        ctx.fillStyle = '#D45729';
+        ctx.font = `${Math.floor(cellW * 0.6)}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('📦', tx * cellW + cellW/2, ty * cellH + cellH/2);
+        
+        // Dessiner Ti Malo (joueur)
+        if (gameActive) {
+          const px = playerPos.x, py = playerPos.y;
+          ctx.fillStyle = '#176b3a';
+          ctx.beginPath();
+          ctx.arc(px * cellW + cellW/2, py * cellH + cellH/2, cellW * 0.35, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.font = `${Math.floor(cellW * 0.55)}px Arial`;
+          ctx.fillStyle = 'white';
+          ctx.fillText('🐢', px * cellW + cellW/2, py * cellH + cellH/2);
+        }
+        
+        // Ajouter des petits décors
+        for (let y = 0; y < SIZE; y++) {
+          for (let x = 0; x < SIZE; x++) {
+            if (maze[y][x] === 0 && Math.random() < 0.05) {
+              ctx.font = `${Math.floor(cellW * 0.3)}px Arial`;
+              ctx.fillStyle = '#6B5A4A';
+              ctx.fillText('🌿', x * cellW + 3, y * cellH + cellH - 3);
+            }
+          }
+        }
+      }
+      
+      // Vérifier si une case est un mur
+      function isWall(x, y) {
+        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return true;
+        return maze[y][x] === 1;
+      }
+      
+      // Déplacer le joueur
+      function movePlayer(dx, dy) {
+        if (!gameActive) return false;
+        
+        const newX = playerPos.x + dx;
+        const newY = playerPos.y + dy;
+        
+        if (!isWall(newX, newY)) {
+          playerPos.x = newX;
+          playerPos.y = newY;
+          drawMaze();
+          
+          // Vérifier si le joueur a atteint le trésor
+          if (playerPos.x === treasurePos.x && playerPos.y === treasurePos.y) {
+            gameActive = false;
+            statusDiv.innerHTML = "🎉 Félicitations ! Ti Malo a trouvé le trésor ! 🎉";
+            statusDiv.style.background = "#2E7A6E";
+            statusDiv.style.color = "white";
+            drawMaze();
+            
+            // Afficher un message de victoire
+            ctx.fillStyle = 'rgba(46, 122, 110, 0.9)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 24px Poppins, system-ui';
+            ctx.textAlign = 'center';
+            ctx.fillText('🏆 VICTOIRE ! 🏆', canvas.width/2, canvas.height/2);
+            ctx.font = '14px system-ui';
+            ctx.fillText('Clique sur "Nouveau labyrinthe" pour rejouer', canvas.width/2, canvas.height/2 + 40);
+            return true;
+          }
+          
+          statusDiv.innerHTML = "🐢 Ti Malo avance... continue !";
+          return true;
+        } else {
+          statusDiv.innerHTML = "🚫 Mur ! Ti Malo ne peut pas passer par là.";
+          statusDiv.style.background = "#ffcccc";
+          setTimeout(() => {
+            if (gameActive) {
+              statusDiv.style.background = "rgba(212, 165, 116, 0.12)";
+              statusDiv.innerHTML = "🧭 Trouve le chemin jusqu'au trésor !";
+            }
+          }, 800);
+          return false;
+        }
+      }
+      
+      // Redimensionner et redessiner
+      function resizeAndDraw() {
+        const container = document.querySelector('.maze-container');
+        const size = Math.min(container.clientWidth - 40, 400);
+        canvas.width = size;
+        canvas.height = size;
+        canvas.style.width = `${size}px`;
+        canvas.style.height = `${size}px`;
+        drawMaze();
+      }
+      
+      // Événements clavier
+      function handleKeydown(e) {
+        const key = e.key;
+        switch(key) {
+          case 'ArrowUp': movePlayer(0, -1); break;
+          case 'ArrowDown': movePlayer(0, 1); break;
+          case 'ArrowLeft': movePlayer(-1, 0); break;
+          case 'ArrowRight': movePlayer(1, 0); break;
+          default: return;
+        }
+        e.preventDefault();
+      }
+      
+      // Initialisation
+      function setup() {
+        initMaze();
+        resizeAndDraw();
+        
+        window.addEventListener('resize', () => {
+          resizeAndDraw();
+        });
+        
+        window.addEventListener('keydown', handleKeydown);
+        
+        // Boutons tactiles
+        document.querySelectorAll('.ctrl-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const dx = parseInt(btn.dataset.dx);
+            const dy = parseInt(btn.dataset.dy);
+            if (!isNaN(dx) && !isNaN(dy)) {
+              movePlayer(dx, dy);
+            }
+          });
+        });
+        
+        // Bouton reset
+        document.getElementById('resetBtn').addEventListener('click', () => {
+          initMaze();
+          drawMaze();
+        });
+      }
+      
+      // Observer le redimensionnement du canvas
+      const resizeObserver = new ResizeObserver(() => {
+        resizeAndDraw();
+      });
+      resizeObserver.observe(canvas);
+      
+      setup();
+    })();
+    
+    // Menu mobile
+    const toggleBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('mainNav');
+    if (toggleBtn && navMenu) {
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+      
+      document.querySelectorAll('#mainNav a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            navMenu.classList.remove('active');
+          }
+        });
+      });
+    }
+  </script>
 </body>
-</html>'''
-path='/root/output/labyrinthe.html'
-with open(path,'w',encoding='utf-8') as f:f.write(html)
-with open('/root/output/labyrinthe.html.meta.json','w',encoding='utf-8') as f: json.dump({'caption':'Labyrinthe Ti Malo','description':'Responsive placeholder page for the Ti Malo maze mini-game.'},f,ensure_ascii=False,indent=2)
-print('saved')
+</html>
