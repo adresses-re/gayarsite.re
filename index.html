@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gayarsite.re — Histoires et univers narratifs</title>
+  <meta name="description" content="Gayarsite.re rassemble des histoires simples, belles et immersives. Découvrez Izidor, premier univers narratif du site.">
+  <meta property="og:title" content="Gayarsite.re — Histoires et univers narratifs">
+  <meta property="og:description" content="Chaque histoire a son univers, son décor et ses personnages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gayarsite.re/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gayarsite.re — Histoires et univers narratifs">
+  <meta name="twitter:description" content="Des histoires, des personnages, des mini-jeux et des univers à explorer.">
+  <link rel="stylesheet" href="assets/commun/css/style.css">
+  <link rel="stylesheet" href="assets/commun/css/theme-izidor.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fffaf5'/%3E%3Cpath d='M28 24h28c9 0 16 7 16 16v36H44c-9 0-16-7-16-16V24z' fill='none' stroke='%238c5431' stroke-width='6'/%3E%3Cpath d='M44 24v52' stroke='%23c99563' stroke-width='6'/%3E%3C/svg%3E">
+  <style>
+    :root{--color-surface:#fdf8f3;--color-muted:#6f6255;--color-inverse:#fffaf5}
+    .skip-link{position:absolute;left:-9999px;top:auto}.skip-link:focus{left:1rem;top:1rem;background:#fff;padding:.75rem 1.25rem;border-radius:8px;z-index:2000;font-weight:600}
+    .container{max-width:1120px;margin:0 auto;padding:0 var(--sp-lg)}
+    header{position:sticky;top:0;z-index:100;background:rgba(255,250,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--color-border)}
+    .header-content{max-width:1120px;margin:0 auto;padding:.85rem var(--sp-lg);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-lg)}
+    .logo{font-family:var(--font-serif);font-size:var(--text-xl);font-weight:700;color:var(--color-text);text-decoration:none}
+    nav{display:flex;gap:var(--sp-lg);align-items:center}
+    nav a{font-size:var(--text-sm);font-weight:500;color:var(--color-text);text-decoration:none;position:relative}
+    nav a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--color-primary);transition:width 150ms ease}
+    nav a:hover::after,nav a.active::after{width:100%}
+    nav a:hover{color:var(--color-primary)}
+    .header-controls{display:flex;gap:.5rem;align-items:center}
+    .icon-btn,.menu-toggle{background:none;border:1px solid var(--color-border);border-radius:999px;padding:.45rem .65rem;cursor:pointer;font-size:1rem;color:var(--color-text)}
+    .menu-toggle{display:none}
+    .hero{padding:var(--sp-3xl) 0;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:var(--hero-bg,radial-gradient(circle at 50% 40%,rgba(160,82,45,.14),transparent 60%));pointer-events:none}
+    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:var(--sp-xl);align-items:center}
+    .hero-label{font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md);display:block}
+    .hero-copy h1{font-family:var(--font-serif);font-size:clamp(2.1rem,4.5vw,3.6rem);line-height:1.1;margin-bottom:var(--sp-lg)}
+    .hero-copy>p{font-size:var(--text-lg);color:var(--color-muted);max-width:36rem;margin-bottom:var(--sp-xl)}
+    .btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
+    .hero-panel{background:rgba(253,248,243,.9);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl);box-shadow:var(--shadow-md)}
+    .hero-panel h2{font-family:var(--font-serif);font-size:var(--text-xl);margin-bottom:var(--sp-md)}
+    .hero-panel p{color:var(--color-muted);font-size:var(--text-base);margin:0;line-height:1.7}
+    .section{padding:var(--sp-2xl) 0}
+    .section-title{font-family:var(--font-serif);font-size:var(--text-2xl);margin-bottom:var(--sp-md)}
+    .section-intro{color:var(--color-muted);max-width:44rem;margin-bottom:var(--sp-xl);line-height:1.7}
+    .center{text-align:center}.section-intro.center{margin-left:auto;margin-right:auto}
+    .home-intro{padding:var(--sp-2xl) 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);background:linear-gradient(180deg,rgba(253,247,241,.5),transparent)}
+    .intro-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-xl);align-items:start}
+    .accent-block{background:linear-gradient(135deg,rgba(201,149,99,.12),rgba(140,84,49,.06));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl);margin-top:var(--sp-lg)}
+    .accent-block p{margin:0;color:var(--color-muted);line-height:1.7}
+    .grid.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-lg)}
+    .card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl);box-shadow:var(--shadow-sm);transition:transform 260ms ease,box-shadow 260ms ease}
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .card h3{font-family:var(--font-serif);font-size:var(--text-xl);margin-bottom:var(--sp-md)}
+    .card>p{color:var(--color-muted);line-height:1.7;margin-bottom:var(--sp-md)}
+    .card>p:last-child{margin-bottom:0}
+    .universe-card{padding:0;overflow:hidden}
+    .universe-visual{aspect-ratio:16/7;background:linear-gradient(135deg,#c99563,#f0dfcf 55%,#fffaf5)}
+    .universe-content{padding:var(--sp-xl)}
+    .universe-content h3{font-family:var(--font-serif);font-size:var(--text-xl);margin-bottom:var(--sp-sm)}
+    .universe-content>p{color:var(--color-muted);margin-bottom:var(--sp-lg);line-height:1.7}
+    .feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-lg)}
+    .feature-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl);box-shadow:var(--shadow-sm)}
+    .feature-card h3{font-family:var(--font-serif);font-size:var(--text-lg);margin-bottom:var(--sp-sm)}
+    .feature-card p{color:var(--color-muted);margin:0;line-height:1.7}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.4rem;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:var(--text-base);text-decoration:none;cursor:pointer;transition:transform 180ms ease,background 180ms ease,color 180ms ease,border-color 180ms ease}
+    .btn:hover{transform:translateY(-1px);text-decoration:none}
+    .btn-primary{background:var(--color-primary);color:white}
+    .btn-primary:hover{background:#734324}
+    .btn-secondary{background:transparent;border-color:var(--color-border);color:var(--color-text)}
+    .btn-secondary:hover{border-color:var(--color-primary);color:var(--color-primary)}
+    .cta-band{padding:var(--sp-3xl) 0}
+    .cta-box{background:var(--color-primary);border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center;box-shadow:var(--shadow-lg)}
+    .cta-box h2{font-family:var(--font-serif);font-size:var(--text-2xl);color:white;margin-bottom:var(--sp-md)}
+    .cta-box>p{max-width:36rem;margin:0 auto var(--sp-xl);color:rgba(255,250,245,.9);line-height:1.7}
+    .cta-box .btn{background:white;color:var(--color-primary);font-weight:700}
+    .cta-box .btn:hover{background:var(--color-surface)}
+    footer{margin-top:var(--sp-3xl);padding:var(--sp-2xl) 0;background:var(--color-dark-bg,#3d3328);border-top:1px solid var(--color-border)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--sp-xl)}
+    .footer-grid h3{font-family:var(--font-serif);font-size:var(--text-lg);color:var(--color-inverse);margin-bottom:var(--sp-md)}
+    .footer-grid>div>p{font-size:var(--text-sm);color:rgba(255,250,245,.7);margin-bottom:var(--sp-sm);line-height:1.6}
+    .footer-grid a{color:rgba(255,250,245,.75);text-decoration:none;font-size:var(--text-sm)}
+    .footer-grid a:hover{color:var(--color-accent);text-decoration:underline}
+    @media(max-width:900px){
+      .hero-inner,.intro-grid,.grid.cards-2,.footer-grid{grid-template-columns:1fr}
+      .hero{padding:var(--sp-2xl) 0}
+      .hero-copy h1{font-size:clamp(1.9rem,7vw,2.8rem)}
+    }
+    @media(max-width:600px){
+      .container{padding:0 var(--sp-md)}
+      .header-content{padding:.75rem var(--sp-md)}
+      .menu-toggle{display:inline-flex}
+      nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--color-bg,#fffaf5);border-bottom:1px solid var(--color-border);padding:var(--sp-md) var(--sp-lg);gap:0;align-items:flex-start;z-index:200}
+      nav.is-open{display:flex}
+      nav a{padding:var(--sp-md) 0;border-bottom:1px solid var(--color-border);width:100%}
+      nav a::after{display:none}
+      .section,.hero{padding:var(--sp-xl) 0}
+      .feature-list{grid-template-columns:1fr}
+      .cta-box{padding:var(--sp-xl) var(--sp-lg)}
+      .footer-grid{grid-template-columns:1fr;gap:var(--sp-lg)}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body class="theme-izidor">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="logo">Gayarsite.re</a>
+      <nav id="main-nav" aria-label="Navigation principale">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="#univers">Univers</a>
+        <a href="izidor/index.html">Izidor</a>
+        <a href="izidor/jeux/index.html">Jeux</a>
+      </nav>
+      <div class="header-controls">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activer le mode sombre">🌙</button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-label">Histoires à découvrir</span>
+          <h1>Une maison d'histoires où chaque conte change le décor.</h1>
+          <p>Gayarsite.re rassemble des univers narratifs simples, beaux et lisibles. Le site garde les mêmes repères, mais chaque histoire ouvre sa propre atmosphère.</p>
+          <div class="btn-row">
+            <a href="izidor/index.html" class="btn btn-primary">Entrer dans Izidor</a>
+            <a href="#univers" class="btn btn-secondary">Voir les univers</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Premier univers">
+          <h2>Premier univers</h2>
+          <p>Izidor lance le site avec une ambiance chaleureuse, poétique et familiale, portée par ses personnages et de futurs enrichissements comme les mini-jeux et les médias embarqués.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="home-intro">
+      <div class="container intro-grid">
+        <div>
+          <h2 class="section-title">Qu'est-ce que Gayarsite&nbsp;?</h2>
+          <p class="section-intro">Le projet est pensé comme une bibliothèque d'histoires. Chaque conte a sa landing page, son ambiance et ses personnages, sans perdre la simplicité d'un socle commun.</p>
+          <div class="accent-block">
+            <p>Le but est de rester léger à gérer, beau à lire et assez souple pour accueillir plus tard la version kréol, des animations, des shorts ou d'autres formes autour des personnages.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>La promesse du site</h3>
+          <p>Une lecture confortable, des univers bien identifiés, une navigation stable et un ton accessible pour les jeunes comme pour les moins jeunes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="univers" class="section">
+      <div class="container">
+        <h2 class="section-title">Les univers</h2>
+        <p class="section-intro">Le décor change selon l'histoire, mais on reste toujours chez Gayarsite grâce à la même structure et aux mêmes repères de navigation.</p>
+        <div class="grid cards-2">
+          <article class="card universe-card">
+            <div class="universe-visual" role="img" aria-label="Illustration de l'univers Izidor"></div>
+            <div class="universe-content">
+              <h3>Izidor</h3>
+              <p>Un conte chaleureux et poétique peuplé de personnages fascinants. C'est le premier monde à explorer sur Gayarsite.</p>
+              <div class="btn-row">
+                <a href="izidor/index.html" class="btn btn-primary">Explorer l'univers</a>
+                <a href="izidor/fr/index.html" class="btn btn-secondary">Lire en français</a>
+              </div>
+            </div>
+          </article>
+          <article class="card" style="display:flex;flex-direction:column;justify-content:center;min-height:220px;">
+            <h3>Bientôt 🎭</h3>
+            <p>D'autres univers narratifs viendront enrichir la collection, avec leur propre décor et leur propre ton.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:linear-gradient(180deg,rgba(253,247,241,.4),transparent)">
+      <div class="container">
+        <h2 class="section-title center">Ce que l'on trouve ici</h2>
+        <p class="section-intro center">Des récits, des personnages, des jeux et des médias pensés pour une expérience légère et mémorable.</p>
+        <div class="feature-list">
+          <article class="feature-card">
+            <h3>📚 Des histoires</h3>
+            <p>Des récits simples à lire, avec une vraie identité visuelle et une lecture confortable.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🎭 Des personnages</h3>
+            <p>Izidor, Rosine et Ti Malo posent les premières bases de l'univers narratif.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🎮 Des mini-jeux</h3>
+            <p>De petits jeux HTML légers peuvent prolonger l'histoire sans alourdir le site.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🎬 Des médias</h3>
+            <p>Le projet prévoit aussi des espaces pour vidéos, illustrations et contenus embarqués.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Commencer avec Izidor</h2>
+          <p>Entre dans le premier univers de Gayarsite et découvre une histoire, ses personnages et ses premiers jeux.</p>
+          <a href="izidor/index.html" class="btn">Découvrir Izidor</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Gayarsite.re</h3>
+        <p>Une bibliothèque d'univers narratifs pensée pour rester simple, belle et évolutive.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <p><a href="index.html">Accueil</a></p>
+        <p><a href="#univers">Les univers</a></p>
+        <p><a href="izidor/index.html">Izidor</a></p>
+        <p><a href="izidor/jeux/index.html">Mini-jeux</a></p>
+      </div>
+      <div>
+        <h3>Ressources</h3>
+        <p><a href="izidor/fr/index.html">Lire l'histoire</a></p>
+        <p><a href="https://amazon.fr/" target="_blank" rel="noopener noreferrer">Amazon Kindle</a></p>
+        <p><a href="mailto:contact@gayarsite.re">Nous contacter</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#main-nav");
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open);
+      });
+    }
+  </script>
+
+</body>
+</html>
