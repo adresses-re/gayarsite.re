@@ -1,0 +1,89 @@
+Noms d’images à prévoir
+
+Je te conseille ces fichiers dans /assets/images :
+
+    izidor-logo.webp — logo principal.
+
+    izidor-hero.webp — image héros de la page Izidor.
+
+    izidor-labyrinthe.webp — carte visuelle du labyrinthe.
+
+    izidor-mots-croises.webp — carte visuelle mots croisés.
+
+    izidor-mots-fleches.webp — carte visuelle mots fléchés.
+
+    izidor-jardin-secrets.webp — carte visuelle du mini-jeu.
+
+Dimensions recommandées
+
+    Logo : 512 x 512.
+
+    Hero Izidor : 1600 x 900.
+
+    Cartes jeux : 1200 x 800 ou 1600 x 900
+
+
+
+/
+├── index.html
+├── assets/
+│   ├── commun/
+│   │   ├── css/
+│   │   └── js/
+│   └── images/
+├── izidor/
+│   ├── index.html
+│   ├── fr/
+│   │   └── index.html
+│   ├── jeux/
+│   │   ├── index.html
+│   │   ├── labyrinthe.html
+│   │   ├── mots-croises.html
+│   │   ├── mots-fleches.html
+│   │   └── jardin-secrets.html
+│   └── media/
+└── CNAME
+
+
+
+texte: 
+L’histoire d’Izidor, un conte réunionnais plein de malice
+L’histoire d’Izidor fait partie de ces récits réunionnais qui traversent le temps grâce à la parole, à la mémoire et au plaisir de raconter. Dans l’univers des contes péi, Izidor est un personnage simple, proche du peuple, souvent entraîné dans une aventure où l’astuce, l’humour et la ruse prennent le dessus sur la force. Comme beaucoup de récits créoles, cette histoire mêle tradition orale, culture locale et le goût des expressions imagées.
+Une histoire enracinée dans la culture réunionnaise
+À La Réunion, les contes ne servent pas seulement à divertir. Ils transmettent une manière de voir le monde, des valeurs, des avertissements et un lien fort avec la langue créole. L’histoire d’Izidor s’inscrit dans cette tradition du rakontaz zistoir, où les anciens racontaient le soir des histoires aux enfants, autour d’une parole vivante, savoureuse et pleine de sagesse.
+Izidor est souvent présenté comme un personnage rusé, parfois naïf, parfois débrouillard, mais toujours humain. Il évolue dans un décor qui rappelle la vie lontan, avec des situations du quotidien, des difficultés, des rencontres inattendues et des retournements de situation. Ce type de récit plaît parce qu’il parle à tous les âges et parce qu’il donne à voir la Réunion à travers ses codes, sa langue et son imaginaire.
+Le personnage d’Izidor
+Izidor est un héros populaire au sens large. Il n’est pas un prince ni un grand guerrier, mais un personnage proche des gens ordinaires. C’est souvent cette simplicité qui fait sa force. Dans les histoires, il peut être confronté à un plus fort que lui, à un animal malicieux, à une situation étrange ou à un défi du quotidien. Ce qui le sauve le plus souvent, ce n’est pas la puissance, mais l’intelligence, la débrouillardise et la capacité à retourner une situation à son avantage.
+Ce genre de personnage est très présent dans les contes créoles, car il reflète une valeur essentielle de la culture réunionnaise : savoir s’adapter, observer et trouver une solution avec les moyens du bord. Izidor devient alors un symbole de résistance, d’humour et d’ingéniosité.
+Un conte entre oralité et transmission
+L’histoire d’Izidor n’est pas seulement un texte à lire, c’est aussi une histoire à dire. Elle appartient à une tradition orale où la voix, le rythme et les expressions créoles donnent toute sa saveur au récit. Dans ce cadre, le conte prend vie à travers la manière de raconter : les silences, les répétitions, les formules, les rebondissements et les jeux de langue.
+C’est aussi ce qui rend ce type d’histoire précieux pour les enfants. En lisant ou en écoutant Izidor, ils découvrent un patrimoine culturel vivant, une langue riche et une façon de raconter profondément ancrée dans l’identité réunionnaise. Le conte devient alors un outil de transmission culturelle autant qu’un moment de plaisir.
+Pourquoi l’histoire d’Izidor plaît autant
+L’histoire d’Izidor séduit parce qu’elle est facile à comprendre, mais riche de sens. Le personnage peut faire rire, surprendre ou donner une leçon sans jamais être moralisateur. Les enfants aiment suivre ses aventures parce qu’elles sont pleines de suspense et de rebondissements. Les adultes, eux, y retrouvent souvent des souvenirs d’enfance et un lien fort avec la culture de l’île.
+Cette histoire fonctionne aussi parce qu’elle repose sur des thèmes universels : la peur, la ruse, l’erreur, le courage, la justice, la débrouillardise. Mais elle les raconte avec une couleur locale unique, celle de La Réunion, de son parler, de ses paysages et de ses imaginaires.
+Un récit idéal pour les enfants
+L’histoire d’Izidor est particulièrement adaptée à un public jeune. Elle peut être racontée dans un cadre familial, en classe, en médiathèque ou lors d’une animation culturelle. Grâce à son vocabulaire vivant et à ses personnages expressifs, elle stimule l’écoute, la curiosité et l’imagination.
+Elle permet aussi d’aborder plusieurs apprentissages :
+découvrir un conte réunionnais.
+enrichir son vocabulaire.
+entendre ou lire des expressions créoles.
+comprendre la structure d’un récit.
+s’ouvrir à la culture orale de l’île.
+Pour les enfants réunionnais, c’est souvent un récit de proximité. Pour les autres, c’est une porte d’entrée vers un univers culturel original et attachant.
+Mots-clés SEO intégrés naturellement
+histoire d’Izidor.
+conte réunionnais.
+conte créole.
+histoire pour enfants.
+littérature jeunesse réunionnaise.
+tradition orale de La Réunion.
+rakontaz zistoir.
+patrimoine créole.
+Meta title
+Histoire d’Izidor : conte réunionnais pour enfants
+Meta description
+Découvrez l’histoire d’Izidor, un conte réunionnais pour enfants mêlant ruse, humour, tradition orale et culture créole de La Réunion.
+
+Extrait court
+Izidor est un personnage emblématique des contes réunionnais : rusé, proche des gens et ancré dans la tradition orale de l’île. Son histoire mêle humour, sagesse et culture créole.
+Je peux aussi te faire une version plus vendeur SEO, une version plus littéraire, ou une version optimisée pour une page produit ou article de blog.

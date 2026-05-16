@@ -1,0 +1,89 @@
+import os
+os.makedirs('/root/output', exist_ok=True)
+html = '''<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeux Izidor — Gayarsite.re</title>
+  <meta name="description" content="Mini-jeux de l'univers Izidor pour enfants.">
+  <link rel="stylesheet" href="../../../assets/commun/css/style.css">
+  <link rel="stylesheet" href="../../../assets/commun/css/theme-izidor.css">
+  <style>
+    body.theme-izidor main{max-width:none}
+    body.theme-izidor .container{max-width:1200px;margin:0 auto;padding:0 var(--sp-lg)}
+    body.theme-izidor section.hero, body.theme-izidor section{text-align:center}
+    body.theme-izidor .section-intro, body.theme-izidor .intro-band p{max-width:52rem;margin-left:auto;margin-right:auto}
+    body.theme-izidor .btn-row, body.theme-izidor .hero-actions, body.theme-izidor .action-row{display:flex;flex-wrap:wrap;gap:var(--sp-md);justify-content:center}
+    body.theme-izidor .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-lg)}
+    body.theme-izidor .game-card{background:linear-gradient(135deg,var(--color-light) 0%,rgba(232,212,192,.22) 100%);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:var(--sp-lg);text-decoration:none;color:inherit;transition:transform var(--transition-normal),box-shadow var(--transition-normal);display:flex;flex-direction:column;gap:.75rem;align-items:center}
+    body.theme-izidor .game-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);text-decoration:none}
+    body.theme-izidor .game-card .icon{font-size:2.2rem;line-height:1}
+    body.theme-izidor .game-card h3{color:var(--color-primary);margin-bottom:.25rem}
+    body.theme-izidor .game-card p{max-width:24rem;margin-left:auto;margin-right:auto;color:var(--color-muted)}
+    body.theme-izidor .cta-box{background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-accent) 100%);color:#fff;border-radius:calc(var(--radius-lg) + 4px);box-shadow:var(--shadow-lg);padding:var(--sp-xl);text-align:center;max-width:900px;margin:var(--sp-2xl) auto}
+    body.theme-izidor .cta-box p{color:rgba(255,255,255,.95);max-width:42rem;margin-left:auto;margin-right:auto}
+    body.theme-izidor .cta-box .btn{background:#fff;color:var(--color-primary)}
+    body.theme-izidor .cta-box .btn:hover{box-shadow:var(--shadow-md)}
+    @media (max-width:768px){body.theme-izidor .container{padding:0 var(--sp-md)}body.theme-izidor .games-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="theme-izidor">
+  <header>
+    <div class="header-content">
+      <a class="logo" href="../../../index.html">Gayarsite.re</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+      <nav>
+        <a href="../../../index.html">Accueil</a>
+        <a href="../index.html">Izidor</a>
+        <a class="active" href="index.html">Jeux</a>
+      </nav>
+      <div class="header-controls"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Jeux Izidor</h1>
+        <p>Mini-jeux simples, jolis et amusants pour prolonger l'histoire.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="games-grid">
+          <a class="game-card" href="mots-croises.html">
+            <div class="icon">🧩</div>
+            <h3>Mots croisés</h3>
+            <p>Retrouve les mots du conte dans une grille facile.</p>
+          </a>
+          <a class="game-card" href="#">
+            <div class="icon">🎨</div>
+            <h3>Coloriage</h3>
+            <p>Un futur jeu pour colorier les personnages d'Izidor.</p>
+          </a>
+          <a class="game-card" href="#">
+            <div class="icon">🔎</div>
+            <h3>Cache-cache</h3>
+            <p>Un petit jeu d'observation dans le monde d'Izidor.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Retour à Izidor</h2>
+          <p>Tu peux revenir à la page de l'univers pour relire l'histoire ou découvrir les personnages.</p>
+          <a class="btn" href="../index.html">Retour</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>'''
+path='/root/output/izidor_jeux_index_final.html'
+with open(path,'w',encoding='utf-8') as f:f.write(html)
+print(path)
