@@ -3,208 +3,654 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gayarsite.re — Histoires et univers narratifs | Izidor</title>
-  <meta name="description" content="Gayarsite.re rassemble des histoires simples, belles et immersives. Découvrez Izidor, premier univers narratif du site.">
-  <meta name="keywords" content="histoires, univers narratifs, Izidor, contes, lecture">
+  <title>Gayarsite.re — Contes et histoires pour enfants de La Réunion</title>
+  <meta name="description" content="Découvrez des contes imaginaires et des histoires traditionnelles de l'île de La Réunion pour les enfants de moins de 10 ans. Ebooks Kindle, jeux et illustrations.">
+  <meta name="keywords" content="contes réunionnais, histoires enfants, izidor, livres jeunesse, kindle, créole réunion">
   <meta name="author" content="Gayarsite.re">
-  <meta property="og:title" content="Gayarsite.re — Histoires et univers narratifs | Izidor">
-  <meta property="og:description" content="Plongez dans l'univers chaleureux d'Izidor. Une histoire poétique et immersive.">
+  <meta property="og:title" content="Gayarsite.re — Contes pour enfants de La Réunion">
+  <meta property="og:description" content="Des histoires douces et imagées pour les petits, entre tradition réunionnaise et nouveaux contes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gayarsite.re/">
   <meta property="og:image" content="/assets/commun/images/izidor-cover.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gayarsite.re — Histoires et univers narratifs">
-  <meta name="twitter:description" content="Des histoires, des personnages, des mini-jeux et des univers à explorer.">
-  <meta name="twitter:image" content="/assets/commun/images/izidor-cover.webp">
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/commun/css/style.css">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fffaf5'/%3E%3Cpath d='M28 24h28c9 0 16 7 16 16v36H44c-9 0-16-7-16-16V24z' fill='none' stroke='%238c5431' stroke-width='6'/%3E%3Cpath d='M44 24v52' stroke='%23c99563' stroke-width='6'/%3E%3C/svg%3E">
+  <style>
+    /* ========== RESET & VARIABLES ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-bg: #FFF9F0;
+      --color-surface: #FFFFFF;
+      --color-primary: #F9A26C;
+      --color-primary-dark: #E8843A;
+      --color-secondary: #6DC4A4;
+      --color-accent: #FFD966;
+      --color-text: #4A3728;
+      --color-text-light: #7A6B5D;
+      --color-border: #FFE0B5;
+      --color-card-bg: #FFFFFF;
+      --shadow-card: 0 8px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 28px rgba(0,0,0,0.12);
+      --radius-card: 24px;
+      --radius-btn: 40px;
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Comic Neue', 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Poppins', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== TYPOGRAPHIE ENFANTINE ========== */
+    h1, h2, h3, .logo {
+      font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', cursive;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #F9A26C, #E8843A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 32px;
+      color: var(--color-primary-dark);
+      text-align: center;
+      position: relative;
+    }
+
+    h2:after {
+      content: "✨";
+      position: absolute;
+      margin-left: 12px;
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: var(--color-primary-dark);
+    }
+
+    /* ========== HEADER SIMPLE ========== */
+    header {
+      background: rgba(255, 249, 240, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--color-accent);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--color-primary-dark);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+      color: var(--color-primary);
+    }
+
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #F9A26C, #FFD966);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Menu simple */
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 8px 12px;
+      border-radius: var(--radius-btn);
+      transition: var(--transition);
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid var(--color-primary);
+      font-size: 1.8rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    /* ========== SECTION HÉRO ========== */
+    .hero {
+      background: linear-gradient(120deg, #FFF0E0 0%, #FFE8D4 100%);
+      padding: 60px 0;
+      border-bottom: 4px solid var(--color-accent);
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+    }
+
+    /* Boutons amusants */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+      box-shadow: 0 4px 0 #B85A1A;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #B85A1A;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    /* ========== GRILLE DES CARTES HISTOIRES ========== */
+    .section {
+      padding: 60px 0;
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    .story-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border: 2px solid transparent;
+    }
+
+    .story-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--color-accent);
+    }
+
+    .card-cover {
+      position: relative;
+      background: linear-gradient(135deg, #FFDAB9, #FFE4CA);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--color-accent);
+      color: #8B5E3C;
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content p {
+      color: var(--color-text-light);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .icon-link:hover {
+      color: var(--color-primary-dark);
+    }
+
+    /* ========== BADGES INTERACTIFS ========== */
+    .coming-soon {
+      opacity: 0.7;
+    }
+
+    .coming-soon .card-cover {
+      filter: grayscale(0.2);
+    }
+
+    /* ========== SECTION VENTE KINDLE ========== */
+    .kindle-section {
+      background: linear-gradient(135deg, #2D5F5A, #1E3E3A);
+      color: white;
+      border-radius: 48px;
+      margin: 40px 0;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .kindle-section h3 {
+      color: var(--color-accent);
+      font-size: 1.8rem;
+    }
+
+    .kindle-section p {
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+    }
+
+    .btn-kindle {
+      background: #FFB347;
+      color: #2D5F5A;
+      box-shadow: 0 4px 0 #C16F1A;
+    }
+
+    .btn-kindle:hover {
+      background: #FFA01E;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #4A3728;
+      color: #FFE8D4;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .footer-links a {
+      color: #FFDAB9;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 0;
+      }
+      
+      nav.active {
+        display: flex;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      .stories-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .kindle-section {
+        padding: 32px 20px;
+        border-radius: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      
+      .card-links {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* Animations */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    .story-card:hover .card-cover {
+      animation: bounce 0.5s ease;
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-  
+
+  <a class="skip-link" href="#contenu" style="position: absolute; left: -9999px;">Aller au contenu</a>
+
   <header>
     <div class="container header-content">
       <a href="index.html" class="logo">
-        <img src="/assets/commun/images/izidor-logo.webp" alt="Gayarsite.re" width="40" height="40" style="border-radius: 12px;">
+        <div class="logo-img">📚</div>
         <span>Gayarsite.re</span>
       </a>
       
-      <nav id="main-nav" aria-label="Navigation principale">
-        <a href="index.html" class="active">Accueil</a>
-        <a href="#univers">Univers</a>
-        <a href="izidor/index.html">Izidor</a>
-        <a href="izidor/jeux/index.html">Jeux</a>
-      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
       
-      <div class="header-controls">
-        <button class="theme-toggle" type="button" aria-label="Activer le mode sombre">🌙</button>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">☰</button>
-      </div>
+      <nav id="mainNav">
+        <a href="index.html" class="active">🏠 Accueil</a>
+        <a href="#histoires">📖 Histoires</a>
+        <a href="izidor/jeux/index.html">🎮 Jeux</a>
+        <a href="#kindle">📱 Ebooks</a>
+      </nav>
     </div>
   </header>
 
   <main id="contenu">
-    <!-- Section Héro avec image de fond -->
-    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('/assets/commun/images/izidor-hero.webp'); background-size: cover; background-position: center 30%;">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <span class="hero-label">Histoires à découvrir</span>
-          <h1>Une maison d'histoires où chaque conte change le décor.</h1>
-          <p>Gayarsite.re rassemble des univers narratifs simples, beaux et lisibles. Le site garde les mêmes repères, mais chaque histoire ouvre sa propre atmosphère.</p>
-          <div class="btn-row">
-            <a href="izidor/index.html" class="btn btn-primary">Entrer dans Izidor</a>
-            <a href="#univers" class="btn btn-secondary">Voir les univers</a>
-          </div>
-        </div>
-        <aside class="hero-panel" aria-label="Premier univers">
-          <img src="/assets/commun/images/izidor-cover.webp" alt="Couverture d'Izidor" width="512" height="800" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem;">
-          <h2>Premier univers : Izidor</h2>
-          <p>Izidor lance le site avec une ambiance chaleureuse, poétique et familiale, portée par ses personnages et de futurs enrichissements comme les mini-jeux et les médias embarqués.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="home-intro">
-      <div class="container intro-grid">
-        <div>
-          <h2 class="section-title">Qu'est-ce que Gayarsite&nbsp;?</h2>
-          <p class="section-intro">Le projet est pensé comme une bibliothèque d'histoires. Chaque conte a sa landing page, son ambiance et ses personnages, sans perdre la simplicité d'un socle commun.</p>
-          <div class="accent-block">
-            <p>Le but est de rester léger à gérer, beau à lire et assez souple pour accueillir plus tard la version kréol, des animations, des shorts ou d'autres formes autour des personnages.</p>
-          </div>
-        </div>
-        <div class="card">
-          <h3>La promesse du site</h3>
-          <p>Une lecture confortable, des univers bien identifiés, une navigation stable et un ton accessible pour les jeunes comme pour les moins jeunes.</p>
+    
+    <!-- Section Héro simple et joyeuse -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>✨ Bienvenue dans le monde des histoires ✨</h1>
+        <p>Des contes doux, des aventures magiques et des personnages attachants pour les petits (et les grands aussi !)</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="#histoires" class="btn btn-primary">📖 Découvrir les histoires</a>
+          <a href="izidor/jeux/index.html" class="btn btn-secondary">🎮 Jeux et activités</a>
         </div>
       </div>
     </section>
 
-    <section id="univers" class="section">
+    <!-- Section : Toutes les histoires (cartes) -->
+    <section id="histoires" class="section">
       <div class="container">
-        <h2 class="section-title center">Les univers</h2>
-        <p class="section-intro center">Le décor change selon l'histoire, mais on reste toujours chez Gayarsite grâce à la même structure et aux mêmes repères de navigation.</p>
-        <div class="cards-grid">
-          <article class="card universe-card">
-            <div class="universe-visual">
-              <img src="/assets/commun/images/izidor-cover.webp" alt="Univers Izidor" width="512" height="800" style="width: 100%; height: 220px; object-fit: cover;">
+        <h2>📚 Nos histoires à découvrir</h2>
+        <div class="stories-grid">
+          
+          <!-- CARTE 1 : IZIDOR (histoire disponible) -->
+          <div class="story-card">
+            <div class="card-cover">
+              <span>🐻</span>
+              <span class="card-badge">📖 Nouveau !</span>
             </div>
-            <div class="universe-content">
-              <h3>Izidor</h3>
-              <p>Un conte chaleureux et poétique peuplé de personnages fascinants. C'est le premier monde à explorer sur Gayarsite.</p>
-              <div class="btn-row">
-                <a href="izidor/index.html" class="btn btn-primary">Explorer l'univers</a>
-                <a href="izidor/fr/index.html" class="btn btn-secondary">Lire en français</a>
+            <div class="card-content">
+              <h3>Izidor et la forêt enchantée</h3>
+              <p>Un petit ourson curieux part explorer la forêt magique de La Réunion. Une histoire d'amitié, de partage et de découverte de la nature.</p>
+              <div class="card-links">
+                <a href="izidor/index.html" class="icon-link">📖 Lire un extrait</a>
+                <a href="izidor/jeux/index.html" class="icon-link">🎮 Mini-jeux</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Version Kindle bientôt disponible sur Amazon !')">📱 Kindle</a>
               </div>
             </div>
-          </article>
-          <article class="card coming-soon-card">
-            <div class="universe-visual" style="background: linear-gradient(135deg, #c99563, #f0dfcf 55%, #fffaf5); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 4rem;">🎭</span>
+          </div>
+
+          <!-- CARTE 2 : TROUVEUR DE SOUVENIRS (histoire disponible) -->
+          <div class="story-card">
+            <div class="card-cover">
+              <span>🐚</span>
+              <span class="card-badge">⭐ Coup de cœur</span>
             </div>
-            <div class="universe-content">
-              <h3>Bientôt disponible</h3>
-              <p>D'autres univers narratifs viendront enrichir la collection, avec leur propre décor et leur propre ton.</p>
+            <div class="card-content">
+              <h3>Le chercheur de souvenirs</h3>
+              <p>Ti-Jean part sur les plages de l'île à la recherche des plus beaux souvenirs perdus. Une aventure poétique inspirée des contes réunionnais.</p>
+              <div class="card-links">
+                <a href="chercheur-souvenirs/index.html" class="icon-link">📖 Lire un extrait</a>
+                <a href="#" class="icon-link" onclick="alert('🎨 Page interactive bientôt disponible avec coloriages !')">🎨 Activités</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Kindle disponible sur Amazon.fr')">📱 Kindle</a>
+              </div>
             </div>
-          </article>
+          </div>
+
+          <!-- CARTE 3 : KALOU (bientôt) -->
+          <div class="story-card coming-soon">
+            <div class="card-cover">
+              <span>🐗</span>
+              <span class="card-badge">🔜 Bientôt</span>
+            </div>
+            <div class="card-content">
+              <h3>Kalou le cabri malin</h3>
+              <p>Un petit cabri de la montagne défie les ruses du vent et des nuages. Un conte facétieux de l'île de La Réunion.</p>
+              <div class="card-links">
+                <span class="icon-link" style="opacity:0.5;">📖 Extrait à venir</span>
+                <span class="icon-link" style="opacity:0.5;">🎮 Jeux en création</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTE 4 : GRANN KOKO (bientôt) -->
+          <div class="story-card coming-soon">
+            <div class="card-cover">
+              <span>🌿</span>
+              <span class="card-badge">🔜 Bientôt</span>
+            </div>
+            <div class="card-content">
+              <h3>Grann Koko et le dodo</h3>
+              <p>Une grand-mère pleine de sagesse raconte l'histoire secrète du dernier dodo. Mélange de tradition orale et de merveilleux.</p>
+              <div class="card-links">
+                <span class="icon-link" style="opacity:0.5;">📚 Prochainement</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTE 5 : ROSINE ET TI MALO (histoire courte disponible) -->
+          <div class="story-card">
+            <div class="card-cover">
+              <span>🌸</span>
+              <span class="card-badge">📖 Nouveau</span>
+            </div>
+            <div class="card-content">
+              <h3>Rosine et Ti Malo</h3>
+              <p>Deux enfants de Saint-Denis partent à l'aventure dans les champs de canne à sucre. Un conte moderne sur l'amitié et la solidarité.</p>
+              <div class="card-links">
+                <a href="rosine-timalo/index.html" class="icon-link">📖 Lire un extrait</a>
+                <a href="#" class="icon-link" onclick="alert('🎮 Jeu de memory bientôt disponible !')">🎮 Jeu memory</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Kindle prêt sur Amazon')">📱 Kindle</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTE 6 : ZANIMAL (bientôt) -->
+          <div class="story-card coming-soon">
+            <div class="card-cover">
+              <span>🦎</span>
+              <span class="card-badge">✨ En création</span>
+            </div>
+            <div class="card-content">
+              <h3>Zanimo la rivière</h3>
+              <p>Les aventures des petits animaux de la rivière des Roches. Un conte pour apprendre à protéger la nature réunionnaise.</p>
+              <div class="card-links">
+                <span class="icon-link" style="opacity:0.5;">📖 En cours d'écriture</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section features-section">
+    <!-- Section : vente Kindle / impression -->
+    <section id="kindle" class="section">
       <div class="container">
-        <h2 class="section-title center">Ce que l'on trouve ici</h2>
-        <p class="section-intro center">Des récits, des personnages, des jeux et des médias pensés pour une expérience légère et mémorable.</p>
-        <div class="features-grid">
-          <article class="feature-card">
-            <h3>📚 Des histoires</h3>
-            <p>Des récits simples à lire, avec une vraie identité visuelle et une lecture confortable.</p>
-          </article>
-          <article class="feature-card">
-            <h3>🎭 Des personnages</h3>
-            <p>Izidor, Rosine et Ti Malo posent les premières bases de l'univers narratif.</p>
-          </article>
-          <article class="feature-card">
-            <h3>🎮 Des mini-jeux</h3>
-            <p>De petits jeux HTML légers peuvent prolonger l'histoire sans alourdir le site.</p>
-          </article>
-          <article class="feature-card">
-            <h3>🎬 Des médias</h3>
-            <p>Le projet prévoit aussi des espaces pour vidéos, illustrations et contenus embarqués.</p>
-          </article>
+        <div class="kindle-section">
+          <h3>📱 Acheter nos histoires</h3>
+          <p>Retrouvez tous nos contes sur <strong>Amazon Kindle</strong> ou en version brochée pour offrir à vos enfants.</p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://amazon.fr/" target="_blank" class="btn btn-kindle">📘 Kindle Store</a>
+            <a href="#" class="btn btn-secondary" style="background: rgba(255,255,255,0.2); border-color:white; color:white;" onclick="alert('📚 Impression disponible bientôt (commande sur demande)')">🖨️ Version papier</a>
+          </div>
+          <p style="font-size:0.85rem; margin-top:24px;">Des livres pour les moins de 10 ans, parfaits pour la lecture du soir !</p>
         </div>
       </div>
     </section>
 
-    <section class="cta-band">
+    <!-- Section : invitation aux jeux interactifs -->
+    <section style="text-align: center; padding: 40px 0;">
       <div class="container">
-        <div class="cta-box">
-          <img src="/assets/commun/images/izidor-logo.webp" alt="Logo Izidor" width="80" height="80" style="margin: 0 auto 1rem auto; border-radius: 20px;">
-          <h2>Commencer avec Izidor</h2>
-          <p>Entre dans le premier univers de Gayarsite et découvre une histoire, ses personnages et ses premiers jeux.</p>
-          <a href="izidor/index.html" class="btn btn-light">Découvrir Izidor</a>
-        </div>
+        <h2>🎮 Après l'histoire, le jeu !</h2>
+        <p style="max-width: 600px; margin: 0 auto 24px;">Chaque histoire a ses propres pages de jeux : coloriages, mots mêlés, cache-cache et quiz amusants.</p>
+        <a href="izidor/jeux/index.html" class="btn btn-primary">🎲 Découvrir les mini-jeux</a>
       </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <h3>Gayarsite.re</h3>
-        <p>Une bibliothèque d'univers narratifs pensée pour rester simple, belle et évolutive.</p>
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="#histoires">Histoires</a>
+        <a href="izidor/jeux/index.html">Jeux</a>
+        <a href="mailto:contact@gayarsite.re">Contact</a>
+        <a href="#" onclick="alert('Suivez-nous sur les réseaux (bientôt) !')">📸 Réseaux</a>
       </div>
-      <div>
-        <h3>Navigation</h3>
-        <p><a href="index.html">Accueil</a></p>
-        <p><a href="#univers">Les univers</a></p>
-        <p><a href="izidor/index.html">Izidor</a></p>
-        <p><a href="izidor/jeux/index.html">Mini-jeux</a></p>
-      </div>
-      <div>
-        <h3>Ressources</h3>
-        <p><a href="izidor/fr/index.html">Lire l'histoire</a></p>
-        <p><a href="https://amazon.fr/" target="_blank" rel="noopener noreferrer">Amazon Kindle</a></p>
-        <p><a href="mailto:contact@gayarsite.re">Nous contacter</a></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Gayarsite.re - Tous droits réservés</p>
+      <p>✨ Gayarsite.re – Contes de La Réunion pour enfants ✨</p>
+      <p class="copyright">© 2025 Tous droits réservés – Histoires libres de droit pour l’imaginaire des petits.</p>
     </div>
   </footer>
 
   <script>
     // Menu mobile toggle
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('#main-nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('active');
-        toggle.setAttribute('aria-expanded', isOpen);
+    const toggleBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('mainNav');
+    
+    if (toggleBtn && navMenu) {
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
       });
     }
 
-    // Theme toggle (clair/sombre)
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        const isDark = document.body.classList.contains('dark-theme');
-        themeToggle.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    // Option : fermer le menu si on clique sur un lien (mobile)
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navMenu.classList.remove('active');
+        }
       });
-
-      // Charger le thème sauvegardé
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        themeToggle.textContent = '☀️';
-      }
-    }
+    });
   </script>
+
+  <!-- Note : les images ne sont pas obligatoires ; on utilise des emojis et couleurs douces pour rester très léger -->
 </body>
 </html>
