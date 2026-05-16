@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mots croisés — Ti Malo</title>
+  <meta name="description" content="Mots croisés autour de Ti Malo, de la ravine et du trésor.">
+  <link rel="stylesheet" href="../assets/commun/css/style.css">
+  <link rel="stylesheet" href="../assets/commun/css/theme-izidor.css">
+  <style>
+    .hero{padding:var(--sp-2xl) 0 0}
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp-xl);align-items:center}
+    .hero h1{font-size:clamp(2rem,4vw,3.4rem);margin-bottom:var(--sp-md)}
+    .hero p{color:var(--color-muted);max-width:42rem}
+    .section{padding:var(--sp-2xl) 0}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:var(--sp-lg);align-items:start}
+    .panel{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg);box-shadow:var(--shadow-sm)}
+    .panel h3{font-size:var(--text-xl);margin-bottom:var(--sp-sm)}
+    .panel p{color:var(--color-muted);margin:0}
+    .grid-wrap{background:linear-gradient(135deg,#fffaf5,#f2e5d8);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg);overflow:auto}
+    .cw-grid{display:grid;grid-template-columns:repeat(8,minmax(34px,1fr));gap:3px;max-width:100%;aspect-ratio:1/1}
+    .cell{display:grid;place-items:center;background:white;border:1px solid rgba(160,82,45,.18);border-radius:8px;min-height:34px;font-weight:700;color:var(--color-text)}
+    .empty{background:transparent;border:1px dashed rgba(160,82,45,.12)}
+    .num{position:absolute;top:4px;left:5px;font-size:.62rem;font-weight:700;color:var(--color-primary)}
+    .cell.pos{position:relative}
+    .clues{display:grid;gap:var(--sp-md)}
+    .clue{padding:var(--sp-md);border-radius:var(--radius-md);background:rgba(212,165,116,.1);border:1px solid var(--color-border)}
+    .clue strong{display:block;margin-bottom:.35rem;color:var(--color-primary)}
+    .btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.2rem;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid transparent}
+    .btn-primary{background:var(--color-primary);color:#fff}
+    .btn-secondary{background:transparent;border-color:var(--color-border);color:var(--color-text)}
+    .btn-primary:hover{background:#733f22}
+    .btn-secondary:hover{border-color:var(--color-primary);color:var(--color-primary)}
+    .story{background:linear-gradient(135deg,rgba(212,165,116,.12),rgba(255,250,245,.95));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
+    .story p{margin-bottom:0;color:var(--color-muted)}
+    .tip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-lg)}
+    .tip{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
+    .tip h3{font-size:var(--text-lg);margin-bottom:.5rem}
+    .tip p{color:var(--color-muted);margin:0}
+    .cta-box{margin:var(--sp-2xl) 0;background:linear-gradient(135deg,var(--color-primary),#7a4526);color:#fff;border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center}
+    .cta-box p{max-width:36rem;margin:0 auto var(--sp-lg);color:rgba(255,255,255,.92)}
+    .cta-box .btn{background:#fff;color:var(--color-primary)}
+    @media (max-width: 900px){.hero-inner,.layout,.tip-grid{grid-template-columns:1fr}.cw-grid{grid-template-columns:repeat(8,minmax(28px,1fr));}}
+    @media (max-width: 640px){.hero{padding:var(--sp-xl) 0 0}.section{padding:var(--sp-xl) 0}.btn-row{flex-direction:column}.btn,.cta-box .btn{width:100%}.cw-grid{grid-template-columns:repeat(8,minmax(22px,1fr));gap:2px}.cell{min-height:24px;font-size:.78rem}}
+  </style>
+</head>
+<body class="theme-izidor">
+  <main id="contenu">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow" style="display:inline-block;font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)">Mini-jeu • Mots croisés</span>
+          <h1>Les mots du trésor</h1>
+          <p>Complète la grille avec les mots de l'histoire de Ti Malo : ravine, trésor, partage, Izidor et nature.</p>
+          <div class="btn-row">
+            <a href="#grille" class="btn btn-primary">Jouer</a>
+            <a href="index.html" class="btn btn-secondary">Retour au menu</a>
+          </div>
+        </div>
+        <aside class="story">
+          <h2 class="section-title" style="margin-bottom:.5rem">Indice</h2>
+          <p>Chaque mot est lié au décor réunionnais, à l'histoire ou aux personnages.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="grille">
+      <div class="container layout">
+        <div class="grid-wrap">
+          <div class="cw-grid" aria-label="Grille de mots croisés">
+            <div class="cell pos"><span class="num">1</span></div><div class="cell empty"></div><div class="cell empty"></div><div class="cell pos"><span class="num">2</span></div><div class="cell empty"></div><div class="cell empty"></div><div class="cell pos"><span class="num">3</span></div><div class="cell empty"></div>
+            <div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div>
+            <div class="cell pos"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div>
+            <div class="cell empty"></div><div class="cell pos"><span class="num">4</span></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell pos"></div>
+            <div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div>
+            <div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell pos"></div>
+            <div class="cell pos"><span class="num">5</span></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div>
+            <div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell pos"></div><div class="cell empty"></div>
+          </div>
+        </div>
+        <aside class="panel">
+          <h3>Définitions</h3>
+          <div class="clues">
+            <div class="clue"><strong>1 horizontal</strong> Lieu où l'eau et les cailloux descendent.</div>
+            <div class="clue"><strong>2 vertical</strong> Ce que Ti Malo découvre dans la ravine.</div>
+            <div class="clue"><strong>3 horizontal</strong> Ce que l'on doit faire avec les autres.</div>
+            <div class="clue"><strong>4 vertical</strong> Le vieux monsieur du conte.</div>
+            <div class="clue"><strong>5 horizontal</strong> Tout autour de Ti Malo à La Réunion.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Aide</h2>
+        <div class="tip-grid">
+          <article class="tip"><h3>Regarde le décor</h3><p>La ravine et la nature donnent les bons mots.</p></article>
+          <article class="tip"><h3>Pense à l'histoire</h3><p>Chaque indice vient du trésor, du partage ou des personnages.</p></article>
+          <article class="tip"><h3>Joue sur mobile</h3><p>La grille se réduit proprement sur les petits écrans.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="cta-box">
+        <h2>Retour à la page Ti Malo</h2>
+        <p>Tu peux revenir au menu principal pour lancer les autres jeux ou relire l'histoire.</p>
+        <a class="btn" href="index.html">Retour</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
