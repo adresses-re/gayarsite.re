@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+os.makedirs('/root/output', exist_ok=True)
+html = '''<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -81,30 +83,13 @@
     .footer-grid>div>p{font-size:var(--text-sm);color:rgba(255,250,245,.7);margin-bottom:var(--sp-sm);line-height:1.6}
     .footer-grid a{color:rgba(255,250,245,.75);text-decoration:none;font-size:var(--text-sm)}
     .footer-grid a:hover{color:var(--color-accent);text-decoration:underline}
-    @media(max-width:900px){
-      .hero-inner,.intro-grid,.grid.cards-2,.footer-grid{grid-template-columns:1fr}
-      .hero{padding:var(--sp-2xl) 0}
-      .hero-copy h1{font-size:clamp(1.9rem,7vw,2.8rem)}
-    }
-    @media(max-width:600px){
-      .container{padding:0 var(--sp-md)}
-      .header-content{padding:.75rem var(--sp-md)}
-      .menu-toggle{display:inline-flex}
-      nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--color-bg,#fffaf5);border-bottom:1px solid var(--color-border);padding:var(--sp-md) var(--sp-lg);gap:0;align-items:flex-start;z-index:200}
-      nav.is-open{display:flex}
-      nav a{padding:var(--sp-md) 0;border-bottom:1px solid var(--color-border);width:100%}
-      nav a::after{display:none}
-      .section,.hero{padding:var(--sp-xl) 0}
-      .feature-list{grid-template-columns:1fr}
-      .cta-box{padding:var(--sp-xl) var(--sp-lg)}
-      .footer-grid{grid-template-columns:1fr;gap:var(--sp-lg)}
-    }
+    @media(max-width:900px){.hero-inner,.intro-grid,.grid.cards-2,.footer-grid{grid-template-columns:1fr}.hero{padding:var(--sp-2xl) 0}.hero-copy h1{font-size:clamp(1.9rem,7vw,2.8rem)}}
+    @media(max-width:600px){.container{padding:0 var(--sp-md)}.header-content{padding:.75rem var(--sp-md)}.menu-toggle{display:inline-flex}nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--color-bg,#fffaf5);border-bottom:1px solid var(--color-border);padding:var(--sp-md) var(--sp-lg);gap:0;align-items:flex-start;z-index:200}nav.is-open{display:flex}nav a{padding:var(--sp-md) 0;border-bottom:1px solid var(--color-border);width:100%}nav a::after{display:none}.section,.hero{padding:var(--sp-xl) 0}.feature-list{grid-template-columns:1fr}.cta-box{padding:var(--sp-xl) var(--sp-lg)}.footer-grid{grid-template-columns:1fr;gap:var(--sp-lg)}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
   </style>
 </head>
 <body class="theme-izidor">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-
   <header>
     <div class="header-content">
       <a href="index.html" class="logo">Gayarsite.re</a>
@@ -120,9 +105,7 @@
       </div>
     </div>
   </header>
-
   <main id="contenu">
-
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
@@ -140,7 +123,6 @@
         </aside>
       </div>
     </section>
-
     <section class="home-intro">
       <div class="container intro-grid">
         <div>
@@ -156,7 +138,6 @@
         </div>
       </div>
     </section>
-
     <section id="univers" class="section">
       <div class="container">
         <h2 class="section-title">Les univers</h2>
@@ -180,7 +161,6 @@
         </div>
       </div>
     </section>
-
     <section class="section" style="background:linear-gradient(180deg,rgba(253,247,241,.4),transparent)">
       <div class="container">
         <h2 class="section-title center">Ce que l'on trouve ici</h2>
@@ -205,7 +185,6 @@
         </div>
       </div>
     </section>
-
     <section class="cta-band">
       <div class="container">
         <div class="cta-box">
@@ -215,9 +194,7 @@
         </div>
       </div>
     </section>
-
   </main>
-
   <footer>
     <div class="container footer-grid">
       <div>
@@ -239,17 +216,18 @@
       </div>
     </div>
   </footer>
-
   <script>
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("#main-nav");
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#main-nav');
     if (toggle && nav) {
-      toggle.addEventListener("click", () => {
-        const open = nav.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", open);
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
       });
     }
   </script>
-
 </body>
-</html>
+</html>'''
+path='/root/output/gayarsite_home_neutre.html'
+with open(path,'w',encoding='utf-8') as f:f.write(html)
+print(path)
