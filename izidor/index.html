@@ -3,43 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Izidor — Gayarsite.re</title>
-  <meta name="description" content="Izidor, premier univers narratif de Gayarsite.re, avec histoire et accès aux mini-jeux.">
+  <title>Izidor — Le trésor d'Izidor</title>
+  <meta name="description" content="L'histoire d'Izidor, un conte réunionnais plein de malice, entre oralité, culture créole et aventure pour enfants.">
+  <meta property="og:title" content="Izidor — Le trésor d'Izidor">
+  <meta property="og:description" content="Conte réunionnais pour enfants, avec histoire, jeux et univers créole.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="../assets/commun/css/style.css">
   <link rel="stylesheet" href="../assets/commun/css/theme-izidor.css">
   <style>
     .hero{padding:var(--sp-2xl) 0 0}
-    .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-xl);align-items:center}
+    .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--sp-xl);align-items:center}
     .hero h1{font-size:clamp(2rem,4vw,3.5rem);margin-bottom:var(--sp-md)}
-    .hero p{color:var(--color-muted);max-width:42rem}
-    .section{padding:var(--sp-2xl) 0}
-    .page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-lg)}
-    .panel{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg);box-shadow:var(--shadow-sm)}
-    .panel h3{font-size:var(--text-xl);margin-bottom:.5rem}
-    .panel p{color:var(--color-muted);margin:0}
-    .intro-box{background:linear-gradient(135deg,rgba(212,165,116,.12),rgba(255,250,245,.95));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
-    .intro-box p{margin:0;color:var(--color-muted)}
-    .btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
+    .hero p{color:var(--color-muted);max-width:46rem}
+    .hero-card{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg);box-shadow:var(--shadow-sm)}
+    .hero-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);border:1px solid var(--color-border)}
+    .eyebrow{display:inline-block;font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)}
+    .btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-lg)}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.2rem;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid transparent}
     .btn-primary{background:var(--color-primary);color:#fff}
     .btn-secondary{background:transparent;border-color:var(--color-border);color:var(--color-text)}
     .btn-primary:hover{background:#733f22}
     .btn-secondary:hover{border-color:var(--color-primary);color:var(--color-primary)}
+    .section{padding:var(--sp-2xl) 0}
+    .section-title.center{text-align:center}
+    .section-intro{max-width:50rem;color:var(--color-muted);line-height:1.75}
+    .section-intro.center{margin-left:auto;margin-right:auto;text-align:center}
+    .page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-lg)}
+    .panel{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg);box-shadow:var(--shadow-sm)}
+    .panel h3{font-size:var(--text-xl);margin-bottom:.5rem}
+    .panel p{color:var(--color-muted);margin:0;line-height:1.7}
+    .story-box{background:linear-gradient(135deg,rgba(212,165,116,.12),rgba(255,250,245,.95));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-xl)}
+    .story-box p{color:var(--color-muted);line-height:1.8;margin:0}
+    .meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-lg)}
+    .meta-card{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
+    .meta-card h3{font-size:var(--text-lg);margin-bottom:.5rem}
+    .meta-card p{margin:0;color:var(--color-muted);line-height:1.7}
     .card-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-lg)}
-    .card-link{display:block;position:relative;text-decoration:none;color:inherit}
-    .card-link::before{content:"";position:absolute;inset:0;border-radius:var(--radius-lg)}
-    .card{height:100%}
-    .card h3{margin-bottom:.5rem}
-    .card p{color:var(--color-muted);margin-bottom:0}
-    .card-link:hover .card{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .card-link{display:block;text-decoration:none;color:inherit}
+    .game-card{height:100%}
+    .game-card .icon{width:72px;height:72px;border-radius:20px;display:grid;place-items:center;font-size:1.9rem;background:linear-gradient(135deg,rgba(160,82,45,.14),rgba(212,165,116,.24));border:1px solid var(--color-border);margin:0 auto var(--sp-md)}
+    .game-card h3{text-align:center;margin-bottom:.35rem}
+    .game-card p{text-align:center;color:var(--color-muted);margin:0}
+    .game-note{margin-top:var(--sp-sm);font-size:var(--text-sm);color:var(--color-primary);text-align:center}
+    .card-link:hover .game-card{transform:translateY(-2px);box-shadow:var(--shadow-md)}
     .cta-box{margin:var(--sp-2xl) 0;background:linear-gradient(135deg,var(--color-primary),#7a4526);color:#fff;border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center}
     .cta-box p{max-width:36rem;margin:0 auto var(--sp-lg);color:rgba(255,255,255,.92)}
     .cta-box .btn{background:#fff;color:var(--color-primary)}
-    .tip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-lg)}
-    .tip{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
-    .tip h3{font-size:var(--text-lg);margin-bottom:.5rem}
-    .tip p{color:var(--color-muted);margin:0}
-    @media (max-width: 900px){.hero-inner,.page-grid,.tip-grid{grid-template-columns:1fr}}
+    .keywords{display:flex;flex-wrap:wrap;gap:.6rem}
+    .keyword{padding:.45rem .8rem;border:1px solid var(--color-border);border-radius:999px;background:var(--color-light);font-size:var(--text-sm)}
+    @media (max-width: 900px){.hero-inner,.page-grid,.meta-grid{grid-template-columns:1fr}}
     @media (max-width: 640px){.hero{padding:var(--sp-xl) 0 0}.section{padding:var(--sp-xl) 0}.btn-row{flex-direction:column}.btn,.cta-box .btn{width:100%}}
   </style>
 </head>
@@ -48,65 +60,77 @@
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <span class="eyebrow" style="display:inline-block;font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)">Univers narratif</span>
-          <h1>Izidor</h1>
-          <p>Izidor est le premier univers de Gayarsite.re. Il accompagne l'histoire de Ti Malo et donne accès aux pages de lecture et de jeux.</p>
+          <span class="eyebrow">Conte réunionnais</span>
+          <h1>L’histoire d’Izidor, un conte réunionnais plein de malice</h1>
+          <p>L’histoire d’Izidor fait partie de ces récits réunionnais qui traversent le temps grâce à la parole, à la mémoire et au plaisir de raconter. Dans l’univers des contes péi, Izidor est un personnage simple, proche du peuple, souvent entraîné dans une aventure où l’astuce, l’humour et la ruse prennent le dessus sur la force.</p>
           <div class="btn-row">
-            <a href="fr/index.html" class="btn btn-primary">Lire l'histoire</a>
+            <a href="fr/index.html" class="btn btn-primary">Lire l’histoire</a>
             <a href="jeux/index.html" class="btn btn-secondary">Voir les jeux</a>
           </div>
+          <div class="keywords" style="margin-top:var(--sp-lg)">
+            <span class="keyword">conte réunionnais</span>
+            <span class="keyword">tradition orale</span>
+            <span class="keyword">rakontaz zistoir</span>
+            <span class="keyword">patrimoine créole</span>
+          </div>
         </div>
-        <aside class="intro-box">
-          <h2 class="section-title" style="margin-bottom:.5rem">Bienvenue</h2>
-          <p>Ce monde pose l’ambiance : chaleur, nature, couleurs et aventure douce pour les enfants.</p>
+        <aside class="hero-card">
+          <img class="hero-img" src="../assets/images/izidor-hero.webp" alt="Izidor, Ti Malo et leur univers réunionnais">
+          <p style="margin-top:var(--sp-md);color:var(--color-muted);line-height:1.7">Image à placer dans <strong>/assets/images</strong> : <code>izidor-hero.webp</code> — format recommandé 1600 × 900.</p>
         </aside>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Découvrir Izidor</h2>
-        <div class="page-grid">
-          <article class="panel">
-            <h3>Une histoire</h3>
-            <p>Le conte de Ti Malo, son trésor, la ravine et le vieux monsieur Izidor.</p>
-          </article>
-          <article class="panel">
-            <h3>Un univers</h3>
-            <p>Un décor réunionnais coloré, simple et immersif.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Accès rapide aux jeux</h2>
+        <h2 class="section-title center">Les jeux d’Izidor</h2>
+        <p class="section-intro center">Quatre mini-jeux pour prolonger l’histoire, centré et pensé pour mobile, tablette et ordinateur.</p>
         <div class="card-list">
-          <a href="jeux/labyrinthe.html" class="card-link"><article class="panel card"><h3>Labyrinthe</h3><p>Aide Ti Malo à traverser la ravine.</p></article></a>
-          <a href="jeux/mots-croises.html" class="card-link"><article class="panel card"><h3>Mots croisés</h3><p>Retrouve les mots du conte.</p></article></a>
-          <a href="jeux/mots-fleches.html" class="card-link"><article class="panel card"><h3>Mots fléchés</h3><p>Complète la grille avec les bons mots.</p></article></a>
-          <a href="jeux/jardin-secrets.html" class="card-link"><article class="panel card"><h3>Jardin des secrets</h3><p>Clique les bonnes fleurs pour trouver l’indice.</p></article></a>
+          <a href="jeux/labyrinthe.html" class="card-link"><article class="panel game-card"><div class="icon">🧩</div><h3>Labyrinthe</h3><p>Guider Ti Malo dans la ravine jusqu’au trésor.</p><p class="game-note">Image : <code>izidor-labyrinthe.webp</code> — 1200 × 800</p></article></a>
+          <a href="jeux/mots-croises.html" class="card-link"><article class="panel game-card"><div class="icon">✍️</div><h3>Mots croisés</h3><p>Retrouver les mots clés de l’histoire.</p><p class="game-note">Image : <code>izidor-mots-croises.webp</code> — 1200 × 800</p></article></a>
+          <a href="jeux/mots-fleches.html" class="card-link"><article class="panel game-card"><div class="icon">🔤</div><h3>Mots fléchés</h3><p>Compléter la grille avec les bons mots.</p><p class="game-note">Image : <code>izidor-mots-fleches.webp</code> — 1200 × 800</p></article></a>
+          <a href="jeux/jardin-secrets.html" class="card-link"><article class="panel game-card"><div class="icon">🌱</div><h3>Jardin des secrets</h3><p>Cliquer les bonnes fleurs pour trouver l’indice.</p><p class="game-note">Image : <code>izidor-jardin-secrets.webp</code> — 1200 × 800</p></article></a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Ce que contient l’univers</h2>
-        <div class="tip-grid">
-          <article class="tip"><h3>Lecture</h3><p>Une page pour lire l’histoire principale.</p></article>
-          <article class="tip"><h3>Jeux</h3><p>Quatre mini-jeux liés au récit.</p></article>
-          <article class="tip"><h3>Navigation</h3><p>Des liens relatifs simples et stables.</p></article>
+        <h2 class="section-title">Une histoire enracinée dans la culture réunionnaise</h2>
+        <div class="page-grid">
+          <div class="story-box">
+            <p>À La Réunion, les contes ne servent pas seulement à divertir. Ils transmettent une manière de voir le monde, des valeurs, des avertissements et un lien fort avec la langue créole. L’histoire d’Izidor s’inscrit dans cette tradition du rakontaz zistoir, où les anciens racontaient le soir des histoires aux enfants, autour d’une parole vivante, savoureuse et pleine de sagesse.</p>
+          </div>
+          <div class="story-box">
+            <p>Izidor est souvent présenté comme un personnage rusé, parfois naïf, parfois débrouillard, mais toujours humain. Il évolue dans un décor qui rappelle la vie lontan, avec des situations du quotidien, des difficultés, des rencontres inattendues et des retournements de situation.</p>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Le personnage d’Izidor</h2>
+        <div class="meta-grid">
+          <article class="meta-card"><h3>Simple</h3><p>Proche des gens ordinaires, loin des héros puissants.</p></article>
+          <article class="meta-card"><h3>Rusé</h3><p>Il s’en sort souvent grâce à l’astuce et à l’observation.</p></article>
+          <article class="meta-card"><h3>Populaire</h3><p>Un personnage qui reflète la culture et l’humour créole.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Pourquoi l’histoire plaît autant</h2>
+        <p class="section-intro">L’histoire d’Izidor séduit parce qu’elle est facile à comprendre, mais riche de sens. Elle parle de peur, de ruse, d’erreur, de courage, de justice et de débrouillardise, avec une couleur locale unique.</p>
       </div>
     </section>
 
     <section class="container">
       <div class="cta-box">
-        <h2>Entrer dans l’histoire</h2>
-        <p>Tu peux commencer par la lecture ou ouvrir directement les jeux depuis cet univers.</p>
-        <a class="btn" href="fr/index.html">Commencer</a>
+        <h2>Commencer avec Izidor</h2>
+        <p>Lis le conte puis ouvre les jeux pour prolonger l’univers.</p>
+        <a class="btn" href="fr/index.html">Lire l’histoire</a>
       </div>
     </section>
   </main>
