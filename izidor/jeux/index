@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeux — Ti Malo</title>
-  <meta name="description" content="Menu des mini-jeux de Ti Malo : labyrinthe, mots croisés, mots fléchés et jardin des secrets.">
-  <link rel="stylesheet" href="../assets/commun/css/style.css">
-  <link rel="stylesheet" href="../assets/commun/css/theme-izidor.css">
+  <title>Jeux d'Izidor — Gayarsite.re</title>
+  <meta name="description" content="Menu des jeux d'Izidor : labyrinthe, mots croisés, mots fléchés et jardin des secrets.">
+  <link rel="stylesheet" href="../../assets/commun/css/style.css">
+  <link rel="stylesheet" href="../../assets/commun/css/theme-izidor.css">
   <style>
     .hero{padding:var(--sp-2xl) 0 0}
     .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp-xl);align-items:center}
@@ -27,13 +27,13 @@
     .btn-secondary:hover{border-color:var(--color-primary);color:var(--color-primary)}
     .intro-box{background:linear-gradient(135deg,rgba(212,165,116,.12),rgba(255,250,245,.95));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
     .intro-box p{margin:0;color:var(--color-muted)}
-    .cta-box{margin:var(--sp-2xl) 0;background:linear-gradient(135deg,var(--color-primary),#7a4526);color:#fff;border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center}
-    .cta-box p{max-width:36rem;margin:0 auto var(--sp-lg);color:rgba(255,255,255,.92)}
-    .cta-box .btn{background:#fff;color:var(--color-primary)}
     .tip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-lg)}
     .tip{background:var(--color-light);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-lg)}
     .tip h3{font-size:var(--text-lg);margin-bottom:.5rem}
     .tip p{color:var(--color-muted);margin:0}
+    .cta-box{margin:var(--sp-2xl) 0;background:linear-gradient(135deg,var(--color-primary),#7a4526);color:#fff;border-radius:calc(var(--radius-lg) + .5rem);padding:var(--sp-2xl);text-align:center}
+    .cta-box p{max-width:36rem;margin:0 auto var(--sp-lg);color:rgba(255,255,255,.92)}
+    .cta-box .btn{background:#fff;color:var(--color-primary)}
     @media (max-width: 900px){.hero-inner,.page-grid,.tip-grid{grid-template-columns:1fr}}
     @media (max-width: 640px){.hero{padding:var(--sp-xl) 0 0}.section{padding:var(--sp-xl) 0}.btn-row{flex-direction:column}.btn,.cta-box .btn{width:100%}}
   </style>
@@ -44,52 +44,50 @@
       <div class="container hero-inner">
         <div>
           <span class="eyebrow" style="display:inline-block;font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--sp-md)">Menu des jeux</span>
-          <h1>Les jeux de Ti Malo</h1>
-          <p>Quatre petits jeux pour prolonger l'histoire de Ti Malo, entre ravine, trésor, partage et nature réunionnaise.</p>
+          <h1>Les jeux d'Izidor</h1>
+          <p>Quatre mini-jeux pour prolonger l'histoire de Ti Malo et explorer l'univers d'Izidor.</p>
           <div class="btn-row">
-            <a href="#jeux" class="btn btn-primary">Voir les jeux</a>
-            <a href="../index.html" class="btn btn-secondary">Retour à l'accueil</a>
+            <a href="../fr/index.html" class="btn btn-primary">Lire l'histoire</a>
+            <a href="../../index.html" class="btn btn-secondary">Retour accueil</a>
           </div>
         </div>
         <aside class="intro-box">
-          <h2 class="section-title" style="margin-bottom:.5rem">Univers interactif</h2>
-          <p>Chaque jeu reprend un morceau du conte et reste facile à utiliser sur mobile.</p>
+          <h2 class="section-title" style="margin-bottom:.5rem">Choisis un jeu</h2>
+          <p>Chaque carte ouvre un petit jeu lié au conte, au trésor et au partage.</p>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="jeux">
+    <section class="section">
       <div class="container">
-        <h2 class="section-title">Choisir un jeu</h2>
-        <p class="section-intro">Clique sur une carte pour ouvrir le mini-jeu correspondant.</p>
-
+        <h2 class="section-title">Les 4 jeux</h2>
         <div class="page-grid">
           <article class="panel game-card">
             <div class="game-icon">🧩</div>
             <h3>Labyrinthe</h3>
             <p>Aide Ti Malo à traverser la ravine et rejoindre le trésor.</p>
-            <a class="btn btn-primary" href="labyrinthe.html">Jouer</a>
+            <a class="btn btn-primary" href="labyrinthe.html">Ouvrir</a>
           </article>
 
           <article class="panel game-card">
             <div class="game-icon">✍️</div>
             <h3>Mots croisés</h3>
-            <p>Retrouve les mots importants de l'histoire : ravine, trésor et partage.</p>
-            <a class="btn btn-primary" href="mots-croises.html">Jouer</a>
+            <p>Retrouve les mots importants de l'histoire.</p>
+            <a class="btn btn-primary" href="mots-croises.html">Ouvrir</a>
           </article>
 
           <article class="panel game-card">
             <div class="game-icon">🔤</div>
             <h3>Mots fléchés</h3>
-            <p>Complète la grille avec les mots du décor et des personnages.</p>
-            <a class="btn btn-primary" href="mots-fleches.html">Jouer</a>
+            <p>Complète la grille avec les bons mots du conte.</p>
+            <a class="btn btn-primary" href="mots-fleches.html">Ouvrir</a>
           </article>
 
           <article class="panel game-card">
             <div class="game-icon">🌱</div>
-            <h3>Le jardin des secrets</h3>
-            <p>Mini-jeu maison : clique les bonnes fleurs pour révéler les indices.</p>
-            <a class="btn btn-primary" href="jardin-secrets.html">Jouer</a>
+            <h3>Jardin des secrets</h3>
+            <p>Clique les bonnes fleurs pour trouver l'indice secret.</p>
+            <a class="btn btn-primary" href="jardin-secrets.html">Ouvrir</a>
           </article>
         </div>
       </div>
@@ -97,11 +95,11 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Comment ça marche</h2>
+        <h2 class="section-title">Repères</h2>
         <div class="tip-grid">
-          <article class="tip"><h3>1. Choisis</h3><p>Ouvre la carte du jeu qui t'intéresse.</p></article>
-          <article class="tip"><h3>2. Joue</h3><p>Chaque page peut contenir une mini activité simple.</p></article>
-          <article class="tip"><h3>3. Reviens</h3><p>Tu peux revenir au menu des jeux ou à l'histoire.</p></article>
+          <article class="tip"><h3>Liens relatifs</h3><p>Les chemins restent stables sur GitHub Pages.</p></article>
+          <article class="tip"><h3>Mobile first</h3><p>Les cartes passent en colonne sur petit écran.</p></article>
+          <article class="tip"><h3>Simple</h3><p>Une seule page menu pour tous les jeux.</p></article>
         </div>
       </div>
     </section>
@@ -109,8 +107,8 @@
     <section class="container">
       <div class="cta-box">
         <h2>Retour à l'univers</h2>
-        <p>Ce menu fait le lien entre l'histoire de Ti Malo et les jeux associés.</p>
-        <a class="btn" href="../izidor/index.html">Retour à Izidor</a>
+        <p>Tu peux revenir à l'histoire d'Izidor ou à l'accueil du site à tout moment.</p>
+        <a class="btn" href="../index.html">Retour à Izidor</a>
       </div>
     </section>
   </main>
