@@ -6,69 +6,78 @@
   <title>Labyrinthe — Ti Malo dans la ravine | Gayarsite.re</title>
   <meta name="description" content="Aide Ti Malo à traverser la ravine et à trouver le trésor. Un mini-jeu de labyrinthe inspiré des contes réunionnais.">
   <meta name="keywords" content="labyrinthe, ti malo, jeu enfants, ravine, réunion, trésor">
-  <link rel="stylesheet" href="../../assets/commun/css/style.css">
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Variables de thème - Style premium, chaleureux et naturel */
+    :root {
+      --bg-color: #F8F5F0;
+      --text-main: #2C2418;
+      --text-muted: #6B5A4A;
+      --accent-primary: #D45729;
+      --accent-hover: #B8431A;
+      --nature-dark: #1F3F23;
+      --nature-light: #2E5A34;
+      --path-color: #F1E5D1;
+      --border-color: #E6D8C3;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background: #F5F0E8;
+      background: var(--bg-color);
       font-family: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
-      color: #2C2418;
+      color: var(--text-main);
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Header */
+    /* --- Typography --- */
+    h1, h2, h3, .logo {
+      font-family: 'Poppins', system-ui, sans-serif;
+      line-height: 1.2;
+    }
+
+    /* --- Header --- */
     header {
-      background: rgba(245, 240, 232, 0.96);
-      backdrop-filter: blur(8px);
+      background: rgba(248, 245, 240, 0.9);
+      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 2px solid #E2D5C0;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .header-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
       padding: 16px 24px;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: #D45729;
+      color: var(--accent-primary);
       text-decoration: none;
-      font-family: 'Poppins', system-ui, sans-serif;
-    }
-
-    .logo:hover {
-      color: #B8431A;
-    }
-
-    nav {
       display: flex;
-      gap: 20px;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 8px;
     }
 
+    nav { display: flex; gap: 8px; }
+    
     nav a {
       text-decoration: none;
-      color: #2C2418;
+      color: var(--text-muted);
       font-weight: 500;
       padding: 8px 16px;
       border-radius: 30px;
@@ -76,276 +85,263 @@
     }
 
     nav a:hover, nav a.active {
-      background: #D45729;
-      color: white;
+      background: rgba(212, 87, 41, 0.1);
+      color: var(--accent-primary);
     }
 
     .menu-toggle {
       display: none;
       background: none;
-      border: 2px solid #D45729;
-      font-size: 1.5rem;
-      padding: 6px 14px;
-      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      font-size: 1.2rem;
+      padding: 8px 12px;
+      border-radius: 8px;
       cursor: pointer;
+      color: var(--text-main);
     }
 
-    /* Hero */
+    /* --- Hero & Game Area --- */
     .hero {
-      background: linear-gradient(135deg, #FFF5E8, #F5E6D8);
-      padding: 48px 0 40px;
-      border-bottom: 1px solid #E2D5C0;
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
     }
 
     .eyebrow {
       display: inline-block;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #D45729;
-      margin-bottom: 16px;
+      color: var(--accent-primary);
       font-weight: 600;
+      margin-bottom: 12px;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      color: #D45729;
-      font-family: 'Poppins', system-ui, sans-serif;
-      margin-bottom: 16px;
+      font-size: 3rem;
+      color: var(--text-main);
+      margin-bottom: 20px;
     }
 
     .hero p {
-      font-size: 1.1rem;
-      color: #6B5A4A;
-      margin-bottom: 24px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
     }
 
-    /* Boutons */
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
+    /* --- Buttons --- */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 28px;
+      padding: 14px 28px;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.2s ease;
+      font-size: 1rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       border: none;
       font-family: inherit;
     }
 
     .btn-primary {
-      background: #D45729;
+      background: var(--accent-primary);
       color: white;
+      box-shadow: 0 4px 12px rgba(212, 87, 41, 0.3);
     }
 
     .btn-primary:hover {
-      background: #B8431A;
+      background: var(--accent-hover);
       transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(212, 87, 41, 0.4);
     }
 
     .btn-secondary {
-      background: transparent;
-      border: 2px solid #D45729;
-      color: #D45729;
+      background: white;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
     }
 
     .btn-secondary:hover {
-      background: #D45729;
-      color: white;
+      border-color: var(--text-main);
     }
 
-    /* Game shell */
+    /* --- Game UI --- */
     .game-shell {
       background: white;
       border-radius: 24px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      border: 1px solid var(--border-color);
     }
 
-    .maze-container {
-      background: linear-gradient(135deg, #2d5a2a, #1a3a18);
-      border-radius: 20px;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
+    .maze-wrapper {
+      position: relative;
+      background: var(--nature-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      box-shadow: inset 0 4px 20px rgba(0,0,0,0.3);
     }
 
     canvas {
-      background: #f5e6c8;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       display: block;
-      margin: 0 auto;
-      cursor: pointer;
       width: 100%;
-      height: auto;
+      height: 100%;
+      touch-action: none; /* Prevent scrolling when swiping on canvas */
+    }
+
+    /* Win Overlay */
+    .win-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(248, 245, 240, 0.95);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 10;
+    }
+
+    .win-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .win-overlay h3 {
+      font-size: 2rem;
+      color: var(--nature-light);
+      margin-bottom: 8px;
+    }
+
+    .win-overlay p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
     }
 
     .status {
       margin-top: 16px;
       padding: 14px;
-      border-radius: 16px;
-      background: rgba(212, 165, 116, 0.12);
-      border: 1px solid #E2D5C0;
+      border-radius: 12px;
+      background: var(--bg-color);
       text-align: center;
       font-weight: 500;
-      color: #2C2418;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      transition: color 0.3s ease;
     }
 
-    /* Section */
-    .section {
-      padding: 60px 0;
+    .status.error { color: #D43A29; }
+    .status.success { color: var(--nature-light); }
+
+    /* --- Content Layout --- */
+    .section { padding: 60px 0; }
+    
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
     }
 
     .section-title {
-      font-size: 1.8rem;
-      color: #2E7A6E;
+      font-size: 2rem;
       margin-bottom: 16px;
-      font-family: 'Poppins', system-ui, sans-serif;
-    }
-
-    .section-intro {
-      color: #6B5A4A;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 32px;
-      align-items: start;
     }
 
     .tip-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 24px;
-      margin-top: 16px;
+      margin-top: 32px;
     }
 
     .tip {
       background: white;
-      border: 1px solid #E2D5C0;
-      border-radius: 20px;
-      padding: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
     }
 
     .tip h3 {
-      font-size: 1.2rem;
-      color: #D45729;
+      font-size: 1.1rem;
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .tip p {
-      color: #6B5A4A;
-      font-size: 0.9rem;
-    }
-
+    /* --- Controls (D-Pad) --- */
     .control-card {
       background: white;
-      border: 1px solid #E2D5C0;
+      border: 1px solid var(--border-color);
       border-radius: 20px;
-      padding: 24px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
     }
 
-    .control-card h3 {
-      font-size: 1.2rem;
-      color: #2E7A6E;
-      margin-bottom: 12px;
-    }
-
-    .control-card p {
-      color: #6B5A4A;
-      margin-bottom: 16px;
-    }
-
-    .control-buttons {
-      display: flex;
+    .d-pad {
+      display: grid;
+      grid-template-areas:
+        ". up ."
+        "left center right"
+        ". down .";
       gap: 12px;
       justify-content: center;
-      margin-top: 20px;
+      margin: 24px 0;
     }
 
     .ctrl-btn {
-      background: #F5F0E8;
-      border: 2px solid #D45729;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 1.2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--bg-color);
+      border: 2px solid var(--border-color);
+      color: var(--text-main);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: all 0.1s ease;
+      user-select: none;
     }
 
     .ctrl-btn:active {
-      transform: scale(0.95);
-      background: #D45729;
-      color: white;
+      transform: scale(0.92);
+      background: var(--border-color);
     }
 
-    .win-message {
-      background: linear-gradient(135deg, #2E7A6E, #1F5A50);
-      color: white;
-      padding: 12px;
-      border-radius: 12px;
-      text-align: center;
-      margin-top: 16px;
-    }
+    .d-pad .up { grid-area: up; }
+    .d-pad .left { grid-area: left; }
+    .d-pad .right { grid-area: right; }
+    .d-pad .down { grid-area: down; }
+    .d-pad .center { grid-area: center; background: transparent; border: none; font-size: 1.8rem; }
 
-    /* CTA Box */
-    .cta-box {
-      background: linear-gradient(135deg, #D45729, #B8431A);
-      border-radius: 32px;
-      padding: 48px 32px;
-      text-align: center;
-      margin: 40px 0 60px;
-    }
-
-    .cta-box h2 {
-      color: white;
-      font-size: 1.8rem;
-      margin-bottom: 16px;
-    }
-
-    .cta-box p {
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 500px;
-      margin: 0 auto 24px;
-    }
-
-    .cta-box .btn {
-      background: white;
-      color: #D45729;
-    }
-
-    .cta-box .btn:hover {
-      background: #FFF5E8;
-    }
-
-    /* Footer */
+    /* --- Footer --- */
     footer {
-      background: #2C2418;
-      color: #E8DDD0;
-      padding: 40px 0 24px;
-    }
-
-    .footer-content {
+      background: #1A150F;
+      color: #D4C9B8;
+      padding: 60px 0 32px;
       text-align: center;
     }
 
@@ -353,68 +349,36 @@
       display: flex;
       justify-content: center;
       gap: 32px;
-      flex-wrap: wrap;
-      margin: 20px 0;
+      margin-bottom: 24px;
     }
 
     .footer-links a {
-      color: #E8DDD0;
+      color: inherit;
       text-decoration: none;
-      font-weight: 500;
+      transition: color 0.2s;
     }
 
-    .footer-links a:hover {
-      color: #F4B942;
-    }
+    .footer-links a:hover { color: white; }
 
-    /* Responsive */
+    /* --- Responsive --- */
     @media (max-width: 900px) {
-      .hero-inner, .layout, .tip-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero h1 {
-        font-size: 1.8rem;
-      }
+      .hero-inner, .layout { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.2rem; }
     }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      
+      .menu-toggle { display: block; }
       nav {
         display: none;
         width: 100%;
         flex-direction: column;
-        gap: 12px;
-        padding: 20px 0;
+        gap: 8px;
+        padding-top: 16px;
       }
-      
-      nav.active {
-        display: flex;
-      }
-      
-      .container {
-        padding: 0 16px;
-      }
-      
-      .section {
-        padding: 40px 0;
-      }
-      
-      .tip-grid {
-        gap: 16px;
-      }
-      
-      .btn-row {
-        flex-direction: column;
-      }
-      
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
+      nav.active { display: flex; }
+      nav a { text-align: center; padding: 12px; }
+      .game-shell { padding: 16px; }
+      .ctrl-btn { width: 64px; height: 64px; } /* Bigger for touch */
     }
   </style>
 </head>
@@ -423,7 +387,7 @@
   <header>
     <div class="header-content">
       <a class="logo" href="../../index.html">🌿 Gayarsite.re</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
       <nav id="mainNav">
         <a href="../../index.html">Accueil</a>
         <a href="../index.html">Izidor</a>
@@ -436,20 +400,28 @@
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <span class="eyebrow">🎮 Mini-jeu • Labyrinthe</span>
+          <span class="eyebrow">Conte interactif</span>
           <h1>Ti Malo dans la ravine</h1>
-          <p>Aide Ti Malo à traverser la ravine pour retrouver le trésor caché. Utilise les flèches du clavier ou les boutons tactiles pour te déplacer.</p>
-          <div class="btn-row">
-            <a href="#jeu" class="btn btn-primary">🎲 Jouer maintenant</a>
-            <a href="index.html" class="btn btn-secondary">← Retour aux jeux</a>
+          <p>Le légendaire trésor de Grand-Mère Kal est caché au cœur de la ravine. Aide Ti Malo à trouver son chemin à travers la végétation dense sans se perdre.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="#jeu" class="btn btn-primary">Jouer maintenant</a>
           </div>
         </div>
+        
         <div class="game-shell" id="jeu">
-          <div class="maze-container">
-            <canvas id="mazeCanvas" width="400" height="400" style="width:100%; height:auto; max-width:400px; aspect-ratio:1/1"></canvas>
+          <div class="maze-wrapper">
+            <canvas id="mazeCanvas"></canvas>
+            
+            <!-- Overlay de victoire -->
+            <div id="winOverlay" class="win-overlay">
+              <div style="font-size: 3rem; margin-bottom: 16px;">🎁</div>
+              <h3>Trésor trouvé !</h3>
+              <p>Bravo, Ti Malo a récupéré le butin.</p>
+              <button onclick="window.gameInstance.reset()" class="btn btn-primary">Nouvelle ravine</button>
+            </div>
           </div>
           <div class="status" id="gameStatus">
-            🧭 Trouve le chemin jusqu'au trésor !
+            Brosse les lianes et trouve le chemin.
           </div>
         </div>
       </div>
@@ -458,343 +430,259 @@
     <section class="section">
       <div class="container layout">
         <div>
-          <h2 class="section-title">Comment jouer</h2>
-          <p class="section-intro">Guide Ti Malo (🐢) jusqu'au trésor (📦) sans toucher les murs. Le labyrinthe change à chaque partie !</p>
+          <h2 class="section-title">Comment s'orienter ?</h2>
+          <p>Le chemin change à chaque aventure. Observe bien la végétation et guide notre héros (🐢) jusqu'à la boîte mystère (📦).</p>
           <div class="tip-grid">
             <article class="tip">
-              <h3>1. Déplace-toi</h3>
-              <p>Utilise les <strong>flèches du clavier</strong> ← ↑ ↓ → ou les boutons tactiles.</p>
+              <h3><span>⌨️</span> Déplacement</h3>
+              <p>Glisse sur l'écran, utilise la croix directionnelle, ou les flèches de ton clavier.</p>
             </article>
             <article class="tip">
-              <h3>2. Évite les murs</h3>
-              <p>Les murs sont en vert foncé. Ti Malo ne peut pas les traverser.</p>
-            </article>
-            <article class="tip">
-              <h3>3. Trouve le trésor</h3>
-              <p>Atteins la case 📦 pour gagner la partie !</p>
+              <h3><span>🌿</span> Les murs</h3>
+              <p>Les feuillages sombres sont infranchissables. Cherche les chemins clairs.</p>
             </article>
           </div>
         </div>
-        <div class="control-card">
-          <h3>🎮 Commandes</h3>
-          <p>Déplace Ti Malo avec les boutons ci-dessous :</p>
-          <div class="control-buttons">
-            <button class="ctrl-btn" data-dx="0" data-dy="-1">⬆️</button>
-          </div>
-          <div class="control-buttons">
-            <button class="ctrl-btn" data-dx="-1" data-dy="0">⬅️</button>
-            <button class="ctrl-btn" data-dx="1" data-dy="0">➡️</button>
-          </div>
-          <div class="control-buttons">
-            <button class="ctrl-btn" data-dx="0" data-dy="1">⬇️</button>
-          </div>
-          <button id="resetBtn" style="margin-top: 16px; width: 100%;" class="btn btn-secondary">🔄 Nouveau labyrinthe</button>
-        </div>
-      </div>
-    </section>
 
-    <section class="container">
-      <div class="cta-box">
-        <h2>🏆 Prêt pour l'aventure ?</h2>
-        <p>Reviens jouer quand tu veux et découvre tous les jeux de l'univers Izidor.</p>
-        <a class="btn" href="index.html">🎮 Voir tous les jeux</a>
+        <div class="control-card">
+          <h3 style="margin-bottom: 8px;">Boussole</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Guide Ti Malo</p>
+          
+          <div class="d-pad">
+            <button class="ctrl-btn up" data-dx="0" data-dy="-1" aria-label="Haut">↑</button>
+            <button class="ctrl-btn left" data-dx="-1" data-dy="0" aria-label="Gauche">←</button>
+            <div class="ctrl-btn center">🐢</div>
+            <button class="ctrl-btn right" data-dx="1" data-dy="0" aria-label="Droite">→</button>
+            <button class="ctrl-btn down" data-dx="0" data-dy="1" aria-label="Bas">↓</button>
+          </div>
+          
+          <button onclick="window.gameInstance.reset()" class="btn btn-secondary" style="width: 100%;">🔄 Recommencer</button>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-content">
+    <div class="container">
       <div class="footer-links">
         <a href="../../index.html">Accueil</a>
         <a href="../index.html">Izidor</a>
         <a href="index.html">Jeux</a>
-        <a href="mailto:contact@gayarsite.re">Contact</a>
       </div>
-      <p>📖 Gayarsite.re — Contes et traditions orales de La Réunion</p>
-      <p class="copyright">© 2025 Tous droits réservés — Jeu du labyrinthe Ti Malo</p>
+      <p style="margin-bottom: 8px;">Gayarsite.re — Contes et traditions de La Réunion</p>
+      <p style="font-size: 0.85rem; opacity: 0.6;">© 2025 Tous droits réservés.</p>
     </div>
   </footer>
 
   <script>
-    (function() {
-      // Dimensions du labyrinthe
-      const SIZE = 11; // 11x11 pour un bon défi
-      let maze = [];
-      let playerPos = { x: 1, y: 1 };
-      let treasurePos = { x: SIZE-2, y: SIZE-2 };
-      let gameActive = true;
-      
+    // Menu Mobile
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('mainNav').classList.toggle('active');
+    });
+
+    // Moteur du jeu
+    window.gameInstance = (function() {
       const canvas = document.getElementById('mazeCanvas');
       const ctx = canvas.getContext('2d');
       const statusDiv = document.getElementById('gameStatus');
+      const winOverlay = document.getElementById('winOverlay');
       
-      // Taille des cellules en pixels (sera recalculée)
-      let cellW = 400 / SIZE;
-      let cellH = 400 / SIZE;
+      const SIZE = 13; // Plus grand pour un meilleur rendu de labyrinthe
+      let maze = [];
+      let gameActive = false;
       
-      // Directions
-      const dirs = [
-        { dx: 0, dy: -1 }, // haut
-        { dx: 1, dy: 0 },  // droite
-        { dx: 0, dy: 1 },  // bas
-        { dx: -1, dy: 0 }  // gauche
-      ];
-      
-      // Générer un labyrinthe avec l'algorithme de backtracking récursif
+      // Système de coordonnées fluides pour l'animation
+      let player = { logicalX: 1, logicalY: 1, visualX: 1, visualY: 1 };
+      let treasure = { x: SIZE-2, y: SIZE-2 };
+      let decors = [];
+
+      // Générateur (Recursive Backtracking)
       function generateMaze() {
-        // Initialiser la grille avec des murs (1 = mur, 0 = chemin)
         const grid = Array(SIZE).fill().map(() => Array(SIZE).fill(1));
+        const stack = [{ x: 1, y: 1 }];
+        grid[1][1] = 0;
         
-        // Créer des passages (toutes les cases impaires sont des cellules potentielles)
-        for (let y = 1; y < SIZE-1; y += 2) {
-          for (let x = 1; x < SIZE-1; x += 2) {
-            grid[y][x] = 0;
-          }
-        }
-        
-        // Backtracking pour créer des passages
-        const stack = [];
-        const startX = 1, startY = 1;
-        grid[startY][startX] = 0;
-        stack.push({ x: startX, y: startY });
-        
+        const dirs = [
+          {dx: 0, dy: -2}, {dx: 2, dy: 0}, 
+          {dx: 0, dy: 2}, {dx: -2, dy: 0}
+        ];
+
         while (stack.length > 0) {
           const current = stack[stack.length - 1];
-          const neighbors = [];
-          
-          // Vérifier les voisins à 2 cases de distance
-          for (const dir of dirs) {
-            const nx = current.x + dir.dx * 2;
-            const ny = current.y + dir.dy * 2;
-            if (nx > 0 && nx < SIZE-1 && ny > 0 && ny < SIZE-1 && grid[ny][nx] === 0) {
-              neighbors.push({ x: nx, y: ny, dir: dir });
-            }
-          }
-          
+          const neighbors = dirs
+            .map(d => ({ x: current.x + d.dx, y: current.y + d.dy, d }))
+            .filter(n => n.x > 0 && n.x < SIZE-1 && n.y > 0 && n.y < SIZE-1 && grid[n.y][n.x] === 1);
+
           if (neighbors.length > 0) {
             const next = neighbors[Math.floor(Math.random() * neighbors.length)];
-            // Casser le mur entre current et next
-            const wallX = current.x + next.dir.dx;
-            const wallY = current.y + next.dir.dy;
-            grid[wallY][wallX] = 0;
-            stack.push({ x: next.x, y: next.y });
+            grid[current.y + next.d.dy/2][current.x + next.d.dx/2] = 0; // Casser le mur
+            grid[next.y][next.x] = 0;
+            stack.push(next);
           } else {
             stack.pop();
           }
         }
         
-        // S'assurer que l'entrée et la sortie sont accessibles
-        grid[1][0] = 0; // Entrée à gauche
-        grid[SIZE-2][SIZE-1] = 0; // Sortie à droite
-        
+        // Garantir l'entrée et la sortie
+        grid[1][0] = 0; 
+        grid[SIZE-2][SIZE-1] = 0;
         return grid;
       }
-      
-      // Initialiser ou réinitialiser le labyrinthe
-      function initMaze() {
+
+      function initGame() {
         maze = generateMaze();
-        // Placer le joueur à l'entrée
-        playerPos = { x: 1, y: 1 };
-        // Placer le trésor à la sortie
-        treasurePos = { x: SIZE-2, y: SIZE-2 };
+        player = { logicalX: 1, logicalY: 1, visualX: 1, visualY: 1 };
+        treasure = { x: SIZE-2, y: SIZE-2 };
         gameActive = true;
-        statusDiv.innerHTML = "🧭 Trouve le chemin jusqu'au trésor !";
-        statusDiv.style.background = "rgba(212, 165, 116, 0.12)";
-        drawMaze();
-      }
-      
-      // Dessiner le labyrinthe
-      function drawMaze() {
-        if (!ctx) return;
         
-        cellW = canvas.width / SIZE;
-        cellH = canvas.height / SIZE;
-        
-        for (let y = 0; y < SIZE; y++) {
-          for (let x = 0; x < SIZE; x++) {
-            if (maze[y][x] === 1) {
-              // Mur
-              ctx.fillStyle = '#2d5a2a';
-              ctx.fillRect(x * cellW, y * cellH, cellW, cellH);
-              // Texture de feuillage
-              ctx.fillStyle = '#1a3a18';
-              ctx.fillRect(x * cellW + 2, y * cellH + 2, cellW - 4, cellH - 4);
-            } else {
-              // Chemin
-              ctx.fillStyle = '#f5e6c8';
-              ctx.fillRect(x * cellW, y * cellH, cellW, cellH);
-              // Herbe
-              ctx.fillStyle = '#e0d0a8';
-              ctx.fillRect(x * cellW + 1, y * cellH + 1, cellW - 2, cellH - 2);
+        // Placer des petits décors fixes
+        decors = [];
+        for(let y=0; y<SIZE; y++) {
+          for(let x=0; x<SIZE; x++) {
+            if(maze[y][x] === 0 && Math.random() < 0.1) {
+              decors.push({x, y, emoji: Math.random() > 0.5 ? '🌿' : '🌱'});
             }
           }
         }
+
+        winOverlay.classList.remove('active');
+        setStatus("Brosse les lianes et trouve le chemin.", "");
+      }
+
+      function setStatus(msg, type) {
+        statusDiv.textContent = msg;
+        statusDiv.className = 'status ' + type;
+      }
+
+      function tryMove(dx, dy) {
+        if (!gameActive) return;
         
-        // Dessiner le trésor
-        const tx = treasurePos.x, ty = treasurePos.y;
-        ctx.fillStyle = '#F4B942';
-        ctx.fillRect(tx * cellW + 4, ty * cellH + 4, cellW - 8, cellH - 8);
-        ctx.fillStyle = '#D45729';
-        ctx.font = `${Math.floor(cellW * 0.6)}px Arial`;
+        const nx = player.logicalX + dx;
+        const ny = player.logicalY + dy;
+        
+        if (nx >= 0 && nx < SIZE && ny >= 0 && ny < SIZE && maze[ny][nx] === 0) {
+          player.logicalX = nx;
+          player.logicalY = ny;
+          setStatus("Ti Malo avance...", "");
+          
+          if (nx === treasure.x && ny === treasure.y) {
+            gameActive = false;
+            setTimeout(() => {
+              winOverlay.classList.add('active');
+              setStatus("Trésor trouvé !", "success");
+            }, 300); // Laisser l'animation d'arrivée se terminer
+          }
+        } else {
+          setStatus("Aïe, c'est bloqué par la végétation !", "error");
+        }
+      }
+
+      // Boucle de rendu fluide (60fps)
+      function render(time) {
+        // Redimensionnement dynamique pour Canvas Net
+        const rect = canvas.parentElement.getBoundingClientRect();
+        if (canvas.width !== rect.width) {
+          // Double résolution pour écrans Retina
+          canvas.width = rect.width * window.devicePixelRatio;
+          canvas.height = rect.height * window.devicePixelRatio;
+          ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        const size = rect.width;
+        const cell = size / SIZE;
+
+        ctx.clearRect(0, 0, size, size);
+
+        // 1. Fond (Murs / Ravine)
+        ctx.fillStyle = '#1F3F23';
+        ctx.fillRect(0, 0, size, size);
+
+        // 2. Chemins (Légèrement plus grands pour éviter les bordures de pixel)
+        ctx.fillStyle = '#F1E5D1';
+        for(let y=0; y<SIZE; y++) {
+          for(let x=0; x<SIZE; x++) {
+            if(maze[y][x] === 0) {
+              ctx.fillRect(x * cell - 0.5, y * cell - 0.5, cell + 1, cell + 1);
+            }
+          }
+        }
+
+        // 3. Décors (herbes)
+        ctx.font = `${cell * 0.4}px sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('📦', tx * cellW + cellW/2, ty * cellH + cellH/2);
-        
-        // Dessiner Ti Malo (joueur)
-        if (gameActive) {
-          const px = playerPos.x, py = playerPos.y;
-          ctx.fillStyle = '#176b3a';
-          ctx.beginPath();
-          ctx.arc(px * cellW + cellW/2, py * cellH + cellH/2, cellW * 0.35, 0, 2 * Math.PI);
-          ctx.fill();
-          ctx.font = `${Math.floor(cellW * 0.55)}px Arial`;
-          ctx.fillStyle = 'white';
-          ctx.fillText('🐢', px * cellW + cellW/2, py * cellH + cellH/2);
-        }
-        
-        // Ajouter des petits décors
-        for (let y = 0; y < SIZE; y++) {
-          for (let x = 0; x < SIZE; x++) {
-            if (maze[y][x] === 0 && Math.random() < 0.05) {
-              ctx.font = `${Math.floor(cellW * 0.3)}px Arial`;
-              ctx.fillStyle = '#6B5A4A';
-              ctx.fillText('🌿', x * cellW + 3, y * cellH + cellH - 3);
-            }
-          }
-        }
+        decors.forEach(d => {
+          ctx.fillText(d.emoji, d.x * cell + cell/2, d.y * cell + cell/2);
+        });
+
+        // 4. Trésor (Animation de pulsation douce)
+        const pulse = 1 + Math.sin(time / 300) * 0.08;
+        ctx.save();
+        ctx.translate(treasure.x * cell + cell/2, treasure.y * cell + cell/2);
+        ctx.scale(pulse, pulse);
+        ctx.font = `${cell * 0.6}px sans-serif`;
+        ctx.fillText('📦', 0, 0);
+        ctx.restore();
+
+        // 5. Joueur (Interpolation fluide)
+        // Rapproche la position visuelle de la position logique
+        player.visualX += (player.logicalX - player.visualX) * 0.3;
+        player.visualY += (player.logicalY - player.visualY) * 0.3;
+
+        ctx.font = `${cell * 0.7}px sans-serif`;
+        ctx.fillText('🐢', player.visualX * cell + cell/2, player.visualY * cell + cell/2);
+
+        requestAnimationFrame(render);
       }
+
+      // Écouteurs d'événements
+      window.addEventListener('keydown', (e) => {
+        if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
+        switch(e.key) {
+          case 'ArrowUp': tryMove(0, -1); break;
+          case 'ArrowDown': tryMove(0, 1); break;
+          case 'ArrowLeft': tryMove(-1, 0); break;
+          case 'ArrowRight': tryMove(1, 0); break;
+        }
+      });
+
+      document.querySelectorAll('.ctrl-btn[data-dx]').forEach(btn => {
+        // Support click & touch
+        btn.addEventListener('pointerdown', (e) => {
+          e.preventDefault(); // Empêche le double fire sur mobile
+          const dx = parseInt(btn.dataset.dx);
+          const dy = parseInt(btn.dataset.dy);
+          tryMove(dx, dy);
+        });
+      });
+
+      // Swipe support sur le canvas
+      let touchStartX = 0, touchStartY = 0;
+      canvas.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, {passive: true});
       
-      // Vérifier si une case est un mur
-      function isWall(x, y) {
-        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return true;
-        return maze[y][x] === 1;
-      }
-      
-      // Déplacer le joueur
-      function movePlayer(dx, dy) {
-        if (!gameActive) return false;
+      canvas.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
+        const dx = touchEndX - touchStartX;
+        const dy = touchEndY - touchStartY;
         
-        const newX = playerPos.x + dx;
-        const newY = playerPos.y + dy;
-        
-        if (!isWall(newX, newY)) {
-          playerPos.x = newX;
-          playerPos.y = newY;
-          drawMaze();
-          
-          // Vérifier si le joueur a atteint le trésor
-          if (playerPos.x === treasurePos.x && playerPos.y === treasurePos.y) {
-            gameActive = false;
-            statusDiv.innerHTML = "🎉 Félicitations ! Ti Malo a trouvé le trésor ! 🎉";
-            statusDiv.style.background = "#2E7A6E";
-            statusDiv.style.color = "white";
-            drawMaze();
-            
-            // Afficher un message de victoire
-            ctx.fillStyle = 'rgba(46, 122, 110, 0.9)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 24px Poppins, system-ui';
-            ctx.textAlign = 'center';
-            ctx.fillText('🏆 VICTOIRE ! 🏆', canvas.width/2, canvas.height/2);
-            ctx.font = '14px system-ui';
-            ctx.fillText('Clique sur "Nouveau labyrinthe" pour rejouer', canvas.width/2, canvas.height/2 + 40);
-            return true;
-          }
-          
-          statusDiv.innerHTML = "🐢 Ti Malo avance... continue !";
-          return true;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          if (Math.abs(dx) > 30) tryMove(dx > 0 ? 1 : -1, 0);
         } else {
-          statusDiv.innerHTML = "🚫 Mur ! Ti Malo ne peut pas passer par là.";
-          statusDiv.style.background = "#ffcccc";
-          setTimeout(() => {
-            if (gameActive) {
-              statusDiv.style.background = "rgba(212, 165, 116, 0.12)";
-              statusDiv.innerHTML = "🧭 Trouve le chemin jusqu'au trésor !";
-            }
-          }, 800);
-          return false;
+          if (Math.abs(dy) > 30) tryMove(0, dy > 0 ? 1 : -1);
         }
-      }
-      
-      // Redimensionner et redessiner
-      function resizeAndDraw() {
-        const container = document.querySelector('.maze-container');
-        const size = Math.min(container.clientWidth - 40, 400);
-        canvas.width = size;
-        canvas.height = size;
-        canvas.style.width = `${size}px`;
-        canvas.style.height = `${size}px`;
-        drawMaze();
-      }
-      
-      // Événements clavier
-      function handleKeydown(e) {
-        const key = e.key;
-        switch(key) {
-          case 'ArrowUp': movePlayer(0, -1); break;
-          case 'ArrowDown': movePlayer(0, 1); break;
-          case 'ArrowLeft': movePlayer(-1, 0); break;
-          case 'ArrowRight': movePlayer(1, 0); break;
-          default: return;
-        }
-        e.preventDefault();
-      }
-      
-      // Initialisation
-      function setup() {
-        initMaze();
-        resizeAndDraw();
-        
-        window.addEventListener('resize', () => {
-          resizeAndDraw();
-        });
-        
-        window.addEventListener('keydown', handleKeydown);
-        
-        // Boutons tactiles
-        document.querySelectorAll('.ctrl-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            const dx = parseInt(btn.dataset.dx);
-            const dy = parseInt(btn.dataset.dy);
-            if (!isNaN(dx) && !isNaN(dy)) {
-              movePlayer(dx, dy);
-            }
-          });
-        });
-        
-        // Bouton reset
-        document.getElementById('resetBtn').addEventListener('click', () => {
-          initMaze();
-          drawMaze();
-        });
-      }
-      
-      // Observer le redimensionnement du canvas
-      const resizeObserver = new ResizeObserver(() => {
-        resizeAndDraw();
-      });
-      resizeObserver.observe(canvas);
-      
-      setup();
+      }, {passive: true});
+
+      // Lancement
+      initGame();
+      requestAnimationFrame(render);
+
+      // Exposer la fonction de reset
+      return { reset: initGame };
     })();
-    
-    // Menu mobile
-    const toggleBtn = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('mainNav');
-    if (toggleBtn && navMenu) {
-      toggleBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-      });
-      
-      document.querySelectorAll('#mainNav a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (window.innerWidth <= 768) {
-            navMenu.classList.remove('active');
-          }
-        });
-      });
-    }
   </script>
 </body>
 </html>

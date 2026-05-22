@@ -8,92 +8,116 @@
   <meta name="keywords" content="mots croisés, ti malo, jeu enfants, vocabulaire, réunion, ravine, trésor">
   <link rel="stylesheet" href="../../assets/commun/css/style.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* ==============================
+       VARIABLES & RESET
+       ============================== */
+    :root {
+      --bg-page: #FDF8F0;
+      --bg-panel: #FFFFFF;
+      --bg-alt: #F5EDE0;
+      
+      --text-main: #4A3728;
+      --text-muted: #6B5A4A;
+      
+      --color-primary: #D45729;
+      --color-primary-hover: #B8431A;
+      --color-secondary: #2E7A6E;
+      --color-secondary-hover: #1F5A50;
+      
+      --border-color: #E2D5C0;
+      
+      --grid-bg: #D4C4A8;
+      --cell-bg: #FFFFFF;
+      --cell-highlight: #FFF2E5;
+      --cell-correct: #E8F5E9;
+      --cell-correct-text: #2E7A6E;
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background: linear-gradient(135deg, #FDF8F0 0%, #F5EDE0 100%);
-      font-family: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
-      color: #4A3728;
+      background: var(--bg-page);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
+      width: 100%;
     }
 
-    /* Header */
+    /* ==============================
+       HEADER & NAV
+       ============================== */
     header {
-      background: rgba(253, 248, 240, 0.96);
-      backdrop-filter: blur(8px);
+      background: rgba(253, 248, 240, 0.95);
+      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 2px solid #E2D5C0;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .header-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
       padding: 16px 24px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: #D45729;
+      color: var(--color-primary);
       text-decoration: none;
-      font-family: 'Poppins', system-ui, sans-serif;
-    }
-
-    .logo:hover {
-      color: #B8431A;
+      letter-spacing: -0.5px;
     }
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 8px;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     nav a {
       text-decoration: none;
-      color: #4A3728;
+      color: var(--text-main);
       font-weight: 500;
       padding: 8px 16px;
-      border-radius: 30px;
+      border-radius: 40px;
       transition: all 0.2s ease;
+      font-size: 0.95rem;
     }
 
     nav a:hover, nav a.active {
-      background: #D45729;
+      background: var(--color-primary);
       color: white;
     }
 
     .menu-toggle {
       display: none;
       background: none;
-      border: 2px solid #D45729;
-      font-size: 1.5rem;
-      padding: 6px 14px;
-      border-radius: 30px;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      padding: 6px 12px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
-    /* Page header */
+    /* ==============================
+       HERO & BUTTONS
+       ============================== */
     .page-header {
-      padding: 40px 0 20px;
+      padding: 48px 0 24px;
     }
 
     .page-header-inner {
@@ -105,23 +129,22 @@
     }
 
     .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #D45729;
+      color: var(--color-primary);
       margin-bottom: 8px;
       display: block;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .page-header h1 {
-      font-size: 2rem;
-      color: #2E7A6E;
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 2.2rem;
+      color: var(--color-secondary);
+      line-height: 1.2;
       margin: 0;
     }
 
-    /* Boutons */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -132,277 +155,331 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 20px;
+      padding: 10px 24px;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       transition: all 0.2s ease;
       cursor: pointer;
-      border: none;
+      border: 1px solid transparent;
       font-family: inherit;
     }
 
     .btn-secondary {
-      background: rgba(255, 250, 240, 0.9);
-      border: 1px solid #E2D5C0;
-      color: #4A3728;
+      background: var(--bg-panel);
+      border-color: var(--border-color);
+      color: var(--text-main);
     }
 
     .btn-secondary:hover {
-      background: #D45729;
-      color: white;
-      border-color: #D45729;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid #E2D5C0;
-      color: #6B5A4A;
-    }
-
-    .btn-ghost:hover {
-      border-color: #D45729;
-      color: #D45729;
+      border-color: var(--text-main);
+      background: var(--bg-alt);
     }
 
     .btn-primary {
-      background: #D45729;
+      background: var(--color-primary);
       color: white;
     }
 
     .btn-primary:hover {
-      background: #B8431A;
-      transform: translateY(-2px);
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
     }
 
-    .btn-success {
-      background: #2E7A6E;
-      color: white;
+    .btn-ghost {
+      background: transparent;
+      border-color: transparent;
+      color: var(--text-muted);
     }
 
-    .btn-success:hover {
-      background: #1F5A50;
+    .btn-ghost:hover {
+      color: var(--color-primary);
+      background: rgba(212, 87, 41, 0.05);
     }
 
-    /* Intro band */
     .intro-band {
-      background: linear-gradient(135deg, rgba(212, 165, 116, 0.12), rgba(255, 250, 240, 0.95));
-      border: 1px solid #E2D5C0;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 32px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(74, 55, 40, 0.03);
     }
 
     .intro-band p {
-      color: #6B5A4A;
-      line-height: 1.6;
+      color: var(--text-muted);
       margin: 0;
+      font-size: 1.05rem;
     }
 
-    /* Layout jeu */
+    /* ==============================
+       LAYOUT JEU
+       ============================== */
+    main { flex: 1; }
+
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 340px;
+      grid-template-columns: minmax(0, 1.2fr) 1fr;
       gap: 32px;
       align-items: start;
     }
 
-    /* Grille de mots croisés */
+    /* ==============================
+       GRILLE MOTS CROISÉS
+       ============================== */
     .grid-wrap {
-      background: linear-gradient(135deg, #FFF9F0, #F5EDE0);
-      border: 2px solid #E2D5C0;
-      border-radius: 24px;
-      padding: 20px;
-      overflow-x: auto;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(74, 55, 40, 0.04);
+    }
+
+    .crossword-container {
+      max-width: 480px;
+      margin: 0 auto;
     }
 
     .crossword-grid {
       display: grid;
-      grid-template-columns: repeat(8, minmax(45px, 60px));
-      gap: 4px;
-      justify-content: center;
-      margin: 0 auto;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 2px;
+      background: var(--grid-bg);
+      border: 2px solid var(--grid-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
     }
 
     .cell {
       position: relative;
-      aspect-ratio: 1 / 1;
-      background: white;
-      border: 2px solid #E2D5C0;
-      border-radius: 10px;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.15s ease;
+      transition: background 0.2s ease;
     }
 
-    .cell.empty {
-      background: #D4C4A8;
-      border-color: #B8A88A;
+    .cell.has-letter {
+      background: var(--cell-bg);
+      cursor: pointer;
+    }
+
+    .cell.has-letter.highlighted {
+      background: var(--cell-highlight);
+    }
+
+    .cell.has-letter.active {
+      background: #FFE0B2;
+    }
+
+    .cell.correct {
+      background: var(--cell-correct) !important;
     }
 
     .cell input {
       width: 100%;
       height: 100%;
       text-align: center;
-      font-size: 1.3rem;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
       font-weight: 700;
       text-transform: uppercase;
       border: none;
       background: transparent;
-      font-family: 'Poppins', system-ui, sans-serif;
-      color: #D45729;
+      color: var(--text-main);
       outline: none;
-      border-radius: 8px;
-    }
-
-    .cell input:focus {
-      background: #FFF3E0;
-      box-shadow: 0 0 0 2px #D45729;
+      cursor: pointer;
+      caret-color: transparent; /* Masque le curseur classique */
     }
 
     .cell.correct input {
-      color: #2E7A6E;
-      background: #E8F5E9;
+      color: var(--cell-correct-text);
+      pointer-events: none;
     }
 
     .num {
       position: absolute;
-      top: 3px;
-      left: 5px;
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: #D45729;
+      top: 4px;
+      left: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
       pointer-events: none;
+      line-height: 1;
     }
 
-    /* Panneau définitions */
+    /* ==============================
+       PANNEAU DÉFINITIONS
+       ============================== */
     .panel {
-      background: white;
-      border: 2px solid #E2D5C0;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 90px;
     }
 
     .panel h3 {
-      font-size: 1.3rem;
-      color: #2E7A6E;
-      margin-bottom: 16px;
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 1.25rem;
+      color: var(--color-secondary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .clues {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 12px;
     }
 
     .clue {
-      padding: 12px;
-      background: #FDF8F0;
-      border-radius: 16px;
-      border-left: 4px solid #D45729;
+      padding: 16px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .clue:hover, .clue.active {
+      border-color: var(--color-primary);
+      background: var(--cell-highlight);
     }
 
     .clue strong {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-primary);
+      font-size: 0.9rem;
       margin-bottom: 6px;
-      color: #D45729;
-      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .clue p {
-      color: #4A3728;
-      font-size: 0.9rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
       margin: 0;
     }
 
-    /* Zone de score */
+    /* ==============================
+       SCORE & FEEDBACK
+       ============================== */
     .score-area {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 2px solid #E2D5C0;
-      text-align: center;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
 
     .score {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #2E7A6E;
-      margin-bottom: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-secondary);
+      background: var(--cell-correct);
+      padding: 8px 16px;
+      border-radius: 30px;
     }
 
-    /* Tips */
+    .victory-message {
+      background: var(--color-secondary);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 100%;
+    }
+
+    .error-message {
+      background: #FDF1F1;
+      color: #D32F2F;
+      border: 1px solid #F8D7D7;
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ==============================
+       SECTIONS ANNEXES
+       ============================== */
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--color-secondary);
+      margin: 64px 0 32px;
+      text-align: center;
+    }
+
     .tip-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 16px;
     }
 
     .tip {
-      background: white;
-      border: 1px solid #E2D5C0;
-      border-radius: 20px;
-      padding: 20px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s ease;
     }
+
+    .tip:hover { transform: translateY(-4px); }
 
     .tip h3 {
       font-size: 1.1rem;
-      color: #D45729;
-      margin-bottom: 8px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .tip p {
-      color: #6B5A4A;
-      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
-    .section-title {
-      font-size: 1.6rem;
-      color: #2E7A6E;
-      margin-bottom: 24px;
-      font-family: 'Poppins', system-ui, sans-serif;
-    }
-
-    /* CTA Box */
     .cta-box {
-      background: linear-gradient(135deg, #D45729, #B8431A);
-      border-radius: 32px;
-      padding: 40px 32px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 48px 32px;
       text-align: center;
-      margin: 40px 0 60px;
+      margin: 64px auto;
+      max-width: 800px;
+      box-shadow: 0 8px 32px rgba(74, 55, 40, 0.05);
     }
 
     .cta-box h2 {
-      color: white;
-      font-size: 1.6rem;
+      color: var(--color-secondary);
+      font-size: 1.8rem;
       margin-bottom: 16px;
     }
 
     .cta-box p {
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 500px;
-      margin: 0 auto 24px;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin: 0 auto 32px;
     }
 
-    .cta-box .btn {
-      background: white;
-      color: #D45729;
-    }
-
-    .cta-box .btn:hover {
-      background: #FFF5E8;
-    }
-
-    /* Footer */
+    /* ==============================
+       FOOTER
+       ============================== */
     footer {
-      background: #4A3728;
-      color: #E8DDD0;
-      padding: 40px 0 24px;
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border-color);
+      padding: 48px 0 32px;
+      margin-top: auto;
     }
 
     .footer-content {
@@ -414,101 +491,48 @@
       justify-content: center;
       gap: 32px;
       flex-wrap: wrap;
-      margin: 20px 0;
+      margin-bottom: 24px;
     }
 
     .footer-links a {
-      color: #E8DDD0;
+      color: var(--text-muted);
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.2s ease;
     }
 
-    .footer-links a:hover {
-      color: #F4B942;
-    }
+    .footer-links a:hover { color: var(--color-primary); }
 
-    /* Victoire */
-    .victory-message {
-      background: #2E7A6E;
-      color: white;
-      padding: 12px;
-      border-radius: 12px;
+    .copyright {
+      color: var(--text-muted);
+      font-size: 0.85rem;
       margin-top: 16px;
-      text-align: center;
-      font-weight: 600;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .layout, .tip-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .crossword-grid {
-        grid-template-columns: repeat(8, minmax(35px, 45px));
-        gap: 3px;
-      }
-      
-      .cell input {
-        font-size: 1rem;
-      }
+    /* ==============================
+       RESPONSIVE
+       ============================== */
+    @media (max-width: 992px) {
+      .layout { grid-template-columns: 1fr; gap: 40px; }
+      .panel { position: static; }
+      .tip-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      
+      .menu-toggle { display: block; }
       nav {
         display: none;
         width: 100%;
         flex-direction: column;
-        gap: 12px;
-        padding: 20px 0;
+        padding: 16px 0;
       }
-      
-      nav.active {
-        display: flex;
-      }
-      
-      .container {
-        padding: 0 16px;
-      }
-      
-      .page-header h1 {
-        font-size: 1.5rem;
-      }
-      
-      .btn-row {
-        flex-direction: column;
-        width: 100%;
-      }
-      
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-      
-      .crossword-grid {
-        grid-template-columns: repeat(8, minmax(30px, 40px));
-        gap: 2px;
-      }
-      
-      .num {
-        font-size: 0.5rem;
-        top: 2px;
-        left: 3px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .crossword-grid {
-        grid-template-columns: repeat(8, minmax(28px, 35px));
-      }
-      
-      .cell input {
-        font-size: 0.8rem;
-      }
+      nav.active { display: flex; }
+      .page-header h1 { font-size: 1.8rem; }
+      .btn-row { width: 100%; }
+      .btn { width: 100%; }
+      .grid-wrap { padding: 16px; }
+      .cell input { font-size: 1.2rem; }
+      .num { font-size: 0.6rem; top: 2px; left: 4px; }
     }
   </style>
 </head>
@@ -516,12 +540,12 @@
 
   <header>
     <div class="header-content">
-      <a class="logo" href="../../index.html">🌿 Gayarsite.re</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+      <a class="logo" href="../../index.html" aria-label="Retour à l'accueil Gayarsite">🌿 Gayarsite.re</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
       <nav id="mainNav">
         <a href="../../index.html">Accueil</a>
         <a href="../index.html">Izidor</a>
-        <a class="active" href="index.html">Jeux</a>
+        <a class="active" href="index.html" aria-current="page">Jeux</a>
       </nav>
     </div>
   </header>
@@ -530,63 +554,64 @@
     <section class="page-header">
       <div class="container page-header-inner">
         <div>
-          <span class="eyebrow">🧩 Mini-jeu • Mots croisés</span>
+          <span class="eyebrow">Mini-jeu • Mots croisés</span>
           <h1>Les mots du trésor</h1>
         </div>
         <div class="btn-row">
           <a href="../index.html" class="btn btn-secondary">← Retour Izidor</a>
-          <a href="index.html" class="btn btn-ghost">🎮 Tous les jeux</a>
-          <a href="../../index.html" class="btn btn-ghost">🏠 Accueil</a>
+          <a href="index.html" class="btn btn-ghost">Tous les jeux</a>
         </div>
       </div>
     </section>
 
     <div class="container">
       <div class="intro-band">
-        <p>📖 Complète la grille avec les mots de l'histoire de Ti Malo : la ravine, le trésor, le partage et la nature réunionnaise.</p>
+        <span style="font-size: 2rem;" aria-hidden="true">📖</span>
+        <p>Complète la grille avec les mots de l'histoire de Ti Malo. Clique sur une case ou sur une définition pour commencer à jouer.</p>
       </div>
     </div>
 
     <section id="grille">
       <div class="container layout">
         <div class="grid-wrap">
-          <div class="crossword-grid" id="crosswordGrid"></div>
+          <div class="crossword-container">
+            <div class="crossword-grid" id="crosswordGrid" role="grid" aria-label="Grille de mots croisés"></div>
+          </div>
+          
           <div class="score-area">
-            <div class="score" id="scoreDisplay">✅ Mots trouvés : 0 / 5</div>
-            <div class="btn-row" style="justify-content: center;">
-              <button class="btn btn-secondary" id="checkBtn">🔍 Vérifier</button>
-              <button class="btn btn-ghost" id="resetBtn">🔄 Effacer tout</button>
+            <div class="score" id="scoreDisplay" aria-live="polite">Progression : 0 / 5 mots</div>
+            <div class="btn-row" style="justify-content: center; width: 100%;">
+              <button class="btn btn-primary" id="checkBtn">Vérifier la grille</button>
+              <button class="btn btn-ghost" id="resetBtn">Effacer</button>
             </div>
-            <div id="victoryMessage"></div>
+            <div id="feedbackMessage" aria-live="assertive"></div>
           </div>
         </div>
 
         <aside class="panel">
           <h3>📝 Définitions</h3>
-          <div class="clues">
-            <div class="clue">
-              <strong>⬇️ 1. Lieu où l'eau et les cailloux descendent (6 lettres)</strong>
-              <p>_ _ _ _ _ _</p>
+          <div class="clues" id="cluesContainer">
+            <!-- Rempli en JS pour lier les clics -->
+            <div class="clue" data-word-id="1">
+              <strong>⬇️ 1. Vertical</strong>
+              <p>Lieu où l'eau et les cailloux descendent (6 lettres)</p>
             </div>
-            <div class="clue">
-              <strong>⬆️ 2. Ce que Ti Malo découvre dans la ravine (6 lettres)</strong>
-              <p>_ _ _ _ _ _</p>
+            <div class="clue" data-word-id="2">
+              <strong>➡️ 2. Horizontal</strong>
+              <p>Ce que Ti Malo découvre dans la ravine (6 lettres)</p>
             </div>
-            <div class="clue">
-              <strong>➡️ 3. Ce que l'on doit faire avec les autres (7 lettres)</strong>
-              <p>_ _ _ _ _ _ _</p>
+            <div class="clue" data-word-id="3">
+              <strong>➡️ 3. Horizontal</strong>
+              <p>Ce que l'on doit faire avec les autres (7 lettres)</p>
             </div>
-            <div class="clue">
-              <strong>⬇️ 4. Le vieux monsieur du conte (6 lettres)</strong>
-              <p>_ _ _ _ _ _</p>
+            <div class="clue" data-word-id="4">
+              <strong>⬇️ 4. Vertical</strong>
+              <p>Le vieux monsieur du conte (6 lettres)</p>
             </div>
-            <div class="clue">
-              <strong>➡️ 5. Tout autour de Ti Malo à La Réunion (6 lettres)</strong>
-              <p>_ _ _ _ _ _</p>
+            <div class="clue" data-word-id="5">
+              <strong>➡️ 5. Horizontal</strong>
+              <p>Tout autour de Ti Malo à La Réunion (6 lettres)</p>
             </div>
-          </div>
-          <div style="background: #FDF8F0; border-radius: 16px; padding: 12px; margin-top: 16px;">
-            <p style="font-size: 0.8rem; color: #6B5A4A; margin: 0;">💡 Astuce : Les mots sont : RAVINE, TRESOR, PARTAGE, IZIDOR, NATURE</p>
           </div>
         </aside>
       </div>
@@ -594,19 +619,19 @@
 
     <section>
       <div class="container">
-        <h2 class="section-title">📚 Aide et vocabulaire</h2>
+        <h2 class="section-title">Aide et astuces</h2>
         <div class="tip-grid">
           <article class="tip">
             <h3>🌊 Regarde le décor</h3>
-            <p>La ravine et la nature donnent les bons mots. Dans le conte, Ti Malo traverse une ravine.</p>
+            <p>La ravine et la nature donnent les bons mots. Dans le conte, Ti Malo traverse une ravine asséchée.</p>
           </article>
           <article class="tip">
             <h3>📖 Pense à l'histoire</h3>
-            <p>Chaque indice vient du trésor, du partage ou des personnages comme Izidor.</p>
+            <p>Chaque indice vient du trésor, du partage ou des personnages clés comme Izidor.</p>
           </article>
           <article class="tip">
-            <h3>📱 Joue sur mobile</h3>
-            <p>La grille s'adapte proprement sur tous les écrans. Clique dans les cases pour écrire !</p>
+            <h3>💡 Comment jouer ?</h3>
+            <p>Clique sur une case. Tape une lettre, le curseur avance tout seul. Clique à nouveau pour changer de direction.</p>
           </article>
         </div>
       </div>
@@ -614,9 +639,9 @@
 
     <div class="container">
       <div class="cta-box">
-        <h2>🏆 Tu as aimé ce jeu ?</h2>
-        <p>Découvre le labyrinthe de Ti Malo et les autres jeux de l'univers Izidor.</p>
-        <a class="btn" href="index.html">🎮 Voir tous les jeux</a>
+        <h2>Tu as aimé ce jeu ?</h2>
+        <p>Découvre le labyrinthe de Ti Malo et les autres activités familiales de l'univers Izidor.</p>
+        <a class="btn btn-primary" href="index.html">Voir tous les jeux</a>
       </div>
     </div>
   </main>
@@ -629,291 +654,284 @@
         <a href="index.html">Jeux</a>
         <a href="mailto:contact@gayarsite.re">Contact</a>
       </div>
-      <p>📖 Gayarsite.re — Contes et traditions orales de La Réunion</p>
-      <p class="copyright">© 2025 Tous droits réservés — Mots croisés Ti Malo</p>
+      <p style="color: var(--text-main); font-weight: 500;">Gayarsite.re — Contes et traditions orales de La Réunion</p>
+      <p class="copyright">© 2026 Tous droits réservés.</p>
     </div>
   </footer>
 
   <script>
-    (function() {
-      // Définition de la grille : positions des cases (ligne, colonne, mot, direction, réponse, numéro)
-      // Grille 8x8
-      const gridData = [
-        // Mot 1: RAVINE (horizontal, ligne 0, colonne 0, numéro 1)
-        { row: 0, col: 0, direction: 'H', num: 1, answer: 'RAVINE', length: 6, wordIndex: 0 },
-        // Mot 2: TRESOR (vertical, ligne 0, colonne 3, numéro 2)
-        { row: 0, col: 3, direction: 'V', num: 2, answer: 'TRESOR', length: 6, wordIndex: 1 },
-        // Mot 3: PARTAGE (horizontal, ligne 2, colonne 0, numéro 3)
-        { row: 2, col: 0, direction: 'H', num: 3, answer: 'PARTAGE', length: 7, wordIndex: 2 },
-        // Mot 4: IZIDOR (vertical, ligne 0, colonne 6, numéro 4)
-        { row: 0, col: 6, direction: 'V', num: 4, answer: 'IZIDOR', length: 6, wordIndex: 3 },
-        // Mot 5: NATURE (horizontal, ligne 6, colonne 0, numéro 5)
-        { row: 6, col: 0, direction: 'H', num: 5, answer: 'NATURE', length: 6, wordIndex: 4 }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Données de la grille (adapté pour éviter les chevauchements de numéros et coller aux indices)
+      const words = [
+        { id: 1, row: 0, col: 0, dir: 'V', len: 6, answer: 'RAVINE', num: 1 },
+        { id: 2, row: 0, col: 3, dir: 'H', len: 6, answer: 'TRESOR', num: 2 },
+        { id: 3, row: 2, col: 0, dir: 'H', len: 7, answer: 'PARTAGE', num: 3 },
+        { id: 4, row: 0, col: 6, dir: 'V', len: 6, answer: 'IZIDOR', num: 4 },
+        { id: 5, row: 6, col: 0, dir: 'H', len: 6, answer: 'NATURE', num: 5 }
       ];
 
-      // Réponses pour vérification
-      const answers = {
-        1: 'RAVINE',
-        2: 'TRESOR',
-        3: 'PARTAGE',
-        4: 'IZIDOR',
-        5: 'NATURE'
-      };
+      const gridSize = 8;
+      const gridMap = {}; // Stocke les informations par case 'row,col'
+      const inputs = {};  // Stocke les éléments DOM input
+      const completion = { 1: false, 2: false, 3: false, 4: false, 5: false };
+      
+      let currentDirection = 'H';
+      let activeWordId = null;
 
-      // Mots pour l'affichage du score
-      const wordNames = {
-        1: 'RAVINE',
-        2: 'TRESOR',
-        3: 'PARTAGE',
-        4: 'IZIDOR',
-        5: 'NATURE'
-      };
-
-      // Stockage des inputs
-      let inputs = {};
-      let wordCompletion = { 1: false, 2: false, 3: false, 4: false, 5: false };
-
-      // Créer la grille
-      function createGrid() {
-        const gridContainer = document.getElementById('crosswordGrid');
-        gridContainer.innerHTML = '';
-        
-        // Créer une grille 8x8
-        for (let row = 0; row < 8; row++) {
-          for (let col = 0; col < 8; col++) {
-            // Vérifier si cette case fait partie d'un mot
-            let isInWord = false;
-            let wordInfo = null;
-            
-            for (const word of gridData) {
-              if (word.direction === 'H') {
-                if (row === word.row && col >= word.col && col < word.col + word.length) {
-                  isInWord = true;
-                  wordInfo = word;
-                  break;
-                }
-              } else { // 'V'
-                if (col === word.col && row >= word.row && row < word.row + word.length) {
-                  isInWord = true;
-                  wordInfo = word;
-                  break;
-                }
-              }
-            }
-            
-            const cell = document.createElement('div');
-            cell.className = 'cell';
-            
-            if (isInWord) {
-              // Trouver le numéro pour cette case (premier caractère du mot)
-              let num = '';
-              if ((wordInfo.direction === 'H' && col === wordInfo.col) ||
-                  (wordInfo.direction === 'V' && row === wordInfo.row)) {
-                num = wordInfo.num;
-                const numSpan = document.createElement('span');
-                numSpan.className = 'num';
-                numSpan.textContent = num;
-                cell.appendChild(numSpan);
-              }
-              
-              const input = document.createElement('input');
-              input.type = 'text';
-              input.maxLength = 1;
-              input.setAttribute('aria-label', `Case ${row+1},${col+1}`);
-              
-              // Stocker l'input
-              const key = `${row},${col}`;
-              inputs[key] = input;
-              
-              // Sauvegarder les infos du mot sur l'input
-              input.dataset.row = row;
-              input.dataset.col = col;
-              input.dataset.wordNum = wordInfo.num;
-              input.dataset.wordDir = wordInfo.direction;
-              input.dataset.wordIndex = wordInfo.wordIndex;
-              
-              // Écouter les changements
-              input.addEventListener('input', function(e) {
-                this.value = this.value.toUpperCase().slice(0, 1);
-                checkWordCompletion(wordInfo.num);
-              });
-              
-              cell.appendChild(input);
-            } else {
-              cell.classList.add('empty');
-            }
-            
-            gridContainer.appendChild(cell);
+      // 1. Pré-calculer la grille
+      words.forEach(word => {
+        for (let i = 0; i < word.len; i++) {
+          const r = word.dir === 'V' ? word.row + i : word.row;
+          const c = word.dir === 'H' ? word.col + i : word.col;
+          const key = `${r},${c}`;
+          
+          if (!gridMap[key]) {
+            gridMap[key] = { isWord: true, words: [], num: null };
           }
+          gridMap[key].words.push(word);
+          if (i === 0) gridMap[key].num = word.num;
+        }
+      });
+
+      // 2. Générer le DOM
+      const gridContainer = document.getElementById('crosswordGrid');
+      
+      for (let r = 0; r < gridSize; r++) {
+        for (let c = 0; c < gridSize; c++) {
+          const key = `${r},${c}`;
+          const cellData = gridMap[key];
+          
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          
+          if (cellData) {
+            cell.classList.add('has-letter');
+            cell.dataset.key = key;
+            
+            // Numéro
+            if (cellData.num) {
+              const numSpan = document.createElement('span');
+              numSpan.className = 'num';
+              numSpan.textContent = cellData.num;
+              cell.appendChild(numSpan);
+            }
+            
+            // Input
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.maxLength = 1;
+            input.setAttribute('aria-label', `Case ligne ${r+1}, colonne ${c+1}`);
+            input.dataset.r = r;
+            input.dataset.c = c;
+            
+            // Événements d'interaction
+            input.addEventListener('focus', () => handleFocus(r, c));
+            input.addEventListener('click', () => handleClick(r, c));
+            input.addEventListener('input', (e) => handleInput(e, r, c));
+            input.addEventListener('keydown', (e) => handleKeydown(e, r, c));
+            
+            cell.appendChild(input);
+            inputs[key] = input;
+          }
+          
+          gridContainer.appendChild(cell);
         }
       }
 
-      // Vérifier si un mot est complété correctement
-      function checkWordCompletion(wordNum) {
-        const word = gridData.find(w => w.num === wordNum);
-        if (!word) return false;
-        
-        let isComplete = true;
-        let currentValue = '';
-        
-        for (let i = 0; i < word.length; i++) {
-          let row, col;
-          if (word.direction === 'H') {
-            row = word.row;
-            col = word.col + i;
-          } else {
-            row = word.row + i;
-            col = word.col;
-          }
-          
-          const key = `${row},${col}`;
-          const input = inputs[key];
-          if (!input || !input.value) {
-            isComplete = false;
-            break;
-          }
-          currentValue += input.value;
-        }
-        
-        const isCorrect = isComplete && currentValue === word.answer;
-        
-        // Mettre à jour l'apparence des cases
-        for (let i = 0; i < word.length; i++) {
-          let row, col;
-          if (word.direction === 'H') {
-            row = word.row;
-            col = word.col + i;
-          } else {
-            row = word.row + i;
-            col = word.col;
-          }
-          
-          const key = `${row},${col}`;
-          const input = inputs[key];
-          if (input) {
-            if (isCorrect) {
-              input.parentElement.classList.add('correct');
-            } else {
-              input.parentElement.classList.remove('correct');
-            }
-          }
-        }
-        
-        wordCompletion[wordNum] = isCorrect;
-        updateScore();
-        return isCorrect;
-      }
+      // 3. Logique d'interaction : Focus & Click
+      function handleFocus(r, c) {
+        const key = `${r},${c}`;
+        const cellData = gridMap[key];
+        if (!cellData) return;
 
-      // Vérifier tous les mots
-      function checkAllWords() {
-        let allCorrect = true;
-        for (let num = 1; num <= 5; num++) {
-          const isCorrect = checkWordCompletion(num);
-          if (!isCorrect) allCorrect = false;
-        }
-        
-        if (allCorrect) {
-          const victoryDiv = document.getElementById('victoryMessage');
-          victoryDiv.innerHTML = '<div class="victory-message">🎉 Félicitations ! Tu as complété tous les mots ! 🎉</div>';
-          // Faire défiler jusqu'au message
-          victoryDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Déterminer le mot actif en fonction de currentDirection si possible
+        const wordInDir = cellData.words.find(w => w.dir === currentDirection);
+        if (wordInDir) {
+          activeWordId = wordInDir.id;
         } else {
-          const victoryDiv = document.getElementById('victoryMessage');
-          victoryDiv.innerHTML = '<div class="victory-message" style="background: #D45729;">📝 Continue, il reste des mots à trouver !</div>';
-          setTimeout(() => {
-            if (victoryDiv.firstChild) victoryDiv.innerHTML = '';
-          }, 2000);
+          // Si la case n'appartient qu'à l'autre direction
+          activeWordId = cellData.words[0].id;
+          currentDirection = cellData.words[0].dir;
+        }
+        
+        highlightActiveWord();
+      }
+
+      function handleClick(r, c) {
+        const key = `${r},${c}`;
+        const cellData = gridMap[key];
+        if (!cellData || cellData.words.length < 2) return;
+
+        // Si on clique sur une case croisée déjà active, on change de direction
+        const currentActiveCell = document.activeElement;
+        if (currentActiveCell === inputs[key]) {
+          currentDirection = currentDirection === 'H' ? 'V' : 'H';
+          activeWordId = cellData.words.find(w => w.dir === currentDirection).id;
+          highlightActiveWord();
         }
       }
 
-      // Mettre à jour l'affichage du score
-      function updateScore() {
-        let completed = 0;
-        for (let num = 1; num <= 5; num++) {
-          if (wordCompletion[num]) completed++;
-        }
-        const scoreDisplay = document.getElementById('scoreDisplay');
-        scoreDisplay.textContent = `✅ Mots trouvés : ${completed} / 5`;
-        
-        if (completed === 5) {
-          const victoryDiv = document.getElementById('victoryMessage');
-          if (!victoryDiv.innerHTML.includes('Félicitations')) {
-            victoryDiv.innerHTML = '<div class="victory-message">🏆 BRAVO ! Tu as trouvé tous les mots du trésor ! 🏆</div>';
+      function highlightActiveWord() {
+        // Reset classes
+        document.querySelectorAll('.cell.has-letter').forEach(el => {
+          el.classList.remove('highlighted', 'active');
+        });
+        document.querySelectorAll('.clue').forEach(el => el.classList.remove('active'));
+
+        if (!activeWordId) return;
+
+        // Highlight mot dans la grille
+        const activeWord = words.find(w => w.id === activeWordId);
+        for (let i = 0; i < activeWord.len; i++) {
+          const r = activeWord.dir === 'V' ? activeWord.row + i : activeWord.row;
+          const c = activeWord.dir === 'H' ? activeWord.col + i : activeWord.col;
+          const cellNode = inputs[`${r},${c}`].parentElement;
+          cellNode.classList.add('highlighted');
+          if (inputs[`${r},${c}`] === document.activeElement) {
+            cellNode.classList.add('active');
           }
         }
+
+        // Highlight l'indice
+        const clueEl = document.querySelector(`.clue[data-word-id="${activeWordId}"]`);
+        if (clueEl) clueEl.classList.add('active');
       }
 
-      // Réinitialiser toutes les cases
-      function resetGrid() {
-        for (const key in inputs) {
-          const input = inputs[key];
-          input.value = '';
-          input.parentElement.classList.remove('correct');
-        }
-        
-        for (let num = 1; num <= 5; num++) {
-          wordCompletion[num] = false;
-        }
-        
-        updateScore();
-        const victoryDiv = document.getElementById('victoryMessage');
-        victoryDiv.innerHTML = '';
-      }
-
-      // Initialisation
-      createGrid();
-      
-      // Événements boutons
-      document.getElementById('checkBtn').addEventListener('click', checkAllWords);
-      document.getElementById('resetBtn').addEventListener('click', resetGrid);
-      
-      // Navigation clavier entre les cases
-      const allInputs = Object.values(inputs);
-      allInputs.forEach((input, idx) => {
-        input.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            const next = allInputs[idx + 1];
-            if (next) next.focus();
-          } else if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            const prev = allInputs[idx - 1];
-            if (prev) prev.focus();
-          } else if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            const nextRow = parseInt(input.dataset.row) + 1;
-            const nextCol = parseInt(input.dataset.col);
-            const nextKey = `${nextRow},${nextCol}`;
-            const nextInput = inputs[nextKey];
-            if (nextInput) nextInput.focus();
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            const prevRow = parseInt(input.dataset.row) - 1;
-            const prevCol = parseInt(input.dataset.col);
-            const prevKey = `${prevRow},${prevCol}`;
-            const prevInput = inputs[prevKey];
-            if (prevInput) prevInput.focus();
-          }
+      // Lier les clics sur les indices pour focus la première lettre du mot
+      document.querySelectorAll('.clue').forEach(clue => {
+        clue.addEventListener('click', () => {
+          const wordId = parseInt(clue.dataset.wordId);
+          const word = words.find(w => w.id === wordId);
+          currentDirection = word.dir;
+          inputs[`${word.row},${word.col}`].focus();
         });
       });
-      
+
+      // 4. Saisie et Navigation clavier
+      function handleInput(e, r, c) {
+        const input = e.target;
+        // Nettoyage : uniquement des lettres
+        input.value = input.value.replace(/[^a-zA-Z]/g, '').toUpperCase().slice(0, 1);
+        
+        if (input.value) {
+          checkWord(activeWordId);
+          // Avance automatique
+          const nr = currentDirection === 'V' ? r + 1 : r;
+          const nc = currentDirection === 'H' ? c + 1 : c;
+          const nextInput = inputs[`${nr},${nc}`];
+          if (nextInput && gridMap[`${nr},${nc}`].words.some(w => w.id === activeWordId)) {
+            nextInput.focus();
+          }
+        }
+      }
+
+      function handleKeydown(e, r, c) {
+        if (e.key === 'Backspace' && !e.target.value) {
+          e.preventDefault();
+          const pr = currentDirection === 'V' ? r - 1 : r;
+          const pc = currentDirection === 'H' ? c - 1 : c;
+          const prevInput = inputs[`${pr},${pc}`];
+          if (prevInput && gridMap[`${pr},${pc}`].words.some(w => w.id === activeWordId)) {
+            prevInput.focus();
+            prevInput.value = '';
+            checkWord(activeWordId); // Revérifie car on a effacé
+          }
+        } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+          e.preventDefault();
+          let nr = r, nc = c;
+          if (e.key === 'ArrowUp') nr--;
+          if (e.key === 'ArrowDown') nr++;
+          if (e.key === 'ArrowLeft') nc--;
+          if (e.key === 'ArrowRight') nc++;
+          
+          if (inputs[`${nr},${nc}`]) {
+            // Optionnel : changer currentDirection en fonction de la flèche
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') currentDirection = 'V';
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') currentDirection = 'H';
+            inputs[`${nr},${nc}`].focus();
+          }
+        }
+      }
+
+      // 5. Vérification des mots
+      function checkWord(wordId) {
+        const word = words.find(w => w.id === wordId);
+        let userStr = '';
+        const wordInputs = [];
+        
+        for (let i = 0; i < word.len; i++) {
+          const r = word.dir === 'V' ? word.row + i : word.row;
+          const c = word.dir === 'H' ? word.col + i : word.col;
+          const input = inputs[`${r},${c}`];
+          userStr += input.value || ' ';
+          wordInputs.push(input);
+        }
+
+        const isCorrect = userStr === word.answer;
+        completion[wordId] = isCorrect;
+
+        wordInputs.forEach(input => {
+          // Un input appartient à potentiellement deux mots.
+          // Il est correct si TOUS les mots complets auxquels il appartient sont justes.
+          const parentCell = input.parentElement;
+          const cellData = gridMap[`${input.dataset.r},${input.dataset.c}`];
+          
+          // On vérifie si la case fait partie d'un mot valide
+          const partOfCorrectWord = cellData.words.some(w => completion[w.id]);
+          
+          if (partOfCorrectWord) {
+            parentCell.classList.add('correct');
+          } else {
+            parentCell.classList.remove('correct');
+          }
+        });
+
+        updateScore();
+      }
+
+      function updateScore() {
+        const score = Object.values(completion).filter(Boolean).length;
+        document.getElementById('scoreDisplay').textContent = `Progression : ${score} / 5 mots`;
+      }
+
+      // 6. Boutons Globaux
+      document.getElementById('checkBtn').addEventListener('click', () => {
+        let allValid = true;
+        words.forEach(w => {
+          checkWord(w.id);
+          if (!completion[w.id]) allValid = false;
+        });
+
+        const feedback = document.getElementById('feedbackMessage');
+        if (allValid) {
+          feedback.innerHTML = '<div class="victory-message">🏆 Félicitations ! La grille est parfaite !</div>';
+        } else {
+          feedback.innerHTML = '<div class="victory-message error-message">📝 Il reste des erreurs ou des cases vides.</div>';
+          setTimeout(() => feedback.innerHTML = '', 3000);
+        }
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        Object.values(inputs).forEach(input => {
+          input.value = '';
+          input.parentElement.classList.remove('correct', 'highlighted', 'active');
+        });
+        words.forEach(w => completion[w.id] = false);
+        updateScore();
+        document.getElementById('feedbackMessage').innerHTML = '';
+        activeWordId = null;
+        document.querySelectorAll('.clue').forEach(el => el.classList.remove('active'));
+      });
+
       // Menu mobile
       const toggleBtn = document.getElementById('menuToggle');
       const navMenu = document.getElementById('mainNav');
-      if (toggleBtn && navMenu) {
-        toggleBtn.addEventListener('click', () => {
-          navMenu.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('#mainNav a').forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-              navMenu.classList.remove('active');
-            }
-          });
-        });
-      }
-    })();
+      toggleBtn.addEventListener('click', () => {
+        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+      });
+    });
   </script>
 </body>
 </html>
