@@ -3,268 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeux Izidor — Gayarsite.re</title>
-  <meta name="description" content="Mini-jeux de l'univers Izidor pour enfants. Mots croisés, coloriages et jeux d'observation inspirés du conte.">
-  <meta name="keywords" content="jeux Izidor, mots croisés, coloriage, cache-cache, jeux enfants">
+  <title>L'univers d'Izidor — Gayarsite.re</title>
+  <meta name="description" content="Découvrez Izidor et le trésor, un conte réunionnais plein d'astuce et de malice. Histoires et jeux pour toute la famille.">
+  <meta name="keywords" content="histoire Izidor, conte réunionnais, tradition orale Réunion, contes créoles, jeux Izidor">
   <meta name="author" content="Gayarsite.re">
   
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Jeux Izidor — Gayarsite.re">
-  <meta property="og:description" content="Mini-jeux simples, jolis et amusants pour prolonger l'histoire d'Izidor.">
+  <meta property="og:title" content="L'univers d'Izidor — Gayarsite.re">
+  <meta property="og:description" content="Découvrez Izidor et le trésor, un conte réunionnais malicieux issu de la tradition orale.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gayarsite.re/izidor/jeux/">
-  <meta property="og:image" content="/assets/commun/images/izidor-cover.webp">
+  <meta property="og:url" content="https://gayarsite.re/izidor/">
+  <meta property="og:image" content="../assets/commun/images/izidor-cover.webp">
   <meta name="twitter:card" content="summary_large_image">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="/assets/commun/css/style.css">
+  <link rel="stylesheet" href="../assets/commun/css/style.css">
+  <link rel="stylesheet" href="../assets/commun/css/theme-izidor.css">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23fffaf5'/%3E%3Cpath d='M28 24h28c9 0 16 7 16 16v36H44c-9 0-16-7-16-16V24z' fill='none' stroke='%238c5431' stroke-width='6'/%3E%3Cpath d='M44 24v52' stroke='%23c99563' stroke-width='6'/%3E%3C/svg%3E">
   
   <style>
-    /* Styles spécifiques à la page des jeux Izidor */
-    body.theme-izidor main {
-      max-width: none;
+    /* Spécificités page univers Izidor */
+    body.theme-izidor {
+      background-color: var(--color-bg);
+      color: var(--color-text);
     }
     
-    body.theme-izidor .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--sp-lg);
-    }
-    
-    body.theme-izidor section.hero,
-    body.theme-izidor section {
-      text-align: center;
-    }
-    
-    body.theme-izidor .section-intro,
-    body.theme-izidor .intro-band p {
-      max-width: 52rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    body.theme-izidor .btn-row,
-    body.theme-izidor .hero-actions,
-    body.theme-izidor .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-md);
-      justify-content: center;
-    }
-    
-    /* Grille des jeux */
-    body.theme-izidor .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--sp-xl);
-      margin-top: var(--sp-xl);
-    }
-    
-    body.theme-izidor .game-card {
-      background: linear-gradient(135deg, var(--color-light) 0%, rgba(232, 212, 192, 0.22) 100%);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      padding: var(--sp-xl);
-      text-decoration: none;
-      color: inherit;
-      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-md);
-      align-items: center;
-      text-align: center;
-    }
-    
-    body.theme-izidor .game-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      text-decoration: none;
-    }
-    
-    body.theme-izidor .game-card:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-      border-radius: var(--radius-lg);
-    }
-    
-    body.theme-izidor .game-card .icon {
-      font-size: 3rem;
-      line-height: 1;
-    }
-    
-    body.theme-izidor .game-card h3 {
-      color: var(--color-primary);
-      margin-bottom: var(--sp-xs);
-      font-size: var(--text-xl);
-    }
-    
-    body.theme-izidor .game-card p {
-      max-width: 24rem;
-      margin-left: auto;
-      margin-right: auto;
-      color: var(--color-muted);
-      margin-bottom: 0;
-    }
-    
-    body.theme-izidor .game-card .badge {
-      display: inline-block;
-      background: var(--color-accent);
-      color: white;
-      font-size: var(--text-sm);
-      padding: var(--sp-xs) var(--sp-md);
-      border-radius: 999px;
-      margin-top: var(--sp-sm);
-    }
-    
-    body.theme-izidor .game-card.coming-soon {
-      opacity: 0.8;
-    }
-    
-    body.theme-izidor .game-card.coming-soon:hover {
-      transform: translateY(-4px);
-    }
-    
-    /* CTA Box */
-    body.theme-izidor .cta-box {
-      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-      color: #fff;
-      border-radius: calc(var(--radius-lg) + 4px);
-      box-shadow: var(--shadow-lg);
-      padding: var(--sp-xl);
-      text-align: center;
-      max-width: 900px;
-      margin: var(--sp-2xl) auto;
-    }
-    
-    body.theme-izidor .cta-box h2 {
-      color: white;
-      margin-bottom: var(--sp-md);
-    }
-    
-    body.theme-izidor .cta-box p {
-      color: rgba(255, 255, 255, 0.95);
-      max-width: 42rem;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: var(--sp-lg);
-    }
-    
-    body.theme-izidor .cta-box .btn {
-      background: #fff;
-      color: var(--color-primary);
-      border: none;
-    }
-    
-    body.theme-izidor .cta-box .btn:hover {
-      background: var(--color-light);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    /* Breadcrumb navigation */
-    body.theme-izidor .breadcrumb {
+    .breadcrumb {
       display: flex;
       gap: var(--sp-sm);
       padding: var(--sp-lg) var(--sp-lg) 0;
       font-size: var(--text-sm);
-    }
-    
-    body.theme-izidor .breadcrumb a {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-    
-    body.theme-izidor .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-    
-    body.theme-izidor .breadcrumb span {
-      color: var(--color-muted);
-    }
-    
-    /* Header adjustments for games page */
-    body.theme-izidor .header-content {
       max-width: 1200px;
       margin: 0 auto;
     }
     
-    /* Responsive */
-    @media (max-width: 768px) {
-      body.theme-izidor .container {
-        padding: 0 var(--sp-md);
-      }
-      
-      body.theme-izidor .games-grid {
+    .breadcrumb a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    
+    .breadcrumb span {
+      color: var(--color-muted);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--sp-xl);
+      align-items: center;
+      padding: var(--sp-2xl) 0;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      display: block;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--sp-xl);
+      align-items: start;
+      margin-top: var(--sp-xl);
+    }
+
+    .teaser-history {
+      background: linear-gradient(135deg, rgba(212,165,116,0.1) 0%, rgba(140,84,49,0.05) 100%);
+      border-left: 4px solid var(--color-accent);
+      padding: var(--sp-lg);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-top: var(--sp-lg);
+    }
+
+    .book-cover-container {
+      text-align: center;
+      position: sticky;
+      top: 100px;
+    }
+
+    .book-cover-img {
+      max-width: 100%;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--color-border);
+      transition: transform var(--transition-normal);
+    }
+
+    .book-cover-img:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    /* Grid de mini-jeux raccourcis */
+    .games-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-lg);
+      margin-top: var(--sp-xl);
+    }
+
+    .game-mini-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-sm);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .game-mini-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .game-mini-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .game-mini-card h3 {
+      font-size: var(--text-lg);
+      color: var(--color-primary);
+      margin-bottom: 0;
+    }
+
+    .game-mini-card p {
+      font-size: var(--text-sm);
+      margin-bottom: var(--sp-sm);
+      color: var(--color-muted);
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner, .intro-grid {
         grid-template-columns: 1fr;
         gap: var(--sp-lg);
       }
       
-      body.theme-izidor .game-card {
-        padding: var(--sp-lg);
-      }
-      
-      body.theme-izidor .cta-box {
-        padding: var(--sp-lg);
-        margin: var(--sp-xl) auto;
-      }
-      
-      body.theme-izidor .breadcrumb {
-        padding: var(--sp-md) var(--sp-md) 0;
+      .book-cover-container {
+        position: static;
+        margin-top: var(--sp-lg);
       }
     }
-    
-    @media (max-width: 480px) {
-      body.theme-izidor .game-card .icon {
-        font-size: 2.5rem;
-      }
-      
-      body.theme-izidor .game-card h3 {
-        font-size: var(--text-lg);
-      }
-    }
-    
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    body.theme-izidor .game-card {
-      animation: fadeInUp 0.5s ease backwards;
-    }
-    
-    body.theme-izidor .game-card:nth-child(1) { animation-delay: 0.1s; }
-    body.theme-izidor .game-card:nth-child(2) { animation-delay: 0.2s; }
-    body.theme-izidor .game-card:nth-child(3) { animation-delay: 0.3s; }
   </style>
 </head>
 <body class="theme-izidor">
-  <!-- Skip link for accessibility -->
+  
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   
   <header>
     <div class="header-content">
-      <a class="logo" href="/index.html">
-        <img src="/assets/commun/images/izidor-logo.webp" alt="Gayarsite.re" width="32" height="32" style="border-radius: 8px;">
+      <a class="logo" href="../index.html">
+        <img src="../assets/commun/images/izidor-logo.webp" alt="Gayarsite.re" width="32" height="32" style="border-radius: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+        <span style="display:none; font-size:1.5rem; margin-right:8px;">📖</span>
         <span>Gayarsite.re</span>
       </a>
       
       <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
       
       <nav id="main-nav" aria-label="Navigation principale">
-        <a href="/index.html">Accueil</a>
-        <a href="/izidor/index.html">Izidor</a>
-        <a class="active" href="/izidor/jeux/index.html">Jeux</a>
+        <a href="../index.html">Accueil</a>
+        <a class="active" href="index.html">Izidor</a>
+        <a href="jeux/index.html">Jeux</a>
       </nav>
       
       <div class="header-controls">
@@ -275,88 +187,87 @@
 
   <!-- Breadcrumb navigation -->
   <nav class="breadcrumb" aria-label="Fil d'Ariane">
-    <a href="/index.html">Accueil</a>
+    <a href="../index.html">Accueil</a>
     <span>/</span>
-    <a href="/izidor/index.html">Izidor</a>
-    <span>/</span>
-    <span aria-current="page">Jeux</span>
+    <span aria-current="page">Izidor</span>
   </nav>
 
   <main id="contenu">
     <!-- Hero section with character image -->
-    <section class="hero" style="background: linear-gradient(135deg, rgba(160,82,45,0.08), rgba(212,165,116,0.05));">
-      <div class="container">
-        <div class="hero-icon" style="font-size: 4rem; margin-bottom: var(--sp-md);">🎮</div>
-        <h1>Jeux Izidor</h1>
-        <p class="section-intro">Mini-jeux simples, jolis et amusants pour prolonger l'histoire. <br>Teste tes connaissances et amuse-toi avec les personnages d'Izidor !</p>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="hero-label">L'univers de conte</span>
+          <h1>Izidor et le trésor</h1>
+          <p class="section-intro">Découvrez l'histoire d'un personnage rusé et débrouillard, emblématique des contes de La Réunion. Une aventure de malice et de sagesse issue de la tradition orale créole.</p>
+          <div class="btn-row">
+            <a href="jeux/index.html" class="btn btn-primary">🎮 Jouer aux mini-jeux</a>
+            <a href="https://www.amazon.fr/dp/B0H1H15GXF" target="_blank" class="btn btn-tertiary">📱 Ebook Kindle</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="../assets/commun/images/izidor-hero.webp" alt="Izidor et le trésor" onerror="this.src='../assets/commun/images/izidor-cover.webp';">
+        </div>
       </div>
     </section>
 
-    <!-- Games grid section -->
-    <section class="section">
+    <!-- Presentation Section -->
+    <section class="section" style="border-top: 1px solid var(--color-border);">
+      <div class="container intro-grid">
+        <div>
+          <h2 class="section-title">L'histoire d'Izidor, un conte réunionnais plein de malice</h2>
+          <p>L’histoire d’Izidor fait partie de ces récits réunionnais qui traversent le temps grâce à la parole et au plaisir de raconter. Dans l’univers des contes péi, Izidor est un héros populaire simple et proche des gens ordinaires, entraîné dans des aventures où l’astuce, l’humour et la ruse prennent le dessus sur la force brute.</p>
+          
+          <p>À La Réunion, les contes ne servent pas seulement à divertir. Ils transmettent une manière de voir le monde, des valeurs de solidarité et un lien fort avec la langue créole. L’histoire d’Izidor s’inscrit dans cette tradition du <em>rakontaz zistoir</em>, où la parole vivante, savoureuse et pleine de sagesse réunit petits et grands.</p>
+
+          <p>Ce qui sauve Izidor face aux situations inattendues ou à des opposants plus forts que lui, c'est son sens de l'observation, sa débrouillardise et sa capacité à s'adapter avec les moyens du bord. Il devient ainsi un symbole d'ingéniosité et d'humour.</p>
+          
+          <div class="teaser-history">
+            <p style="font-style: italic; color: var(--color-primary); margin-bottom: 0;">« La ruse est plus forte que la force. Une histoire à lire en famille pour s'ouvrir à la richesse du patrimoine culturel et imaginaire de l'île. »</p>
+          </div>
+        </div>
+        
+        <div class="book-cover-container">
+          <img src="../assets/commun/images/izidor-cover.webp" alt="Livre Izidor et le trésor" class="book-cover-img">
+          <p style="margin-top: var(--sp-md); font-size: var(--text-sm); color: var(--color-muted); font-style: italic;">Disponible en version brochée & Kindle</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini Games Grid Section -->
+    <section class="section" style="background: linear-gradient(180deg, rgba(212,165,116,0.04), transparent); border-top: 1px solid var(--color-border);">
       <div class="container">
-        <div class="games-grid">
-          <!-- Jeu disponible -->
-          <a class="game-card" href="mots-croises.html">
-            <div class="icon">🧩</div>
+        <h2 class="section-title center">Prolongez l'aventure</h2>
+        <p class="section-intro center" style="margin-left: auto; margin-right: auto;">Découvrez nos jeux interactifs liés à l'univers d'Izidor et testez votre mémoire.</p>
+        
+        <div class="games-preview-grid">
+          <div class="game-mini-card">
+            <div class="game-mini-icon">🧩</div>
+            <h3>Le Labyrinthe</h3>
+            <p>Aidez Ti Malo à traverser la ravine pour rejoindre le trésor.</p>
+            <a class="btn btn-tertiary" style="padding: 0.5rem 1rem; font-size: var(--text-sm);" href="jeux/labyrinthe.html">Jouer</a>
+          </div>
+          
+          <div class="game-mini-card">
+            <div class="game-mini-icon">✍️</div>
             <h3>Mots croisés</h3>
-            <p>Retrouve les mots du conte dans une grille facile. Parfait pour tester ta mémoire !</p>
-            <span class="badge">✨ Disponible</span>
-          </a>
-          
-          <!-- Jeu à venir -->
-          <div class="game-card coming-soon">
-            <div class="icon">🎨</div>
-            <h3>Coloriage</h3>
-            <p>Colorie les personnages d'Izidor, Rosine et Ti Malo avec tes couleurs préférées.</p>
-            <span class="badge">🔜 Bientôt</span>
+            <p>Retrouvez les mots-clés du conte dans une grille amusante.</p>
+            <a class="btn btn-tertiary" style="padding: 0.5rem 1rem; font-size: var(--text-sm);" href="jeux/mots-croises.html">Jouer</a>
           </div>
           
-          <!-- Jeu à venir -->
-          <div class="game-card coming-soon">
-            <div class="icon">🔎</div>
-            <h3>Cache-cache</h3>
-            <p>Trouve les objets cachés dans les magnifiques illustrations du monde d'Izidor.</p>
-            <span class="badge">🔜 Bientôt</span>
+          <div class="game-mini-card">
+            <div class="game-mini-icon">🔤</div>
+            <h3>Mots fléchés</h3>
+            <p>Complétez la grille avec le vocabulaire de l'histoire.</p>
+            <a class="btn btn-tertiary" style="padding: 0.5rem 1rem; font-size: var(--text-sm);" href="jeux/mots-fleches.html">Jouer</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Information section -->
-    <section class="section" style="background: linear-gradient(180deg, rgba(253,247,241,0.4), transparent);">
-      <div class="container">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h2 style="font-size: var(--text-2xl);">Pourquoi des jeux ?</h2>
-          <p>Les jeux permettent de prolonger l'expérience de lecture et de s'immerger encore plus dans l'univers d'Izidor. Chaque jeu est pensé pour être accessible, amusant et adapté aux enfants comme aux adultes.</p>
-          <div style="display: flex; gap: var(--sp-lg); justify-content: center; margin-top: var(--sp-xl); flex-wrap: wrap;">
-            <div style="text-align: center;">
-              <div style="font-size: 2rem;">📖</div>
-              <p style="font-size: var(--text-sm); margin-top: var(--sp-xs);">Lié à l'histoire</p>
-            </div>
-            <div style="text-align: center;">
-              <div style="font-size: 2rem;">🎯</div>
-              <p style="font-size: var(--text-sm); margin-top: var(--sp-xs);">Simple et intuitif</p>
-            </div>
-            <div style="text-align: center;">
-              <div style="font-size: 2rem;">✨</div>
-              <p style="font-size: var(--text-sm); margin-top: var(--sp-xs);">Visuellement attrayant</p>
-            </div>
+          
+          <div class="game-mini-card">
+            <div class="game-mini-icon">🌱</div>
+            <h3>Jardin des secrets</h3>
+            <p>Explorez le jardin et trouvez l'indice caché sous les fleurs.</p>
+            <a class="btn btn-tertiary" style="padding: 0.5rem 1rem; font-size: var(--text-sm);" href="jeux/jardin-secrets.html">Jouer</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Return to Izidor universe CTA -->
-    <section class="section">
-      <div class="container">
-        <div class="cta-box">
-          <img src="/assets/commun/images/izidor-logo.webp" alt="" width="60" height="60" style="margin: 0 auto var(--sp-md) auto; border-radius: 16px;">
-          <h2>Retour à l'univers d'Izidor</h2>
-          <p>Tu peux revenir à la page de l'univers pour relire l'histoire ou découvrir les personnages.</p>
-          <a class="btn" href="/izidor/index.html">
-            Explorer l'univers Izidor
-          </a>
         </div>
       </div>
     </section>
@@ -366,24 +277,24 @@
     <div class="container footer-grid">
       <div>
         <h3>Gayarsite.re</h3>
-        <p>Une bibliothèque d'univers narratifs pensée pour rester simple, belle et évolutive.</p>
+        <p>Une bibliothèque d'univers narratifs pensée pour rester simple, belle et ouverte sur l'imaginaire réunionnais.</p>
       </div>
       <div>
         <h3>Navigation</h3>
-        <p><a href="/index.html">Accueil</a></p>
-        <p><a href="/index.html#univers">Les univers</a></p>
-        <p><a href="/izidor/index.html">Izidor</a></p>
-        <p><a href="/izidor/jeux/index.html">Mini-jeux</a></p>
+        <p><a href="../index.html">Accueil</a></p>
+        <p><a href="../index.html#histoires">Les contes</a></p>
+        <p><a href="index.html">Izidor</a></p>
+        <p><a href="jeux/index.html">Mini-jeux</a></p>
       </div>
       <div>
-        <h3>Izidor</h3>
-        <p><a href="/izidor/fr/index.html">Lire l'histoire</a></p>
-        <p><a href="/izidor/jeux/index.html">Jeux</a></p>
+        <h3>Izidor et le trésor</h3>
+        <p><a href="https://www.amazon.fr/dp/B0H1H15GXF" target="_blank">L'Ebook Kindle</a></p>
+        <p><a href="jeux/index.html">Les Jeux</a></p>
         <p><a href="mailto:contact@gayarsite.re">Nous contacter</a></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 Gayarsite.re - Tous droits réservés</p>
+      <p>&copy; 2026 Gayarsite.re - Tous droits réservés</p>
     </div>
   </footer>
 

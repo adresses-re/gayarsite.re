@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gayarsite.re — Contes et aventures de La Réunion</title>
-  <meta name="description" content="Découvrez Izidor et le trésor, un conte réunionnais malicieux, et d'autres histoires pour les 6-10 ans. Ebooks Kindle, jeux et illustrations.">
-  <meta name="keywords" content="contes réunionnais, izidor et le trésor, histoires 6-10 ans, livres jeunesse, kindle, créole réunion">
+  <title>Gayarsite.re — Histoires de La Réunion pour petits et grands</title>
+  <meta name="description" content="Découvrez Izidor et le trésor, un conte réunionnais malicieux, et d'autres histoires pour petits et grands. Ebooks Kindle, jeux et illustrations.">
+  <meta name="keywords" content="contes réunionnais, izidor et le trésor, histoires pour petits et grands, contes créoles, kindle, créole réunion">
   <meta name="author" content="Gayarsite.re">
-  <meta property="og:title" content="Gayarsite.re — Contes et aventures de La Réunion">
-  <meta property="og:description" content="Des histoires malicieuses et palpitantes dans la tradition orale créole. Pour les 6-10 ans.">
+  <meta property="og:title" content="Gayarsite.re — Histoires de La Réunion pour petits et grands">
+  <meta property="og:description" content="Des histoires malicieuses et palpitantes dans la tradition orale créole. Pour petits et grands.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gayarsite.re/">
-  <meta property="og:image" content="/assets/commun/images/izidor-cover.webp">
+  <meta property="og:image" content="assets/commun/images/izidor-cover.webp">
   <meta name="twitter:card" content="summary_large_image">
   
   <style>
@@ -23,19 +23,21 @@
     }
 
     :root {
-      --color-bg: #F5F0E8;
-      --color-surface: #FFFFFF;
-      --color-primary: #D45729;
-      --color-primary-dark: #B8431A;
-      --color-secondary: #2E7A6E;
-      --color-accent: #F4B942;
-      --color-text: #2C2418;
-      --color-text-light: #6B5A4A;
-      --color-border: #E2D5C0;
-      --shadow-card: 0 6px 14px rgba(0,0,0,0.08);
-      --shadow-hover: 0 12px 24px rgba(0,0,0,0.12);
-      --radius-card: 20px;
-      --radius-btn: 30px;
+      --color-bg: #fffaf5;
+      --color-surface: #fdf8f3;
+      --color-light: #f5ebdf;
+      --color-soft: #efe0cf;
+      --color-text: #2c2416;
+      --color-text-light: #6f6255;
+      --color-primary: #a0522d;
+      --color-primary-dark: #734324;
+      --color-secondary: #2c2416;
+      --color-accent: #d4a574;
+      --color-border: rgba(160, 82, 45, 0.15);
+      --shadow-card: 0 6px 14px rgba(160, 82, 45, 0.06);
+      --shadow-hover: 0 12px 24px rgba(160, 82, 45, 0.12);
+      --radius-card: 16px;
+      --radius-btn: 999px;
       --transition: all 0.25s ease;
     }
 
@@ -194,27 +196,28 @@
       margin-bottom: 28px;
     }
 
-    .hero-image {
-      background: linear-gradient(145deg, #FFE0B5, #FFD2A0);
-      border-radius: 32px;
-      padding: 24px;
-      text-align: center;
-      min-height: 240px;
+    .hero-image-container {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-card);
+      background: linear-gradient(145deg, var(--color-light), var(--color-soft));
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--color-border);
     }
 
-    .hero-emoji {
-      font-size: 5rem;
-      margin-bottom: 12px;
+    .hero-img-element {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
     }
-
-    .hero-image small {
-      color: var(--color-primary);
-      font-weight: 500;
+    
+    .hero-image-container:hover .hero-img-element {
+      transform: scale(1.03);
     }
 
     /* Boutons */
@@ -286,12 +289,32 @@
 
     .card-cover {
       position: relative;
-      background: linear-gradient(135deg, #FFF0E0, #FFE4CC);
+      background: linear-gradient(135deg, var(--color-light) 0%, var(--color-soft) 100%);
       height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .story-card:hover .card-cover-img {
+      transform: scale(1.05);
+    }
+
+    .card-cover-placeholder {
       font-size: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
     }
 
     .card-badge {
@@ -518,17 +541,20 @@
     <section class="hero">
       <div class="container hero-content">
         <div class="hero-text">
-          <h1>Aventures et malices <br>de La Réunion</h1>
-          <p>Des histoires où l'astuce et le courage triomphent. Dans la tradition orale créole, pour les 6-10 ans.</p>
+          <h1>Histoires de La Réunion <br>pour petits et grands</h1>
+          <p>Des contes d'aventure, de sagesse et de malice issus du patrimoine créole. À partager en famille ou à lire en toute autonomie.</p>
           <div style="display: flex; gap: 16px; flex-wrap: wrap;">
             <a href="#histoires" class="btn btn-primary">📖 Explorer les contes</a>
             <a href="izidor/jeux/index.html" class="btn btn-secondary">🎮 Jeux & défis</a>
           </div>
         </div>
-        <div class="hero-image">
-          <div class="hero-emoji">🐢✨</div>
-          <p style="font-weight: 500;">« La ruse est plus forte que la force »</p>
-          <small>— Conte réunionnais</small>
+        <div class="hero-image-container">
+          <img src="assets/commun/images/izidor-hero.webp" alt="Izidor et le trésor" class="hero-img-element" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="hero-emoji-fallback" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; width: 100%; height: 100%;">
+            <div style="font-size: 4rem; margin-bottom: 8px;">🐢✨</div>
+            <p style="font-weight: 500; font-size: 1rem; color: var(--color-text); margin-bottom: 4px;">« La ruse est plus forte que la force »</p>
+            <small style="color: var(--color-primary);">— Conte réunionnais</small>
+          </div>
         </div>
       </div>
     </section>
@@ -542,7 +568,10 @@
           <!-- IZIDOR ET LE TRÉSOR (conte réunionnais malicieux) -->
           <div class="story-card">
             <div class="card-cover">
-              <span>🐢🗝️</span>
+              <img src="assets/commun/images/izidor-cover.webp" alt="Izidor et le trésor" class="card-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="card-cover-placeholder" style="display: none;">
+                <span>🐢🗝️</span>
+              </div>
               <span class="card-badge">⭐ Malicieux</span>
             </div>
             <div class="card-content">
@@ -559,14 +588,17 @@
           <!-- LE CHERCHEUR DE SOUVENIRS -->
           <div class="story-card">
             <div class="card-cover">
-              <span>🌊🐚</span>
+              <img src="assets/commun/images/PLACEHOLDER-IMAGE NOT FOUND.jpg" alt="Le chercheur de souvenirs" class="card-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="card-cover-placeholder" style="display: none;">
+                <span>🌊🐚</span>
+              </div>
               <span class="card-badge">✨ Aventure</span>
             </div>
             <div class="card-content">
               <h3>Le chercheur de souvenirs</h3>
               <p>Ti-Jean arpente les plages et les montagnes pour retrouver les histoires perdues de l'île. Une quête pleine de rebondissements.</p>
               <div class="card-links">
-                <a href="chercheur-souvenirs/index.html" class="icon-link">📖 Lire un extrait</a>
+                <a href="#" class="icon-link" onclick="alert('📖 L\'extrait de cette histoire sera bientôt en ligne !')">📖 Lire un extrait</a>
                 <a href="#" class="icon-link" onclick="alert('🎨 Illustrations interactives bientôt')">🎨 Galerie</a>
                 <a href="#" class="icon-link" onclick="alert('📘 Kindle disponible')">📱 Kindle</a>
               </div>
@@ -576,16 +608,19 @@
           <!-- ROSINE ET TI MALO -->
           <div class="story-card">
             <div class="card-cover">
-              <span>🌿🚲</span>
+              <img src="assets/commun/images/PLACEHOLDER-IMAGE NOT FOUND.jpg" alt="Rosine et Ti Malo" class="card-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="card-cover-placeholder" style="display: none;">
+                <span>🌿🚲</span>
+              </div>
               <span class="card-badge">⭐ Amitié</span>
             </div>
             <div class="card-content">
               <h3>Rosine et Ti Malo</h3>
               <p>Deux enfants de Saint-Denis mènent l'enquête dans les champs de canne. Un conte moderne sur l'entraide et la solidarité.</p>
               <div class="card-links">
-                <a href="rosine-timalo/index.html" class="icon-link">📖 Lire l'histoire</a>
+                <a href="#" class="icon-link" onclick="alert('📖 Cette histoire sera bientôt disponible en ligne !')">📖 Lire l'histoire</a>
                 <a href="#" class="icon-link" onclick="alert('🎮 Memory game bientôt')">🎮 Jeu memory</a>
-                <a href="#" class="icon-link" onclick="alert('📘 Kindle dispo')">📱 Kindle</a>
+                <a href="#" class="icon-link" onclick="alert('📘 Kindle disponible')">📱 Kindle</a>
               </div>
             </div>
           </div>
@@ -593,7 +628,10 @@
           <!-- KALOU LE CABRI (bientôt) -->
           <div class="story-card coming-soon">
             <div class="card-cover">
-              <span>🐐🌋</span>
+              <img src="assets/commun/images/PLACEHOLDER-IMAGE NOT FOUND.jpg" alt="Kalou le cabri malin" class="card-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="card-cover-placeholder" style="display: none;">
+                <span>🐐🌋</span>
+              </div>
               <span class="card-badge">🔜 À venir</span>
             </div>
             <div class="card-content">
@@ -608,7 +646,10 @@
           <!-- GRANN KOKO ET LE DODO -->
           <div class="story-card coming-soon">
             <div class="card-cover">
-              <span>🦤🌴</span>
+              <img src="assets/commun/images/PLACEHOLDER-IMAGE NOT FOUND.jpg" alt="Grann Koko et le dodo" class="card-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="card-cover-placeholder" style="display: none;">
+                <span>🦤🌴</span>
+              </div>
               <span class="card-badge">🔜 Bientôt</span>
             </div>
             <div class="card-content">
@@ -623,7 +664,10 @@
           <!-- ZANIMO LA RIVIÈRE -->
           <div class="story-card coming-soon">
             <div class="card-cover">
-              <span>🦎💧</span>
+              <img src="assets/commun/images/PLACEHOLDER-IMAGE NOT FOUND.jpg" alt="Zanimo la rivière" class="card-cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="card-cover-placeholder" style="display: none;">
+                <span>🦎💧</span>
+              </div>
               <span class="card-badge">✨ En création</span>
             </div>
             <div class="card-content">
@@ -648,7 +692,7 @@
             <a href="https://www.amazon.fr/dp/B0H1H15GXF" target="_blank" class="btn btn-kindle">📱 Kindle Store</a>
             <a href="#" class="btn btn-outline-light" onclick="alert('📚 Impression disponible sur demande')">🖨️ Version papier</a>
           </div>
-          <p style="font-size:0.85rem; margin-top: 28px;">Des livres pour les 6-10 ans — parfaits pour la lecture autonome ou en famille</p>
+          <p style="font-size:0.85rem; margin-top: 28px;">Des contes pour toute la famille — parfaits pour la lecture autonome ou partagée</p>
         </div>
       </div>
     </section>
@@ -673,7 +717,7 @@
         <a href="mailto:contact@gayarsite.re">Contact</a>
       </div>
       <p>📖 Gayarsite.re — Contes et traditions orales de La Réunion</p>
-      <p class="copyright">© 2026 Tous droits réservés — Histoires pour l'imaginaire des 6-10 ans</p>
+      <p class="copyright">© 2026 Tous droits réservés — Histoires pour l'imaginaire des petits et grands</p>
     </div>
   </footer>
 
